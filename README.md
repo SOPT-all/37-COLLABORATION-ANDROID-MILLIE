@@ -1,0 +1,2 @@
+# 37-COLLABORATION-ANDROID-MILLIE
+DIVE SOPT 37기 모바일 앱 6조 밀리의 서재 안드로이드 레포
