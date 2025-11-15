@@ -1,4 +1,4 @@
-package sopt.org.millie.ui.theme
+package sopt.org.millie.core.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
