@@ -28,6 +28,9 @@ jobs:
                   java-version: '17'
                   distribution: 'temurin'
 
+            - name: Grant permission to gradlew
+              run: chmod +x ./gradlew
+
             - name: Create local.properties
               env:
                   LOCAL_PROPERTIES: ${{ secrets.LOCAL_PROPERTIES }}
@@ -37,9 +40,6 @@ jobs:
                   else
                     echo "base.url=\"https://temp.example.com\"" > local.properties
                   fi
-
-            - name: Grant permission to gradlew
-              run: chmod +x ./gradlew
 
             - name: Run ktlintCheck
               run: ./gradlew ktlintCheck
@@ -91,6 +91,9 @@ jobs:
                   java-version: '17'
                   distribution: 'temurin'
 
+            - name: Grant permission to gradlew
+              run: chmod +x ./gradlew
+
             - name: Create local.properties
               env:
                   LOCAL_PROPERTIES: ${{ secrets.LOCAL_PROPERTIES }}
@@ -98,11 +101,8 @@ jobs:
                   if [ -n "$LOCAL_PROPERTIES" ]; then
                     echo "${LOCAL_PROPERTIES}" > local.properties
                   else
-                    echo "LOCAL_PROPERTIES secret not found. Skipping."
+                    echo "base.url=\"https://temp.example.com\"" > local.properties
                   fi
-
-            - name: Grant permission to gradlew
-              run: chmod +x ./gradlew
 
             - name: Build Debug APK
               run: ./gradlew :app:assembleDebug
