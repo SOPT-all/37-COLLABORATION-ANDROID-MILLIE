@@ -1,0 +1,17 @@
+[*]
+charset = utf-8
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_line_length = off
+
+[*.{kt,kts}]
+ktlint_standard_no-empty-file = disabled
+ktlint_standard_function-naming = disabled
+ktlint_standard_no-empty-class-body = disabled
+ktlint_standard_multiline-expression-wrapping = disabled
+ktlint_standard_indent = disabled
+ktlint_standard_string-template-indent = disabled
+ij_kotlin_allow_trailing_comma = true
+ij_kotlin_allow_trailing_comma_on_call_site = true
