@@ -1,59 +1,144 @@
 package sopt.org.millie.core.designsystem.theme
 
-import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
+import android.app.Activity
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowCompat
 
-private val DarkColorScheme =
-    darkColorScheme(
-        primary = Purple80,
-        secondary = PurpleGrey80,
-        tertiary = Pink80,
-    )
+object MillieTheme {
+    val colors: MillieColors
+        @Composable
+        @ReadOnlyComposable
+        get() = localMillieColorsProvider.current
 
-private val LightColorScheme =
-    lightColorScheme(
-        primary = Purple40,
-        secondary = PurpleGrey40,
-        tertiary = Pink40,
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-     */
+    val typography: MillieTypography
+        @Composable
+        @ReadOnlyComposable
+        get() = localMillieTypographyProvider.current
+}
+
+@Composable
+fun ProvideColorsAndTypography(
+    colors: MillieColors,
+    typography: MillieTypography,
+    content: @Composable () -> Unit,
+) {
+    CompositionLocalProvider(
+        localMillieColorsProvider provides colors,
+        localMillieTypographyProvider provides typography,
+        content = content,
     )
+}
 
 @Composable
 fun MillieTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit,
 ) {
-    val colorScheme =
-        when {
-            dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-                val context = LocalContext.current
-                if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+    ProvideColorsAndTypography(
+        colors = defaultMillieColors,
+        typography = defaultMillieTypography,
+    ) {
+        val view = LocalView.current
+        if (!view.isInEditMode) {
+            SideEffect {
+                (view.context as Activity).window.run {
+                    WindowCompat.getInsetsController(this, view).isAppearanceLightStatusBars = true
+                }
             }
-
-            darkTheme -> DarkColorScheme
-            else -> LightColorScheme
         }
+        MaterialTheme(
+            content = content,
+        )
+    }
+}
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content,
-    )
+@Preview(showBackground = true)
+@Composable
+fun MillieMainColorsPreview() {
+    MillieTheme {
+        Column {
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.title.headLine,
+                color = MillieTheme.colors.millieYellow,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.title.subHead5,
+                color = MillieTheme.colors.subYellow,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.title.subHead4,
+                color = MillieTheme.colors.milliePurple,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.title.subHead3,
+                color = MillieTheme.colors.subPurple,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.title.subHead2,
+                color = MillieTheme.colors.audioColor,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.title.subHead1,
+                color = MillieTheme.colors.audioColor2,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.body.body3,
+                color = MillieTheme.colors.lightGray1,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.body.body2,
+                color = MillieTheme.colors.lightGray2,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.body.body1,
+                color = MillieTheme.colors.lightGray3,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.body.subBody2,
+                color = MillieTheme.colors.gray1,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.body.subBody1,
+                color = MillieTheme.colors.gray2,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.body.caption4,
+                color = MillieTheme.colors.gray3,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.body.caption3,
+                color = MillieTheme.colors.gray4,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.body.caption2,
+                color = MillieTheme.colors.darkGray1,
+            )
+            Text(
+                "MillieTheme",
+                style = MillieTheme.typography.body.caption1,
+                color = MillieTheme.colors.darkGray2,
+            )
+        }
+    }
 }
