@@ -1,12 +1,8 @@
 package sopt.org.millie.core.designsystem.theme
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 
 //Brand Colors
 val MillieYellow = Color(0xFFFFEB60)
