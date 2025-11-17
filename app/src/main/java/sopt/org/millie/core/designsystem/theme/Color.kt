@@ -4,7 +4,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
-//Brand Colors
+// Brand Colors
 val MillieYellow = Color(0xFFFFEB60)
 val SubYellow = Color(0xFFFFB904)
 val MilliePurple = Color(0xFFA451F7)
@@ -12,8 +12,7 @@ val SubPurple = Color(0xFF534165)
 val AudioColor = Color(0xFFD16686)
 val AudioColor2 = Color(0xFF2C9285)
 
-
-//Greyscale Colors
+// Greyscale Colors
 val White = Color(0xFFFFFFFF)
 val LightGray1 = Color(0xFFF5F4F3)
 val LightGray2 = Color(0xFFDFDFDF)
@@ -26,7 +25,7 @@ val DarkGray1 = Color(0xFF3D3D3D)
 val DarkGray2 = Color(0xFF242424)
 val Black = Color(0xFF000000)
 
-//Background Colors
+// Background Colors
 val Background = Color(0xFFFEFEFE)
 
 @Immutable
@@ -37,7 +36,6 @@ data class MillieColors(
     val subPurple: Color = SubPurple,
     val audioColor: Color = AudioColor,
     val audioColor2: Color = AudioColor2,
-
     val white: Color = White,
     val lightGray1: Color = LightGray1,
     val lightGray2: Color = LightGray2,
@@ -49,9 +47,7 @@ data class MillieColors(
     val darkGray1: Color = DarkGray1,
     val darkGray2: Color = DarkGray2,
     val black: Color = Black,
-
-    val background: Color = Background
-
+    val background: Color = Background,
 )
 
 val defaultMillieColors = MillieColors(
@@ -61,7 +57,6 @@ val defaultMillieColors = MillieColors(
     subPurple = SubPurple,
     audioColor = AudioColor,
     audioColor2 = AudioColor2,
-
     white = White,
     lightGray1 = LightGray1,
     lightGray2 = LightGray2,
@@ -73,11 +68,7 @@ val defaultMillieColors = MillieColors(
     darkGray1 = DarkGray1,
     darkGray2 = DarkGray2,
     black = Black,
-
-    background = Background
+    background = Background,
 )
 
 val localMillieColorsProvider = staticCompositionLocalOf { defaultMillieColors }
-
-
-
