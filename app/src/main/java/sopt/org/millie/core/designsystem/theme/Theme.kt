@@ -9,17 +9,17 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-object MillieTheme {
-    val colors: MillieColors
-        @Composable
-        @ReadOnlyComposable
-        get() = localMillieColorsProvider.current
-
-    val typography: MillieTypography
-        @Composable
-        @ReadOnlyComposable
-        get() = localMillieTypographyProvider.current
-}
+//object MillieTheme {
+//    val colors: MillieColors
+//        @Composable
+//        @ReadOnlyComposable
+//        get() = localMillieColorsProvider.current
+//
+//    val typography: MillieTypography
+//        @Composable
+//        @ReadOnlyComposable
+//        get() = localMillieTypographyProvider.current
+//}
 
 @Composable
 fun ProvideColorsAndTypography(
@@ -27,6 +27,7 @@ fun ProvideColorsAndTypography(
     typography: MillieTypography,
     content: @Composable () -> Unit
 ) {
+
     CompositionLocalProvider (
         localMillieColorsProvider provides colors,
         localMillieTypographyProvider provides typography,
