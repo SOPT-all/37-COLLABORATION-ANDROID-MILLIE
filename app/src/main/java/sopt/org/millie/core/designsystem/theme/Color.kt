@@ -1,8 +1,12 @@
 package sopt.org.millie.core.designsystem.theme
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 
 //Brand Colors
 val MillieYellow = Color(0xFFFFEB60)
@@ -39,15 +43,15 @@ data class MillieColors(
     val audioColor2: Color = AudioColor2,
 
     val white: Color = White,
-    val lightGrey1: Color = LightGray1,
-    val lightGrey2: Color = LightGray2,
-    val lightGrey3: Color = LightGray3,
-    val grey1: Color = Gray1,
-    val grey2: Color = Gray2,
-    val grey3: Color = Gray3,
-    val grey4: Color = Gray4,
-    val darkGrey1: Color = DarkGray1,
-    val darkGrey2: Color = DarkGray2,
+    val lightGray1: Color = LightGray1,
+    val lightGray2: Color = LightGray2,
+    val lightGray3: Color = LightGray3,
+    val gray1: Color = Gray1,
+    val gray2: Color = Gray2,
+    val gray3: Color = Gray3,
+    val gray4: Color = Gray4,
+    val darkGray1: Color = DarkGray1,
+    val darkGray2: Color = DarkGray2,
     val black: Color = Black,
 
     val background: Color = Background
@@ -63,18 +67,21 @@ val defaultMillieColors = MillieColors(
     audioColor2 = AudioColor2,
 
     white = White,
-    lightGrey1 = LightGray1,
-    lightGrey2 = LightGray2,
-    lightGrey3 = LightGray3,
-    grey1 = Gray1,
-    grey2 = Gray2,
-    grey3 = Gray3,
-    grey4 = Gray4,
-    darkGrey1 = DarkGray1,
-    darkGrey2 = DarkGray2,
+    lightGray1 = LightGray1,
+    lightGray2 = LightGray2,
+    lightGray3 = LightGray3,
+    gray1 = Gray1,
+    gray2 = Gray2,
+    gray3 = Gray3,
+    gray4 = Gray4,
+    darkGray1 = DarkGray1,
+    darkGray2 = DarkGray2,
     black = Black,
 
     background = Background
 )
 
 val localMillieColorsProvider = staticCompositionLocalOf { defaultMillieColors }
+
+
+
