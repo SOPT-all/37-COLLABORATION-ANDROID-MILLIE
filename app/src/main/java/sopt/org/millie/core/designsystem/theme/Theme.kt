@@ -9,38 +9,38 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-object DiveTheme {
-    val colors: DiveColors
+object MillieTheme {
+    val colors: MillieColors
         @Composable
         @ReadOnlyComposable
-        get() = localDiveColorsProvider.current
+        get() = localMillieColorsProvider.current
 
-    val typography: DiveTypography
+    val typography: MillieTypography
         @Composable
         @ReadOnlyComposable
-        get() = localDiveTypographyProvider.current
+        get() = localMillieTypographyProvider.current
 }
 
 @Composable
 fun ProvideColorsAndTypography(
-    colors: DiveColors,
-    typography: DiveTypography,
+    colors: MillieColors,
+    typography: MillieTypography,
     content: @Composable () -> Unit
 ) {
     CompositionLocalProvider (
-        localDiveColorsProvider provides colors,
-        localDiveTypographyProvider provides typography,
+        localMillieColorsProvider provides colors,
+        localMillieTypographyProvider provides typography,
         content = content
     )
 }
 
 @Composable
-fun DiveTheme(
+fun MillieTheme(
     content: @Composable () -> Unit
 ){
     ProvideColorsAndTypography(
-        colors = defaultDiveColors,
-        typography = defaultDiveTypography
+        colors = defaultMillieColors,
+        typography = defaultMillieTypography
     ) {
         val view = LocalView.current
         if(!view.isInEditMode){

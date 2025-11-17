@@ -5,14 +5,30 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.LineHeightStyle
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import sopt.org.millie.R
 
 
-object PretendardFont {
+object NotoSansFont {
     val bold = FontFamily(Font(R.font.noto_sans_kr_bold))
     val regular = FontFamily(Font(R.font.noto_sans_kr_regular))
 }
+
+private fun millieTextStyle(
+    fontFamily: FontFamily,
+    fontSize: TextUnit,
+    lineHeight: TextUnit
+): TextStyle = TextStyle(
+    fontFamily = fontFamily,
+    fontSize = fontSize,
+    lineHeight = lineHeight,
+    lineHeightStyle = LineHeightStyle(
+        alignment = LineHeightStyle.Alignment.Center,
+        trim = LineHeightStyle.Trim.None
+    )
+)
 
 sealed interface TypographyTokens{
     @Immutable
@@ -40,107 +56,92 @@ sealed interface TypographyTokens{
 }
 
 @Immutable
-data class DiveTypography(
+data class MillieTypography(
     val title: TypographyTokens.Title,
     val body: TypographyTokens.Body
 )
 
 
-val defaultDiveTypography = DiveTypography(
+val defaultMillieTypography = MillieTypography(
     title = TypographyTokens.Title(
-        headLine = TextStyle(
-            fontFamily = PretendardFont.bold,
+        headLine = millieTextStyle(
+            fontFamily = NotoSansFont.bold,
             fontSize = 20.sp,
             lineHeight = 28.sp, // 120%
-            letterSpacing = (-1).sp
         ),
-        subHead5 = TextStyle(
-            fontFamily = PretendardFont.bold,
+        subHead5 = millieTextStyle(
+            fontFamily = NotoSansFont.bold,
             fontSize = 18.sp,
             lineHeight = 28.sp, // 120%
-            letterSpacing = (-1).sp
         ),
-        subHead4 = TextStyle(
-            fontFamily = PretendardFont.bold,
+        subHead4 = millieTextStyle(
+            fontFamily = NotoSansFont.bold,
             fontSize = 16.sp,
             lineHeight = 22.sp, // 120%
-            letterSpacing = (-0.6).sp
         ),
-        subHead3 = TextStyle(
-            fontFamily = PretendardFont.bold,
+        subHead3 = millieTextStyle(
+            fontFamily = NotoSansFont.bold,
             fontSize = 15.sp,
             lineHeight = 20.sp, // 120%
-            letterSpacing = (-0.6).sp
         ),
-        subHead2 = TextStyle(
-            fontFamily = PretendardFont.bold,
+        subHead2 = millieTextStyle(
+            fontFamily = NotoSansFont.bold,
             fontSize = 14.sp,
             lineHeight = 20.sp, // 120%
-            letterSpacing = (-0.6).sp
         ),
-        subHead1 = TextStyle(
-            fontFamily = PretendardFont.bold,
+        subHead1 = millieTextStyle(
+            fontFamily = NotoSansFont.bold,
             fontSize = 12.sp,
-            lineHeight = 16.sp, // 120%
-            letterSpacing = (-0.6).sp
+            lineHeight = 18.sp, // 120%
         )
     ),
     body = TypographyTokens.Body(
-        body3 = TextStyle(
-            fontFamily = PretendardFont.regular,
+        body3 = millieTextStyle(
+            fontFamily = NotoSansFont.regular,
             fontSize = 16.sp,
-            lineHeight = 24.sp, // 120%
-            letterSpacing = (-0.6).sp
+            lineHeight = 24.sp
         ),
-        body2 = TextStyle(
-            fontFamily = PretendardFont.regular,
+        body2 = millieTextStyle(
+            fontFamily = NotoSansFont.regular,
             fontSize = 15.sp,
             lineHeight = 20.sp, // 120%
-            letterSpacing = (-0.6).sp
         ),
-        body1 = TextStyle(
-            fontFamily = PretendardFont.regular,
+        body1 = millieTextStyle(
+            fontFamily = NotoSansFont.regular,
             fontSize = 14.sp,
             lineHeight = 22.sp, // 120%
-            letterSpacing = (-0.6).sp
         ),
-        subBody2 = TextStyle(
-            fontFamily = PretendardFont.regular,
+        subBody2 = millieTextStyle(
+            fontFamily = NotoSansFont.regular,
             fontSize = 13.sp,
             lineHeight = 18.sp, // 120%
-            letterSpacing = (-0.6).sp
         ),
-        subBody1 = TextStyle(
-            fontFamily = PretendardFont.regular,
+        subBody1 = millieTextStyle(
+            fontFamily = NotoSansFont.regular,
             fontSize = 11.sp,
             lineHeight = 18.sp, // 120%
-            letterSpacing = 0.sp
         ),
-        caption4 = TextStyle(
-            fontFamily = PretendardFont.regular,
+        caption4 = millieTextStyle(
+            fontFamily = NotoSansFont.regular,
             fontSize = 8.sp,
             lineHeight = 10.sp, // 120%
-            letterSpacing = (-0.6).sp
         ),
-        caption3 = TextStyle(
-            fontFamily = PretendardFont.regular,
+        caption3 = millieTextStyle(
+            fontFamily = NotoSansFont.regular,
             fontSize = 12.sp,
             lineHeight = 18.sp, // 120%
-            letterSpacing = (-0.6).sp
         ),
-        caption2 = TextStyle(
-            fontFamily = PretendardFont.regular,
+        caption2 = millieTextStyle(
+            fontFamily = NotoSansFont.regular,
             fontSize = 10.sp,
             lineHeight = 18.sp, // 120%
-            letterSpacing = (-0.6).sp
         ),
-        caption1 = TextStyle(
-            fontFamily = PretendardFont.regular,
+        caption1 = millieTextStyle(
+            fontFamily = NotoSansFont.regular,
             fontSize = 9.sp,
             lineHeight = 14.sp, // 120%
-            letterSpacing = (-0.6).sp
         )
     )
 )
 
-val localDiveTypographyProvider = staticCompositionLocalOf { defaultDiveTypography }
+val localMillieTypographyProvider = staticCompositionLocalOf { defaultMillieTypography }
