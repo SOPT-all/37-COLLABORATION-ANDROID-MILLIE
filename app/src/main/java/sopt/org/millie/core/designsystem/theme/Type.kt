@@ -67,32 +67,32 @@ val defaultMillieTypography = MillieTypography(
         headLine = millieTextStyle(
             fontFamily = NotoSansFont.bold,
             fontSize = 20.sp,
-            lineHeight = 28.sp, // 120%
+            lineHeight = 28.sp
         ),
         subHead5 = millieTextStyle(
             fontFamily = NotoSansFont.bold,
             fontSize = 18.sp,
-            lineHeight = 28.sp, // 120%
+            lineHeight = 28.sp
         ),
         subHead4 = millieTextStyle(
             fontFamily = NotoSansFont.bold,
             fontSize = 16.sp,
-            lineHeight = 22.sp, // 120%
+            lineHeight = 22.sp
         ),
         subHead3 = millieTextStyle(
             fontFamily = NotoSansFont.bold,
             fontSize = 15.sp,
-            lineHeight = 20.sp, // 120%
+            lineHeight = 20.sp
         ),
         subHead2 = millieTextStyle(
             fontFamily = NotoSansFont.bold,
             fontSize = 14.sp,
-            lineHeight = 20.sp, // 120%
+            lineHeight = 20.sp
         ),
         subHead1 = millieTextStyle(
             fontFamily = NotoSansFont.bold,
             fontSize = 12.sp,
-            lineHeight = 18.sp, // 120%
+            lineHeight = 18.sp
         )
     ),
     body = TypographyTokens.Body(
@@ -104,42 +104,42 @@ val defaultMillieTypography = MillieTypography(
         body2 = millieTextStyle(
             fontFamily = NotoSansFont.regular,
             fontSize = 15.sp,
-            lineHeight = 20.sp, // 120%
+            lineHeight = 20.sp
         ),
         body1 = millieTextStyle(
             fontFamily = NotoSansFont.regular,
             fontSize = 14.sp,
-            lineHeight = 22.sp, // 120%
+            lineHeight = 22.sp
         ),
         subBody2 = millieTextStyle(
             fontFamily = NotoSansFont.regular,
             fontSize = 13.sp,
-            lineHeight = 18.sp, // 120%
+            lineHeight = 18.sp
         ),
         subBody1 = millieTextStyle(
             fontFamily = NotoSansFont.regular,
             fontSize = 11.sp,
-            lineHeight = 18.sp, // 120%
+            lineHeight = 18.sp
         ),
         caption4 = millieTextStyle(
             fontFamily = NotoSansFont.regular,
             fontSize = 8.sp,
-            lineHeight = 10.sp, // 120%
+            lineHeight = 10.sp
         ),
         caption3 = millieTextStyle(
             fontFamily = NotoSansFont.regular,
             fontSize = 12.sp,
-            lineHeight = 18.sp, // 120%
+            lineHeight = 18.sp
         ),
         caption2 = millieTextStyle(
             fontFamily = NotoSansFont.regular,
             fontSize = 10.sp,
-            lineHeight = 18.sp, // 120%
+            lineHeight = 18.sp
         ),
         caption1 = millieTextStyle(
             fontFamily = NotoSansFont.regular,
             fontSize = 9.sp,
-            lineHeight = 14.sp, // 120%
+            lineHeight = 14.sp
         )
     )
 )
