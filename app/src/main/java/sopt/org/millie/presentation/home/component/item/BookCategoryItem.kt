@@ -44,7 +44,7 @@ fun BookCategoryItem(
     ) {
         Column(
             modifier = Modifier
-                .padding(start = 14.dp, top = 17.dp, bottom = 19.dp, end = 107.dp),
+                .padding(start = 14.dp, top = 17.dp, bottom = 19.dp, end = 91.dp),
             verticalArrangement = Arrangement.spacedBy(1.dp),
         ) {
             Text(

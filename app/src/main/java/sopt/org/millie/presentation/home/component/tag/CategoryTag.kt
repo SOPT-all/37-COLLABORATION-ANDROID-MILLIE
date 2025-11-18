@@ -33,7 +33,7 @@ fun CategoryTag(
 
         Text(
             text = title,
-            style = MillieTheme.typography.body.body3,
+            style = MillieTheme.typography.body.body2,
             color = MillieTheme.colors.black,
         )
     }
