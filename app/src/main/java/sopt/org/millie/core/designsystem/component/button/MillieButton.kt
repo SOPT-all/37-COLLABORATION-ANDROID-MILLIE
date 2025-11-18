@@ -20,7 +20,7 @@ import sopt.org.millie.core.util.noRippleClickable
 
 @Composable
 fun MillieButton(
-    onButtonClick: () -> Unit,
+    onClick: () -> Unit,
     buttonBackgroundColor: Color,
     buttonText: String,
     buttonTextStyle: TextStyle,
@@ -31,7 +31,7 @@ fun MillieButton(
         modifier = modifier
             .clip(shape = RoundedCornerShape(4.dp))
             .background(color = buttonBackgroundColor)
-            .noRippleClickable(onClick = onButtonClick)
+            .noRippleClickable(onClick = onClick)
             .padding(vertical = 10.dp),
     ) {
         Text(
@@ -50,7 +50,7 @@ fun MillieButton(
 private fun Preview() {
     MillieTheme {
         MillieButton(
-            onButtonClick = {},
+            onClick = {},
             buttonBackgroundColor = MillieTheme.colors.darkGray1,
             buttonText = "바로 읽기",
             buttonTextStyle = MillieTheme.typography.body.body3,
