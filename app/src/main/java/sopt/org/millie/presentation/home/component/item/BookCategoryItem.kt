@@ -85,7 +85,8 @@ private fun RecentBadge(
         modifier = modifier
             .clip(RoundedCornerShape(4.dp))
             .background(color = MillieTheme.colors.millieYellow)
-            .padding(horizontal = 6.dp, vertical = 4.dp),
+            .padding(horizontal = 5.dp)
+            .padding(top = 3.dp, bottom = 4.dp),
         contentAlignment = Alignment.Center,
     ) {
         Text(
