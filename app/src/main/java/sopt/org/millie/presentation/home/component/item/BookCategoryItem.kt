@@ -35,9 +35,11 @@ fun BookCategoryItem(
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
             .background(color = MillieTheme.colors.white)
-            .border(width = 1.dp,
+            .border(
+                width = 1.dp,
                 color = MillieTheme.colors.lightGray1,
-                shape = RoundedCornerShape(8.dp)),
+                shape = RoundedCornerShape(8.dp),
+            ),
     ) {
         Column(
             modifier = Modifier

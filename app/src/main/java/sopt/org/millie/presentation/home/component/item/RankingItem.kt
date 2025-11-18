@@ -3,10 +3,8 @@ package sopt.org.millie.presentation.home.component.item
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,16 +37,15 @@ fun RankingItem(
         RankingInfo(
             rank = rank,
             bookTitle = bookTitle,
-            rankingIcon = rankingIcon
+            rankingIcon = rankingIcon,
         )
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_home_result_ranking),
             contentDescription = null,
-            tint = MillieTheme.colors.darkGray1
+            tint = MillieTheme.colors.darkGray1,
         )
     }
 }
-
 
 @Composable
 private fun RankingInfo(
@@ -77,7 +74,7 @@ private fun RankingInfo(
         Icon(
             imageVector = ImageVector.vectorResource(id = rankingIcon),
             contentDescription = null,
-            tint = Color.Unspecified
+            tint = Color.Unspecified,
         )
     }
 }

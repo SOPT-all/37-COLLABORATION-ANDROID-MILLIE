@@ -22,19 +22,19 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 fun CategoryTag(
     iconRes: Int,
     title: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(6.dp),
-        modifier = modifier
+        modifier = modifier,
     ) {
         CategoryIconBox(iconRes = iconRes)
 
         Text(
             text = title,
             style = MillieTheme.typography.body.body3,
-            color = MillieTheme.colors.black
+            color = MillieTheme.colors.black,
         )
     }
 }
@@ -42,7 +42,7 @@ fun CategoryTag(
 @Composable
 private fun CategoryIconBox(
     iconRes: Int,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -51,13 +51,13 @@ private fun CategoryIconBox(
                 color = MillieTheme.colors.lightGray1,
                 shape = CircleShape,
             )
-            .padding(7.dp)
+            .padding(7.dp),
     ) {
         Icon(
             imageVector = ImageVector.vectorResource(id = iconRes),
             modifier = Modifier.size(24.dp),
             contentDescription = null,
-            tint = MillieTheme.colors.gray3
+            tint = MillieTheme.colors.gray3,
         )
     }
 }
@@ -68,7 +68,7 @@ private fun CategoryTagPreview() {
     MillieTheme {
         CategoryTag(
             iconRes = sopt.org.millie.R.drawable.ic_home_calendar,
-            title = "공개 예정"
+            title = "공개 예정",
         )
     }
 }
