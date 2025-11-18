@@ -1,8 +1,8 @@
 package sopt.org.millie.presentation.search.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,10 +24,11 @@ fun BookWandokRate(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Image(
+        Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_result_wandok),
             contentDescription = null,
             modifier = Modifier.padding(end = 4.dp),
+            tint = MillieTheme.colors.gray3,
         )
         Text(
             text = "$rate | $minute",
