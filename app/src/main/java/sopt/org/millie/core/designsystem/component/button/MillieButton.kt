@@ -9,6 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -28,7 +29,8 @@ fun MillieButton(
 ) {
     Column(
         modifier = modifier
-            .background(color = buttonBackgroundColor, shape = RoundedCornerShape(4.dp))
+            .clip(shape = RoundedCornerShape(4.dp))
+            .background(color = buttonBackgroundColor)
             .noRippleClickable(onClick = onButtonClick)
             .padding(vertical = 10.dp),
     ) {
