@@ -18,13 +18,13 @@ import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
-fun MillieHeader(
+fun MillieTopappbar(
     title: String,
     modifier: Modifier = Modifier,
     navigationIcon: @Composable () -> Unit = {},
     action: @Composable () -> Unit = {},
 ) {
-    // Box가 있는 이유 : 아이콘이 왼쪽이 있을수도 있고 없을수도 있고, 오른쪽에 있을수도 있고 없을수도 있고.... 등등 겹쳐질 수 있는 부분이 있으므로 Box로 설정 (Row로 바로 설정 X)
+
     Box(
         modifier = modifier
             .fillMaxWidth()
@@ -58,7 +58,7 @@ fun MillieHeader(
 @Composable
 fun MillieHeaderPreview() {
     MillieTheme {
-        MillieHeader(
+        MillieTopappbar(
             "상단바",
             modifier = Modifier,
             navigationIcon = {
