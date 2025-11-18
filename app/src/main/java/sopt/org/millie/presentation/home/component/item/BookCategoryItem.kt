@@ -2,6 +2,7 @@ package sopt.org.millie.presentation.home.component.item
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,7 +34,10 @@ fun BookCategoryItem(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
-            .background(color = MillieTheme.colors.background),
+            .background(color = MillieTheme.colors.white)
+            .border(width = 1.dp,
+                color = MillieTheme.colors.lightGray1,
+                shape = RoundedCornerShape(8.dp)),
     ) {
         Column(
             modifier = Modifier
