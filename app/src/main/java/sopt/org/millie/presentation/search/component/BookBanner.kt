@@ -17,18 +17,18 @@ import sopt.org.millie.R
 @Composable
 fun BookBanner(
     bookBannerUri: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
-    Box (
+    Box(
         modifier = modifier
             .width(311.dp)
             .height(84.dp)
-            .clip(RoundedCornerShape(11.dp))
-    ){
+            .clip(RoundedCornerShape(11.dp)),
+    ) {
         AsyncImage(
             model = bookBannerUri,
             contentDescription = stringResource(R.string.book_banner),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
     }
 }
