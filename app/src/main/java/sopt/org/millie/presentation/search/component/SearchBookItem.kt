@@ -2,7 +2,10 @@ package sopt.org.millie.presentation.search.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,18 +23,20 @@ fun SearchBookItem(
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(10.dp),
+        modifier = modifier.width(103.dp),
+        verticalArrangement = Arrangement.spacedBy(1.dp)
     ) {
         AsyncImage(
             model = imageUrl,
             contentDescription = null,
             modifier = Modifier
-                .size(103.dp, 150.dp),
+                .fillMaxWidth()
+                .height(150.dp)
+                .padding(bottom = 12.dp),
         )
 
         BookAudioMark(
-            reader = reader,
+            reader = reader
         )
 
         BookTitleAuthor(
