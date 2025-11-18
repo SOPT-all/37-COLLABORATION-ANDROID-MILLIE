@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -75,6 +76,7 @@ private fun PostBookInfo(
             modifier = Modifier
                 .padding(bottom = 6.dp),
             maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
         )
     }
 }
@@ -131,7 +133,7 @@ private fun MillieImage(
 
 @Preview(showBackground = true)
 @Composable
-private fun SerchPsotPreview() {
+private fun SearchPostPreview() {
     MillieTheme {
         PostItem(
             postImageUrl = "",
