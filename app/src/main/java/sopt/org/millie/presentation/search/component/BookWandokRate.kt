@@ -1,0 +1,44 @@
+package sopt.org.millie.presentation.search.component
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import sopt.org.millie.R
+import sopt.org.millie.core.designsystem.theme.MillieTheme
+
+@Composable
+fun BookWandokRate(
+    rate: String,
+    minute: String,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Image(
+            imageVector = ImageVector.vectorResource(id = R.drawable.ic_result_wandok),
+            contentDescription = null,
+            modifier = Modifier.padding(end = 4.dp),
+        )
+        Text(
+            text = "$rate | $minute",
+            color = MillieTheme.colors.gray3,
+            style = MillieTheme.typography.body.body1,
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun BookWandokRatePreview() {
+    BookWandokRate("88%", "247분")
+}
