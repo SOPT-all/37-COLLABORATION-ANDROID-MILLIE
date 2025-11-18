@@ -37,5 +37,8 @@ fun SearchTitle(
 @Preview(showBackground = true)
 @Composable
 private fun SearchTitlePreview() {
-    SearchTitle("도서", 4)
+    SearchTitle(
+        title = "도서",
+        count = 4,
+    )
 }

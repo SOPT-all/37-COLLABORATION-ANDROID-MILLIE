@@ -4,7 +4,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -50,7 +49,7 @@ fun BookAudioMark(
             color = MillieTheme.colors.milliePurple,
             style = MillieTheme.typography.title.subHead1,
             maxLines = 1,
-            overflow = TextOverflow.Ellipsis
+            overflow = TextOverflow.Ellipsis,
         )
     }
 }
@@ -58,5 +57,7 @@ fun BookAudioMark(
 @Preview(showBackground = true)
 @Composable
 private fun BookAudioMarkPreview() {
-    BookAudioMark("김지윤,박지윤")
+    BookAudioMark(
+        reader = "김지윤,박지윤",
+    )
 }

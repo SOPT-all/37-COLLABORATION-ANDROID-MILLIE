@@ -17,7 +17,7 @@ fun BookTitleAuthor(
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(1.dp)
+        verticalArrangement = Arrangement.spacedBy(1.dp),
     ) {
         Text(
             text = title,
@@ -35,5 +35,8 @@ fun BookTitleAuthor(
 @Preview(showBackground = true)
 @Composable
 private fun BookTitleAuthorPreview() {
-    BookTitleAuthor("홍학의 자리", "정해연")
+    BookTitleAuthor(
+        title = "홍학의 자리",
+        author = "정해연",
+    )
 }

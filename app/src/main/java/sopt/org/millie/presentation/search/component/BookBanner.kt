@@ -36,5 +36,7 @@ fun BookBanner(
 @Preview(showBackground = true)
 @Composable
 private fun BookBannerPreview() {
-    BookBanner("")
+    BookBanner(
+        bookBannerUrl = "",
+    )
 }

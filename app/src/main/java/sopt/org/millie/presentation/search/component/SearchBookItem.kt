@@ -24,7 +24,7 @@ fun SearchBookItem(
 ) {
     Column(
         modifier = modifier.width(103.dp),
-        verticalArrangement = Arrangement.spacedBy(1.dp)
+        verticalArrangement = Arrangement.spacedBy(1.dp),
     ) {
         AsyncImage(
             model = imageUrl,
@@ -36,7 +36,7 @@ fun SearchBookItem(
         )
 
         BookAudioMark(
-            reader = reader
+            reader = reader,
         )
 
         BookTitleAuthor(
