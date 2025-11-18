@@ -29,6 +29,7 @@ fun BookCategoryItem(
     title: String,
     description: String,
     modifier: Modifier = Modifier,
+    showRecentBadge: Boolean = false,
 ) {
     Box(
         modifier = modifier
@@ -37,7 +38,7 @@ fun BookCategoryItem(
             .background(color = MillieTheme.colors.white)
             .border(
                 width = 1.dp,
-                color = MillieTheme.colors.lightGray1,
+                color = if (showRecentBadge) MillieTheme.colors.millieYellow else MillieTheme.colors.lightGray1,
                 shape = RoundedCornerShape(8.dp),
             ),
     ) {
@@ -66,6 +67,32 @@ fun BookCategoryItem(
                 .align(Alignment.TopEnd)
                 .size(89.dp, 75.dp),
         )
+
+        if (showRecentBadge) {
+            RecentBadge(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd),
+            )
+        }
+    }
+}
+
+@Composable
+private fun RecentBadge(
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier
+            .clip(RoundedCornerShape(4.dp))
+            .background(color = MillieTheme.colors.millieYellow)
+            .padding(horizontal = 6.dp, vertical = 4.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = "최근 열어본",
+            style = MillieTheme.typography.body.caption4,
+            color = MillieTheme.colors.black,
+        )
     }
 }
 
@@ -91,12 +118,22 @@ private fun BookImage(
 
 @Preview
 @Composable
-private fun BookCategoryItemPreview() {
+private fun BookCategoryItemWithBadgePreview() {
     MillieTheme {
-        BookCategoryItem(
-            bookImageUrl = "",
-            title = "세계문학전집",
-            description = "열린책들,민음사,현대지성,을유문화사,살…",
-        )
+        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+            BookCategoryItem(
+                bookImageUrl = "",
+                title = "소설",
+                description = "추리/스릴러,킬러 스파이,범의학 스릴러,⋯",
+                showRecentBadge = true,
+            )
+
+            BookCategoryItem(
+                bookImageUrl = "",
+                title = "세계문학전집",
+                description = "열린책들,민음사,현대지성,을유문화사,살…",
+                showRecentBadge = false,
+            )
+        }
     }
 }
