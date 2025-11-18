@@ -74,6 +74,7 @@ private fun PostBookInfo(
             color = MillieTheme.colors.gray4,
             modifier = Modifier
                 .padding(bottom = 6.dp),
+            maxLines = 2,
         )
     }
 }
