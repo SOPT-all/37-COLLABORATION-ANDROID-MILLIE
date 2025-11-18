@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
-fun BookTitleAuthor(
+fun SearchTitleAuthor(
     title: String,
     author: String,
     modifier: Modifier = Modifier,
@@ -34,8 +34,8 @@ fun BookTitleAuthor(
 
 @Preview(showBackground = true)
 @Composable
-private fun BookTitleAuthorPreview() {
-    BookTitleAuthor(
+private fun SearchTitleAuthorPreview() {
+    SearchTitleAuthor(
         title = "홍학의 자리",
         author = "정해연",
     )

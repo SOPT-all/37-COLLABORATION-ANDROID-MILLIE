@@ -16,7 +16,7 @@ import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
-fun BookWandokRate(
+fun SearchWandokRate(
     rate: String,
     minute: String,
     modifier: Modifier = Modifier,
@@ -52,8 +52,8 @@ fun BookWandokRate(
 
 @Preview(showBackground = true)
 @Composable
-private fun BookWandokRatePreview() {
-    BookWandokRate(
+private fun SearchWandokRatePreview() {
+    SearchWandokRate(
         rate = "88%",
         minute = "247분",
     )

@@ -9,15 +9,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
-fun BookAudioMark(
+fun SearchAudioTag(
     reader: String,
     modifier: Modifier = Modifier,
 ) {
@@ -36,7 +34,7 @@ fun BookAudioMark(
             contentAlignment = Alignment.Center,
         ) {
             Text(
-                text = stringResource(id = R.string.audio_book),
+                text = "오디오 북",
                 color = MillieTheme.colors.milliePurple,
                 style = MillieTheme.typography.body.caption4,
             )
@@ -56,8 +54,8 @@ fun BookAudioMark(
 
 @Preview(showBackground = true)
 @Composable
-private fun BookAudioMarkPreview() {
-    BookAudioMark(
+private fun SearchAudioTagPreview() {
+    SearchAudioTag(
         reader = "김지윤,박지윤",
     )
 }

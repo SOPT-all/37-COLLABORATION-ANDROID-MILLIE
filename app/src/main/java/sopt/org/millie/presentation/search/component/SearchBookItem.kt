@@ -35,16 +35,16 @@ fun SearchBookItem(
                 .padding(bottom = 12.dp),
         )
 
-        BookAudioMark(
+        SearchAudioTag(
             reader = reader,
         )
 
-        BookTitleAuthor(
+        SearchTitleAuthor(
             title = title,
             author = author,
         )
 
-        BookWandokRate(
+        SearchWandokRate(
             rate = rate,
             minute = minute,
         )
