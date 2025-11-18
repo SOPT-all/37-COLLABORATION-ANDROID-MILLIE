@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Millie</string>
 
+    <!--검색 결과 화면-->
     <string name="audio_book">오디오 북</string>
+
+    <!--contentDescription-->
+    <string name="book_banner">배너</string>
 </resources>
