@@ -16,7 +16,7 @@ import sopt.org.millie.R
 
 @Composable
 fun BookBanner(
-    bookBannerUri: String,
+    bookBannerUrl: String,
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -26,7 +26,7 @@ fun BookBanner(
             .clip(RoundedCornerShape(11.dp)),
     ) {
         AsyncImage(
-            model = bookBannerUri,
+            model = bookBannerUrl,
             contentDescription = stringResource(R.string.book_banner),
             contentScale = ContentScale.Crop,
         )
