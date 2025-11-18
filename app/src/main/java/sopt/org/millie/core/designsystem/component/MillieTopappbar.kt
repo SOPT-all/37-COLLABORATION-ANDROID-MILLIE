@@ -24,7 +24,6 @@ fun MillieTopappbar(
     navigationIcon: @Composable () -> Unit = {},
     action: @Composable () -> Unit = {},
 ) {
-
     Box(
         modifier = modifier
             .fillMaxWidth()
