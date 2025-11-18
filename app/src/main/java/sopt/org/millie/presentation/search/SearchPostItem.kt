@@ -81,6 +81,7 @@ fun PostWriterInfo(
         }
     }
 }
+
 @Composable
 fun MillieImage(
     imageUrl: String,
