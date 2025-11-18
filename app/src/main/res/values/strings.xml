@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Millie</string>
+
+    <string name="audio_book">오디오 북</string>
 </resources>
