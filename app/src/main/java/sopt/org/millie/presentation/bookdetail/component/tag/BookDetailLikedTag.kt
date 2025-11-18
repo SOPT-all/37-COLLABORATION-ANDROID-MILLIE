@@ -35,7 +35,7 @@ fun BookDetailLikedTag(
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_heart_small),
             contentDescription = "",
-            tint = Color.Unspecified
+            tint = Color.Unspecified,
         )
 
         Text(
