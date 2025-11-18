@@ -1,6 +1,5 @@
 package sopt.org.millie.presentation.bookdetail.component.book
 
-import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,7 +22,7 @@ import sopt.org.millie.core.util.customShadow
 
 @Composable
 fun BookDetailBook(
-    bookImageUri: Uri,
+    bookImageUri: String,
     bookTitle: String,
     bookAuthor: String,
     modifier: Modifier = Modifier,
@@ -55,7 +54,7 @@ fun BookDetailBook(
 
 @Composable
 private fun BookShadow(
-    bookImageUri: Uri,
+    bookImageUri: String,
     modifier: Modifier = Modifier,
 ) {
     val bookShape = RoundedCornerShape(topEnd = 4.dp, bottomEnd = 4.dp)
@@ -88,7 +87,7 @@ private fun Preview() {
                 .padding(horizontal = 10.dp, vertical = 10.dp),
         ) {
             BookDetailBook(
-                bookImageUri = Uri.EMPTY,
+                bookImageUri = "",
                 bookTitle = "도서 제목",
                 bookAuthor = "저자명",
             )

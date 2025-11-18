@@ -1,6 +1,7 @@
 package sopt.org.millie.presentation.bookdetail.component.tag
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -21,6 +22,7 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
 fun BookDetailLikedTag(
+    onClick: () -> Unit,
     likedNum: Int,
     modifier: Modifier = Modifier,
 ) {
@@ -34,8 +36,9 @@ fun BookDetailLikedTag(
     ) {
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_heart_small),
-            contentDescription = "",
+            contentDescription = null,
             tint = Color.Unspecified,
+            modifier = Modifier.clickable(onClick = onClick),
         )
 
         Text(
@@ -56,6 +59,9 @@ fun BookDetailLikedTag(
 @Composable
 private fun Preview() {
     MillieTheme {
-        BookDetailLikedTag(likedNum = 724)
+        BookDetailLikedTag(
+            onClick = {},
+            likedNum = 724,
+        )
     }
 }

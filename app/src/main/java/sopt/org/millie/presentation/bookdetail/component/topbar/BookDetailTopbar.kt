@@ -30,7 +30,7 @@ fun BookDetailTopbar(
     ) {
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_back),
-            contentDescription = "back",
+            contentDescription = null,
             tint = Color.Unspecified,
         )
 
@@ -38,7 +38,7 @@ fun BookDetailTopbar(
 
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_heart),
-            contentDescription = "heart",
+            contentDescription = null,
             tint = Color.Unspecified,
         )
 
@@ -46,7 +46,7 @@ fun BookDetailTopbar(
 
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_more),
-            contentDescription = "more",
+            contentDescription = null,
             tint = Color.Unspecified,
         )
     }
