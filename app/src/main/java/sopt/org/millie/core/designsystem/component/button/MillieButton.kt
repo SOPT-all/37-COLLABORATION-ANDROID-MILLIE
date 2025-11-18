@@ -51,10 +51,10 @@ private fun Preview() {
     MillieTheme {
         MillieButton(
             onButtonClick = {},
-            buttonBackgroundColor = MillieTheme.colors.millieYellow,
-            buttonText = "버튼",
-            buttonTextStyle = MillieTheme.typography.body.body1,
-            buttonTextColor = MillieTheme.colors.black,
+            buttonBackgroundColor = MillieTheme.colors.darkGray1,
+            buttonText = "바로 읽기",
+            buttonTextStyle = MillieTheme.typography.body.body3,
+            buttonTextColor = MillieTheme.colors.white,
             modifier = Modifier.width(200.dp),
         )
     }
