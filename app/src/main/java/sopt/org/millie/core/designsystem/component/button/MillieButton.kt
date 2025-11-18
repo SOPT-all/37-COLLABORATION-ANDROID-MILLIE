@@ -44,7 +44,6 @@ fun MillieButton(
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 private fun Preview() {

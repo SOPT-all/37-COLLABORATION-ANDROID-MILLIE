@@ -64,7 +64,6 @@ fun Modifier.customShadow(
         val shadowWidth = size.width + spreadPx
         val shadowHeight = size.height + spreadPx
 
-
         val shadowSize = Size(width = shadowWidth, height = shadowHeight)
         val shadowOutline = shape.createOutline(size = shadowSize, layoutDirection = layoutDirection, density = this)
 
