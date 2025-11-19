@@ -10,6 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -28,6 +32,7 @@ fun SearchTextField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
+    onCancelClick: () -> Unit = { onValueChange("") },
     trailingIcon: @Composable () -> Unit = {},
     onSearchAction: () -> Unit = {},
 ) {
@@ -64,7 +69,7 @@ fun SearchTextField(
                     modifier = Modifier
                         .size(24.dp)
                         .noRippleClickable(
-                            onClick = { onValueChange("") },
+                            onClick = onCancelClick,
                         ),
                 )
             } else {
@@ -75,10 +80,6 @@ fun SearchTextField(
             imeAction = ImeAction.Search,
         ),
         keyboardActions = KeyboardActions(
-            onDone = {
-                onSearchAction()
-                keyboardController?.hide()
-            },
             onSearch = {
                 onSearchAction()
                 keyboardController?.hide()
@@ -97,8 +98,12 @@ fun SearchTextField(
 @Preview(showBackground = true)
 @Composable
 private fun SearchTextFieldPreview() {
-    SearchTextField(
-        value = "",
-        onValueChange = {},
-    )
+    MillieTheme {
+        var text by remember { mutableStateOf("") }
+
+        SearchTextField(
+            value = text,
+            onValueChange = { text = it},
+        )
+    }
 }

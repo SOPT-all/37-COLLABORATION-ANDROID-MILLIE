@@ -3,6 +3,7 @@ package sopt.org.millie.presentation.search.component.book
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -20,7 +21,7 @@ fun SearchAudioTag(
     modifier: Modifier = Modifier,
 ) {
     Row(
-        modifier = modifier,
+        modifier = modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
@@ -42,8 +43,7 @@ fun SearchAudioTag(
         Text(
             text = reader,
             modifier = Modifier
-                .padding(start = 4.dp)
-                .weight(1f),
+                .padding(start = 4.dp),
             color = MillieTheme.colors.milliePurple,
             style = MillieTheme.typography.title.subHead1,
             maxLines = 1,
