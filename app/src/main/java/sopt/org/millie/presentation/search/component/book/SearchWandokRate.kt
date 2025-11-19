@@ -3,8 +3,8 @@ package sopt.org.millie.presentation.search.component.book
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,8 +19,8 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
 fun SearchWandokRate(
-    rate: String,
-    minute: String,
+    rate: Int,
+    minute: Int,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -35,20 +35,22 @@ fun SearchWandokRate(
             tint = MillieTheme.colors.gray3,
         )
 
-        Spacer(modifier = Modifier.height(2.dp))
+        Spacer(modifier = Modifier.width(2.dp))
 
         Text(
-            text = rate,
+            text = "$rate%",
             color = MillieTheme.colors.gray3,
             style = MillieTheme.typography.body.body1,
         )
+
         Text(
             text = "|",
             color = MillieTheme.colors.gray3,
             style = MillieTheme.typography.body.body1,
         )
+
         Text(
-            text = minute,
+            text = "${minute}분",
             color = MillieTheme.colors.gray3,
             style = MillieTheme.typography.body.body1,
         )
@@ -59,7 +61,7 @@ fun SearchWandokRate(
 @Composable
 private fun SearchWandokRatePreview() {
     SearchWandokRate(
-        rate = "88%",
-        minute = "247분",
+        rate = 88,
+        minute = 247,
     )
 }

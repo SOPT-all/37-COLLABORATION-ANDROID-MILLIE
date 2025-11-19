@@ -18,11 +18,11 @@ fun SearchBookItem(
     reader: String,
     title: String,
     author: String,
-    rate: String,
-    minute: String,
+    rate: Int,
+    minute: Int,
+    onClickBookItem: () -> Unit,
     modifier: Modifier = Modifier,
     isAudioEnabled: Boolean = true,
-    onClickBookItem: () -> Unit = {},
 ) {
     Column(
         modifier = modifier
@@ -70,7 +70,8 @@ private fun SearchBookItemPreview() {
         reader = "김지윤,박지윤",
         title = "홍학의 자리",
         author = "정해연",
-        rate = "36%",
-        minute = "533분",
+        rate = 36,
+        minute = 533,
+        onClickBookItem = {},
     )
 }
