@@ -21,6 +21,7 @@ fun SearchBookItem(
     rate: String,
     minute: String,
     modifier: Modifier = Modifier,
+    isAudioEnabled: Boolean = true,
     onClickBookItem: () -> Unit = {},
 ) {
     Column(
@@ -38,13 +39,14 @@ fun SearchBookItem(
                 .height(150.dp),
         )
 
-        Spacer(modifier = Modifier.height(13.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
-        SearchAudioTag(
-            reader = reader,
-        )
-
-        Spacer(modifier = Modifier.height(2.dp))
+        if (isAudioEnabled) {
+            SearchAudioTag(
+                reader = reader,
+            )
+            Spacer(modifier = Modifier.height(2.dp))
+        }
 
         SearchTitleAuthor(
             title = title,
