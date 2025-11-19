@@ -3,7 +3,9 @@ package sopt.org.millie.presentation.search.component.book
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -35,14 +37,15 @@ fun SearchBanner(
         Column(
             modifier = Modifier
                 .weight(1f)
-                .padding(bottom = 23.dp, end = 16.dp),
+                .padding(top = 21.dp, bottom = 23.dp, end = 16.dp),
         ) {
             Text(
                 text = bannerTitle,
-                modifier = Modifier.padding(top = 21.dp),
                 color = MillieTheme.colors.darkGray1,
                 style = MillieTheme.typography.title.subHead4,
             )
+
+            Spacer(modifier = Modifier.height(10.dp))
 
             Text(
                 text = bannerContent,
