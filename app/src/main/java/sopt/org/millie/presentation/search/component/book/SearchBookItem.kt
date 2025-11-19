@@ -7,9 +7,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.core.util.customShadow
 import sopt.org.millie.core.util.noRippleClickable
 
 @Composable
@@ -36,7 +39,13 @@ fun SearchBookItem(
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(150.dp),
+                .height(150.dp)
+                .customShadow(
+                    shape = RectangleShape,
+                    color = MillieTheme.colors.black.copy(alpha = 0.07f),
+                    blur = 4.dp,
+                    offsetY = 4.dp,
+                ),
         )
 
         Spacer(modifier = Modifier.height(10.dp))
