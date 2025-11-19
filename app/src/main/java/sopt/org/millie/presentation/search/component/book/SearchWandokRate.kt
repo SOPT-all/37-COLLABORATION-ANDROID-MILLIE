@@ -2,6 +2,8 @@ package sopt.org.millie.presentation.search.component.book
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -23,7 +25,7 @@ fun SearchWandokRate(
 ) {
     Row(
         modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        horizontalArrangement = Arrangement.spacedBy(2.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
@@ -32,6 +34,9 @@ fun SearchWandokRate(
             modifier = Modifier.size(15.dp),
             tint = MillieTheme.colors.gray3,
         )
+
+        Spacer(modifier = Modifier.height(2.dp))
+
         Text(
             text = rate,
             color = MillieTheme.colors.gray3,
