@@ -1,5 +1,6 @@
 package sopt.org.millie.presentation.home.component.tag
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,7 +21,7 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
 fun CategoryTag(
-    iconRes: Int,
+    @DrawableRes iconRes: Int,
     title: String,
     modifier: Modifier = Modifier,
 ) {
@@ -41,7 +42,7 @@ fun CategoryTag(
 
 @Composable
 private fun CategoryIconBox(
-    iconRes: Int,
+    @DrawableRes iconRes: Int,
     modifier: Modifier = Modifier,
 ) {
     Column(

@@ -1,5 +1,6 @@
 package sopt.org.millie.presentation.home.component.item
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -22,7 +23,7 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 fun RankingItem(
     rank: Int,
     bookTitle: String,
-    rankingIcon: Int,
+    @DrawableRes rankingIcon: Int,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -51,7 +52,7 @@ fun RankingItem(
 private fun RankingInfo(
     rank: Int,
     bookTitle: String,
-    rankingIcon: Int,
+    @DrawableRes rankingIcon: Int,
     modifier: Modifier = Modifier,
 ) {
     Row(

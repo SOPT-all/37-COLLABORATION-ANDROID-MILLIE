@@ -65,7 +65,7 @@ fun BookCategoryItem(
             bookImageUrl = bookImageUrl,
             modifier = Modifier
                 .align(Alignment.TopEnd)
-                .size(89.dp, 75.dp),
+                .size(width = 89.dp, height = 75.dp),
         )
 
         if (showRecentBadge) {
@@ -83,7 +83,7 @@ private fun RecentBadge(
 ) {
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(4.dp))
+            .clip(RoundedCornerShape(topStart = 4.dp))
             .background(color = MillieTheme.colors.millieYellow)
             .padding(horizontal = 5.dp)
             .padding(top = 3.dp, bottom = 4.dp),
