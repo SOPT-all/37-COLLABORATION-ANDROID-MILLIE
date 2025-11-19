@@ -103,7 +103,7 @@ private fun SearchTextFieldPreview() {
 
         SearchTextField(
             value = text,
-            onValueChange = { text = it},
+            onValueChange = { text = it },
         )
     }
 }
