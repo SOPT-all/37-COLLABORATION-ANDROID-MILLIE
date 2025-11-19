@@ -1,5 +1,6 @@
 package sopt.org.millie.presentation.search.component.library
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,7 +20,7 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
 fun LibraryItem(
-    imgRes: Int,
+    @DrawableRes imgRes: Int,
     bookTitle: String,
     modifier: Modifier = Modifier,
 ) {
@@ -32,7 +33,7 @@ fun LibraryItem(
             contentDescription = null,
             modifier = Modifier
                 .clip(CircleShape)
-                .size(65.dp, 66.dp),
+                .size(width = 65.dp, height = 66.dp),
         )
 
         Spacer(modifier = Modifier.height(11.dp))
