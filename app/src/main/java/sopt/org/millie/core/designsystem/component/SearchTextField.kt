@@ -31,8 +31,8 @@ import sopt.org.millie.core.util.noRippleClickable
 fun SearchTextField(
     value: String,
     onValueChange: (String) -> Unit,
+    onCancelClick: () -> Unit,
     modifier: Modifier = Modifier,
-    onCancelClick: () -> Unit = { onValueChange("") },
     trailingIcon: @Composable () -> Unit = {},
     onSearchAction: () -> Unit = {},
 ) {
