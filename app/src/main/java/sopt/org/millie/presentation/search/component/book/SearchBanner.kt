@@ -25,29 +25,29 @@ fun SearchBanner(
     bannerUrl: String,
     modifier: Modifier = Modifier,
 ) {
-    Row (
+    Row(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(11.dp))
             .background(color = MillieTheme.colors.bannerColor)
             .padding(start = 7.dp, end = 18.dp),
     ) {
-        Column (
+        Column(
             modifier = Modifier
                 .weight(1f)
-                .padding(bottom = 23.dp, end = 16.dp)
-        ){
+                .padding(bottom = 23.dp, end = 16.dp),
+        ) {
             Text(
                 text = bannerTitle,
                 modifier = Modifier.padding(top = 21.dp),
                 color = MillieTheme.colors.darkGray1,
-                style = MillieTheme.typography.title.subHead4
+                style = MillieTheme.typography.title.subHead4,
             )
 
             Text(
                 text = bannerContent,
                 color = MillieTheme.colors.gray3,
-                style = MillieTheme.typography.body.body1
+                style = MillieTheme.typography.body.body1,
             )
         }
 
@@ -57,7 +57,7 @@ fun SearchBanner(
             modifier = Modifier
                 .size(width = 64.dp, height = 70.dp)
                 .align(Alignment.Bottom),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
     }
 }
