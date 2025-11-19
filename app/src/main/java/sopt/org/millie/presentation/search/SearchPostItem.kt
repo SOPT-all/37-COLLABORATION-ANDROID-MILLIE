@@ -40,14 +40,16 @@ fun PostItem(
             imageUrl = postImageUrl,
             modifier = Modifier
                 .align(Alignment.Top)
-                .size(91.dp, 132.dp),
+                .size(width = 91.dp, height = 132.dp),
         )
+
         Column(
             modifier = Modifier
                 .padding(start = 15.dp, end = 14.dp, top = 16.dp, bottom = 15.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
             PostBookInfo(title = title, description = description)
+
             PostWriterInfo(writerUrl = writerUrl, writerName = writerName, writerDate = writerDate)
         }
     }
@@ -69,6 +71,7 @@ private fun PostBookInfo(
             style = MillieTheme.typography.title.subHead2,
             color = MillieTheme.colors.black,
         )
+
         Text(
             text = description,
             style = MillieTheme.typography.body.caption1,
@@ -110,6 +113,7 @@ private fun PostWriterInfo(
                 style = MillieTheme.typography.body.caption1,
                 color = MillieTheme.colors.darkGray1,
             )
+
             Text(
                 text = writerDate,
                 style = MillieTheme.typography.body.caption4,
