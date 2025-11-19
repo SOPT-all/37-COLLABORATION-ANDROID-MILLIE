@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.core.util.customShadow
 
 @Composable
 fun SearchBanner(
@@ -59,6 +60,14 @@ fun SearchBanner(
             contentDescription = null,
             modifier = Modifier
                 .size(width = 64.dp, height = 70.dp)
+                .customShadow(
+                    shape = RoundedCornerShape(topEnd = 4.dp),
+                    color = MillieTheme.colors.black.copy(alpha = 0.05f),
+                    blur = 4.dp,
+                    offsetX = 2.dp,
+                    offsetY = (-4).dp,
+                )
+                .clip(RoundedCornerShape(topEnd = 4.dp))
                 .align(Alignment.Bottom),
             contentScale = ContentScale.Crop,
         )

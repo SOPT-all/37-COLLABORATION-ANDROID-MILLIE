@@ -5,9 +5,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -41,11 +42,12 @@ fun SearchBookItem(
                 .fillMaxWidth()
                 .height(150.dp)
                 .customShadow(
-                    shape = RectangleShape,
+                    shape = RoundedCornerShape(topEnd = 4.dp, bottomEnd = 4.dp),
                     color = MillieTheme.colors.black.copy(alpha = 0.07f),
                     blur = 4.dp,
                     offsetY = 4.dp,
-                ),
+                )
+                .clip(RoundedCornerShape(topEnd = 4.dp, bottomEnd = 4.dp)),
         )
 
         Spacer(modifier = Modifier.height(10.dp))
