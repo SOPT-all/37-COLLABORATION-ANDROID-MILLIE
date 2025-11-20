@@ -4,51 +4,60 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 @Composable
 fun SearchTabbar(
     modifier: Modifier = Modifier,
-) {
-    Row(
+){
+    var selectedTab by remember { mutableStateOf("도서") }
+    val tab = mutableListOf("도서","밀리로드","포스트","서재")
+
+    Row (
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 12.dp),
-        horizontalArrangement = Arrangement.SpaceAround,
+            .padding(horizontal = 36.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-//        SearchTabbarText("도서")
-//        SearchTabbarText("밀리로드")
-//        SearchTabbarText("포스트")
-//        SearchTabbarText("서재")
-        SearchTabbarText("카테고리")
-        SearchTabbarText("웹툰/웹소설")
-        SearchTabbarText("오디오")
-        SearchTabbarText("작가")
-        SearchTabbarText("오디오")
+        tab.forEachIndexed { index, title ->
+            MillieTabbarText(
+                title = title,
+                selected = selectedTab == title,
+                onClick = { selectedTab = title },
+            )
+        }
+//
+//
+//        MillieTabbarText(
+//            title = "밀리로드",
+//            selected = selectedTab == "밀리로드",
+//            onClick = { selectedTab = "밀리로드" },
+//        )
+//
+//        MillieTabbarText(
+//            title = "포스트",
+//            selected = selectedTab == "포스트",
+//            onClick = { selectedTab = "포스트" },
+//        )
+//
+//        MillieTabbarText(
+//            title = "서재",
+//            selected = selectedTab == "서재",
+//            onClick = { selectedTab = "서재" },
+//        )
     }
 }
 
-@Composable
-private fun SearchTabbarText(
-    name: String,
-    modifier: Modifier = Modifier,
-    nowTabbar: Boolean = false,
-) {
-    Text(
-        text = name,
-        modifier = modifier
-            .padding(vertical = 10.dp),
-        color = MillieTheme.colors.black,
-        style = if (nowTabbar) MillieTheme.typography.title.subHead4 else MillieTheme.typography.body.body3,
-    )
-}
 
 @Preview(showBackground = true)
 @Composable

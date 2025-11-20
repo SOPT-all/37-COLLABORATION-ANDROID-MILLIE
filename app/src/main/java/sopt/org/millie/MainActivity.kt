@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
+import sopt.org.millie.core.designsystem.component.SearchTabbar
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @AndroidEntryPoint
@@ -22,10 +23,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             MillieTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding),
-                    )
+                    SearchTabbar(modifier = Modifier.padding(innerPadding))
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding),
+//                    )
                 }
             }
         }
@@ -47,6 +49,7 @@ fun Greeting(
 @Composable
 fun GreetingPreview() {
     MillieTheme {
-        Greeting("Android")
+//        Greeting("Android")
+        SearchTabbar()
     }
 }
