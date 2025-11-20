@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.bookdetail.component.topbar
+package sopt.org.millie.presentation.bookdetail.component.bar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
