@@ -28,7 +28,7 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 import sopt.org.millie.core.util.noRippleClickable
 
 @Composable
-fun SearchTextField(
+fun MillieSearchTextField(
     value: String,
     onValueChange: (String) -> Unit,
     onCancelClick: () -> Unit,
@@ -97,11 +97,11 @@ fun SearchTextField(
 
 @Preview(showBackground = true)
 @Composable
-private fun SearchTextFieldPreview() {
+private fun MillieSearchTextFieldPreview() {
     MillieTheme {
         var text by remember { mutableStateOf("") }
 
-        SearchTextField(
+        MillieSearchTextField(
             value = text,
             onValueChange = { text = it },
             onCancelClick = {},
