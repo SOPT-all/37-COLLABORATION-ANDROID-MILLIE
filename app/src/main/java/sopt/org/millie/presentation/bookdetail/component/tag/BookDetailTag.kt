@@ -2,6 +2,7 @@ package sopt.org.millie.presentation.bookdetail.component.tag
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,6 +20,7 @@ fun BookDetailTag(
     tagBackgroundColor: Color,
     tagText: String,
     tagTextColor: Color,
+    onTagClick: () -> Unit,
     modifier: Modifier = Modifier,
     tagBorderColor: Color = Color.Transparent,
 ) {
@@ -27,6 +29,7 @@ fun BookDetailTag(
             .clip(shape = RoundedCornerShape(100.dp))
             .background(color = tagBackgroundColor)
             .border(width = 1.dp, color = tagBorderColor, shape = RoundedCornerShape(100.dp))
+            .clickable(onClick = onTagClick)
             .padding(horizontal = 16.dp, vertical = 6.dp),
     ) {
         Text(
@@ -46,6 +49,7 @@ private fun Preview() {
                 tagBackgroundColor = MillieTheme.colors.black,
                 tagText = "완독지수",
                 tagTextColor = MillieTheme.colors.white,
+                onTagClick = {}
             )
 
             BookDetailTag(
@@ -53,6 +57,7 @@ private fun Preview() {
                 tagText = "완독지수",
                 tagTextColor = MillieTheme.colors.black,
                 tagBorderColor = MillieTheme.colors.lightGray2,
+                onTagClick = {}
             )
         }
     }
