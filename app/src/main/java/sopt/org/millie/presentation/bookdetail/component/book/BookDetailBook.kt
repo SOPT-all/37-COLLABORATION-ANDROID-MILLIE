@@ -22,7 +22,7 @@ import sopt.org.millie.core.util.customShadow
 
 @Composable
 fun BookDetailBook(
-    bookImageUri: String,
+    bookImage: String,
     bookTitle: String,
     bookAuthor: String,
     modifier: Modifier = Modifier,
@@ -31,7 +31,7 @@ fun BookDetailBook(
         modifier = modifier,
     ) {
         BookShadow(
-            bookImageUri = bookImageUri,
+            bookImageUri = bookImage,
         )
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -87,7 +87,7 @@ private fun Preview() {
                 .padding(horizontal = 10.dp, vertical = 10.dp),
         ) {
             BookDetailBook(
-                bookImageUri = "",
+                bookImage = "",
                 bookTitle = "도서 제목",
                 bookAuthor = "저자명",
             )
