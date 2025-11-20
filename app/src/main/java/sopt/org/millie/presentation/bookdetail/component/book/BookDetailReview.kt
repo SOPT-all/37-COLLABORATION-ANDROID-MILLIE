@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -63,8 +64,9 @@ private fun UserInfo(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
-            imageVector = ImageVector.vectorResource(id = R.drawable.ic_person),
+            imageVector = ImageVector.vectorResource(id = R.drawable.ic_book_detail_person),
             contentDescription = null,
+            tint = Color.Unspecified
         )
 
         Spacer(modifier = Modifier.width(10.dp))
