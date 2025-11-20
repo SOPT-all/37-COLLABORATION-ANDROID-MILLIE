@@ -74,7 +74,7 @@ private fun BookSimilarLists(
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        itemsIndexed(items = books, key = { _, book -> book.bookImage}) { index, book ->
+        itemsIndexed(items = books, key = { _, book -> book.bookImage }) { index, book ->
             BookDetailBook(
                 bookImage = book.bookImage,
                 bookTitle = book.bookTitle,

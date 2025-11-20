@@ -7,5 +7,5 @@ data class BookReviewModel(
     val username: String,
     val dateOfReview: String,
     val contentOfReview: String,
-    val likedNum: Int
+    val likedNum: Int,
 )

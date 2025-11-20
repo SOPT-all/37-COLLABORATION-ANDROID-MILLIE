@@ -49,7 +49,7 @@ private fun Preview() {
                 tagBackgroundColor = MillieTheme.colors.black,
                 tagText = "완독지수",
                 tagTextColor = MillieTheme.colors.white,
-                onTagClick = {}
+                onTagClick = {},
             )
 
             BookDetailTag(
@@ -57,7 +57,7 @@ private fun Preview() {
                 tagText = "완독지수",
                 tagTextColor = MillieTheme.colors.black,
                 tagBorderColor = MillieTheme.colors.lightGray2,
-                onTagClick = {}
+                onTagClick = {},
             )
         }
     }

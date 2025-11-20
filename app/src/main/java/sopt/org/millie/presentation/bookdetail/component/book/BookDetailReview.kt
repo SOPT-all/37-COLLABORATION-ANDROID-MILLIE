@@ -66,7 +66,7 @@ private fun UserInfo(
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_book_detail_person),
             contentDescription = null,
-            tint = Color.Unspecified
+            tint = Color.Unspecified,
         )
 
         Spacer(modifier = Modifier.width(10.dp))

@@ -34,7 +34,7 @@ fun BookDetailBook(
         modifier = modifier,
     ) {
         BookShadow(
-            bookImage = bookImage
+            bookImage = bookImage,
         )
 
         Spacer(modifier = Modifier.height(12.dp))
