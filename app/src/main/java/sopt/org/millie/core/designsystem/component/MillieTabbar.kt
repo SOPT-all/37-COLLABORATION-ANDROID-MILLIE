@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -26,14 +27,12 @@ import sopt.org.millie.core.util.noRippleClickable
 
 @Composable
 fun MillieTabbar(
-    tab: MutableList<String>,
-    horizontalPadding: Dp = 36.dp,
-    onTabSelected: (String) -> Unit = {},
+    tabs: List<String>,
+    selectedTab: String,
+    onTabSelected: (String) -> Unit,
     modifier: Modifier = Modifier,
-    defaultSelectedTab: String = tab.first(),
+    horizontalPadding: Dp = 36.dp,
 ) {
-    var selectedTab by remember { mutableStateOf(defaultSelectedTab) }
-
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -41,12 +40,11 @@ fun MillieTabbar(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        tab.forEach { title ->
+        tabs.forEach { title ->
             MillieTabbarText(
                 title = title,
                 selected = selectedTab == title,
                 onClick = {
-                    selectedTab = title
                     onTabSelected(title)
                 },
             )
@@ -78,7 +76,7 @@ private fun MillieTabbarText(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(2.dp)
-                .background(color = if (selected) MillieTheme.colors.black else MillieTheme.colors.white),
+                .background(color = if (selected) MillieTheme.colors.black else Color.Transparent),
         )
     }
 }
@@ -87,10 +85,12 @@ private fun MillieTabbarText(
 @Composable
 private fun MillieTabbarTextPreview() {
     MillieTheme {
+        var selectedTab by remember { mutableStateOf("도서") }
+
         MillieTabbar(
-            tab = mutableListOf("도서", "밀리로드", "포스트", "서재"),
-            horizontalPadding = 36.dp,
-            onTabSelected = {},
+            tabs = listOf("도서", "밀리로드", "포스트", "서재"),
+            selectedTab = selectedTab,
+            onTabSelected = { selectedTab = it },
         )
     }
 }
