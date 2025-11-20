@@ -31,10 +31,10 @@ fun MillieTabbar(
     onTabSelected: (String) -> Unit = {},
     modifier: Modifier = Modifier,
     defaultSelectedTab: String = tab.first(),
-){
+) {
     var selectedTab by remember { mutableStateOf(defaultSelectedTab) }
 
-    Row (
+    Row(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = horizontalPadding),
@@ -61,10 +61,10 @@ private fun MillieTabbarText(
     modifier: Modifier = Modifier,
     selected: Boolean = false,
 ) {
-    Column (
+    Column(
         modifier = modifier
             .width(IntrinsicSize.Max)
-            .noRippleClickable(onClick=onClick)
+            .noRippleClickable(onClick = onClick),
     ) {
         Text(
             text = title,
@@ -78,11 +78,9 @@ private fun MillieTabbarText(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(2.dp)
-                .background(color = if (selected) MillieTheme.colors.black else MillieTheme.colors.white)
+                .background(color = if (selected) MillieTheme.colors.black else MillieTheme.colors.white),
         )
-
     }
-
 }
 
 @Preview(showBackground = true)
@@ -90,9 +88,9 @@ private fun MillieTabbarText(
 private fun MillieTabbarTextPreview() {
     MillieTheme {
         MillieTabbar(
-            tab = mutableListOf("도서","밀리로드","포스트","서재"),
+            tab = mutableListOf("도서", "밀리로드", "포스트", "서재"),
             horizontalPadding = 36.dp,
-            onTabSelected = {}
+            onTabSelected = {},
         )
     }
 }
