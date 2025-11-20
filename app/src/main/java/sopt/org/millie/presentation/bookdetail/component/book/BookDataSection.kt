@@ -30,16 +30,26 @@ import sopt.org.millie.presentation.bookdetail.component.tag.BookDetailTag
 @Composable
 fun BookDataSection(
     onCompletedRateClick: () -> Unit,
-    completedTagBackgroundColor: Color,
-    completedTagTextColor: Color,
-    completedTagBorderColor: Color,
     onAgeGenderClick: () -> Unit,
-    ageGenderTagBackgroundColor: Color,
-    ageGenderTagTextColor: Color,
-    ageGenderTagBorderColor: Color,
     isCompletedTag: Boolean,
     modifier: Modifier = Modifier,
 ) {
+    val selectedBackground = MillieTheme.colors.black
+    val selectedText = MillieTheme.colors.white
+    val selectedBorder = Color.Transparent
+
+    val unselectedBackground = MillieTheme.colors.white
+    val unselectedText = MillieTheme.colors.black
+    val unselectedBorder = MillieTheme.colors.lightGray3
+
+    val completedBackground = if (isCompletedTag) selectedBackground else unselectedBackground
+    val completedText = if (isCompletedTag) selectedText else unselectedText
+    val completedBorder = if (isCompletedTag) selectedBorder else unselectedBorder
+
+    val ageGenderBackground = if (!isCompletedTag) selectedBackground else unselectedBackground
+    val ageGenderText = if (!isCompletedTag) selectedText else unselectedText
+    val ageGenderBorder = if (!isCompletedTag) selectedBorder else unselectedBorder
+
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -59,19 +69,19 @@ fun BookDataSection(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             BookDetailTag(
-                tagBackgroundColor = completedTagBackgroundColor,
+                tagBackgroundColor = completedBackground,
                 tagText = "완독지수",
-                tagTextColor = completedTagTextColor,
+                tagTextColor = completedText,
                 onTagClick = onCompletedRateClick,
-                tagBorderColor = completedTagBorderColor,
+                tagBorderColor = completedBorder,
             )
 
             BookDetailTag(
-                tagBackgroundColor = ageGenderTagBackgroundColor,
+                tagBackgroundColor = ageGenderBackground,
                 tagText = "연령·성별 인기",
-                tagTextColor = ageGenderTagTextColor,
+                tagTextColor = ageGenderText,
                 onTagClick = onAgeGenderClick,
-                tagBorderColor = ageGenderTagBorderColor,
+                tagBorderColor = ageGenderBorder,
             )
         }
         Spacer(modifier = Modifier.height(32.dp))
@@ -156,13 +166,7 @@ private fun Preview() {
     MillieTheme {
         BookDataSection(
             onCompletedRateClick = {},
-            completedTagBackgroundColor = MillieTheme.colors.black,
-            completedTagTextColor = MillieTheme.colors.white,
-            completedTagBorderColor = Color.Transparent,
             onAgeGenderClick = {},
-            ageGenderTagBackgroundColor = MillieTheme.colors.white,
-            ageGenderTagTextColor = MillieTheme.colors.black,
-            ageGenderTagBorderColor = MillieTheme.colors.darkGray1,
             isCompletedTag = false,
         )
     }
