@@ -27,14 +27,13 @@ import sopt.org.millie.core.designsystem.component.MillieTabbar
 import sopt.org.millie.core.designsystem.component.MillieTopappbar
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 import sopt.org.millie.presentation.search.book.SearchBookScreen
+import sopt.org.millie.presentation.search.model.SearchBannerModel
 import sopt.org.millie.presentation.search.model.SearchBookModel
 
 @Composable
 fun SearchScreen(
     searchBookList: List<SearchBookModel>,
-    bannerTitle: String,
-    bannerContent: String,
-    bannerUrl: String,
+    searchBanner: SearchBannerModel,
     modifier: Modifier = Modifier,
 ) {
     val coroutineScope = rememberCoroutineScope()
@@ -100,9 +99,7 @@ fun SearchScreen(
                     "도서" -> {
                         SearchBookScreen(
                             bookList = searchBookList,
-                            bannerTitle = bannerTitle,
-                            bannerContent = bannerContent,
-                            bannerUrl = bannerUrl,
+                            searchBanner = searchBanner,
                         )
                     }
 
@@ -163,9 +160,12 @@ private fun SearchScreenPreview() {
                     minute = 533,
                 ),
             ),
-            bannerTitle = "《홍학의 자리》읽을 준비!",
-            bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
-            bannerUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+            searchBanner =
+                SearchBannerModel(
+                    bannerTitle = "《홍학의 자리》읽을 준비!",
+                    bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
+                    bannerUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                ),
         )
     }
 }

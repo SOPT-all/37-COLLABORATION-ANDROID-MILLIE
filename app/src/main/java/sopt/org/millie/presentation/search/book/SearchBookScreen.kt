@@ -14,14 +14,13 @@ import androidx.compose.ui.unit.dp
 import sopt.org.millie.presentation.search.component.SearchTitle
 import sopt.org.millie.presentation.search.component.book.SearchBanner
 import sopt.org.millie.presentation.search.component.book.SearchBookItem
+import sopt.org.millie.presentation.search.model.SearchBannerModel
 import sopt.org.millie.presentation.search.model.SearchBookModel
 
 @Composable
 fun SearchBookScreen(
     bookList: List<SearchBookModel>,
-    bannerTitle: String,
-    bannerContent: String,
-    bannerUrl: String,
+    searchBanner: SearchBannerModel,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -59,9 +58,9 @@ fun SearchBookScreen(
         Spacer(modifier = Modifier.height(60.dp))
 
         SearchBanner(
-            bannerTitle = bannerTitle,
-            bannerContent = bannerContent,
-            bannerUrl = bannerUrl,
+            bannerTitle = searchBanner.bannerTitle,
+            bannerContent = searchBanner.bannerContent,
+            bannerUrl = searchBanner.bannerUrl,
             modifier = Modifier.padding(horizontal = 25.dp),
         )
 
@@ -108,8 +107,11 @@ private fun SearchBookScreenPreview() {
                 minute = 533,
             ),
         ),
-        bannerTitle = "《홍학의 자리》읽을 준비!",
-        bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
-        bannerUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+        searchBanner =
+            SearchBannerModel(
+            bannerTitle = "《홍학의 자리》읽을 준비!",
+            bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
+            bannerUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+        ),
     )
 }
