@@ -31,7 +31,7 @@ fun SearchLibraryScreen(
     ) {
         SearchTitle(
             title = "서재",
-            count = 4,
+            count = libraryList.size,
             modifier = Modifier.padding(start = 1.dp),
         )
 

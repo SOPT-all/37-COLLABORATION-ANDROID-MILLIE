@@ -32,7 +32,7 @@ fun SearchBookScreen(
     ) {
         SearchTitle(
             title = "도서",
-            count = 4,
+            count = bookList.size,
             modifier = Modifier.padding(start = 17.dp),
         )
 
