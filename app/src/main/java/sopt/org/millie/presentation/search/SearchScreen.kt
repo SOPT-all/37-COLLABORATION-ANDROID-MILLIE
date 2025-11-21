@@ -40,12 +40,11 @@ fun SearchScreen(
     onClickBookItem: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val coroutineScope = rememberCoroutineScope()
 
     var text by remember { mutableStateOf("") }
 
     val searchTabs = listOf("도서", "밀리로드", "포스트", "서재")
-    val pagerState = rememberPagerState(pageCount = { searchTabs.size })
+    var selectedTabs by remember { mutableStateOf("도서") }
 
     Column(
         modifier = modifier,
@@ -83,44 +82,34 @@ fun SearchScreen(
 
         MillieTabbar(
             tabs = searchTabs,
-            selectedTab = searchTabs[pagerState.currentPage],
-            onTabSelected = { title ->
-                val index = searchTabs.indexOf(title)
-                coroutineScope.launch {
-                    pagerState.animateScrollToPage(index)
-                }
-            },
+            selectedTab = selectedTabs,
+            onTabSelected = { selectedTabs = it},
         )
 
         Box(
             modifier = Modifier,
         ) {
-            HorizontalPager(
-                state = pagerState,
-                modifier = Modifier.fillMaxSize(),
-            ) { page ->
-                when (searchTabs[page]) {
-                    "도서" -> {
-                        SearchBookScreen(
-                            bookList = searchBookList,
-                            searchBanner = searchBanner,
-                            onClickBookItem = onClickBookItem,
-                        )
-                    }
+            when (selectedTabs) {
+                "도서" -> {
+                    SearchBookScreen(
+                        bookList = searchBookList,
+                        searchBanner = searchBanner,
+                        onClickBookItem = onClickBookItem,
+                    )
+                }
 
-                    "밀리로드" -> {
-                        // TODO : 화면 추가
-                    }
+                "밀리로드" -> {
+                    // TODO : 화면 추가
+                }
 
-                    "포스트" -> {
-                        // TODO : 화면 추가
-                    }
+                "포스트" -> {
+                    // TODO : 화면 추가
+                }
 
-                    "서재" -> {
-                        SearchLibraryScreen(
-                            libraryList = searchLibraryList,
-                        )
-                    }
+                "서재" -> {
+                    SearchLibraryScreen(
+                        libraryList = searchLibraryList,
+                    )
                 }
             }
         }
