@@ -37,6 +37,7 @@ fun SearchScreen(
     searchBookList: List<SearchBookModel>,
     searchLibraryList: List<SearchLibraryModel>,
     searchBanner: SearchBannerModel,
+    onClickBookItem: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val coroutineScope = rememberCoroutineScope()
@@ -103,6 +104,7 @@ fun SearchScreen(
                         SearchBookScreen(
                             bookList = searchBookList,
                             searchBanner = searchBanner,
+                            onClickBookItem = onClickBookItem,
                         )
                     }
 
@@ -189,6 +191,7 @@ private fun SearchScreenPreview() {
                     bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
                     bannerUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
                 ),
+            onClickBookItem = {},
         )
     }
 }
