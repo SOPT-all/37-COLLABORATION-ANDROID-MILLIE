@@ -1,26 +1,22 @@
 package sopt.org.millie.presentation.search
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.launch
 import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.component.MillieSearchTextField
 import sopt.org.millie.core.designsystem.component.MillieTabbar
@@ -40,14 +36,13 @@ fun SearchScreen(
     onClickBookItem: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-
     var text by remember { mutableStateOf("") }
 
     val searchTabs = listOf("도서", "밀리로드", "포스트", "서재")
     var selectedTabs by remember { mutableStateOf("도서") }
 
     Column(
-        modifier = modifier,
+        modifier = modifier.background(MillieTheme.colors.white),
     ) {
         MillieTopappbar(
             title = "검색결과",
@@ -56,7 +51,7 @@ fun SearchScreen(
                     modifier = Modifier.size(24.dp),
                     imageVector = ImageVector.vectorResource(R.drawable.ic_back_button),
                     contentDescription = null,
-                    tint = MillieTheme.colors.black,
+                    tint = MillieTheme.colors.darkGray1,
                 )
             },
         )
@@ -77,13 +72,13 @@ fun SearchScreen(
         HorizontalDivider(
             modifier = Modifier,
             thickness = 1.dp,
-            color = MillieTheme.colors.lightGray1,
+            color = MillieTheme.colors.lightGray2,
         )
 
         MillieTabbar(
             tabs = searchTabs,
             selectedTab = selectedTabs,
-            onTabSelected = { selectedTabs = it},
+            onTabSelected = { selectedTabs = it },
         )
 
         Box(
