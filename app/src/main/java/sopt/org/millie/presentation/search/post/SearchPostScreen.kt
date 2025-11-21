@@ -1,12 +1,12 @@
 package sopt.org.millie.presentation.search.post
 
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -14,16 +14,16 @@ import androidx.compose.ui.unit.dp
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
-fun SearchPostScreen (
+fun SearchPostScreen(
     modifier: Modifier = Modifier,
-){
-    Column (
+) {
+    Column(
         modifier = modifier
             .fillMaxWidth()
             .background(MillieTheme.colors.white)
             .padding(horizontal = 21.dp),
         verticalArrangement = Arrangement.spacedBy(15.dp),
-    ){
+    ) {
         SearchPostTitle()
 
         LazyColumn(
@@ -41,11 +41,8 @@ fun SearchPostScreen (
                     writerDate = post.writerDate,
                 )
             }
-            item{SearchPostButton()}
+            item { SearchPostButton() }
         }
-
-
-
     }
 }
 
@@ -95,7 +92,7 @@ private val posts = listOf(
 
 @Preview
 @Composable
-private fun SearchPostScreenPreview(){
+private fun SearchPostScreenPreview() {
     MillieTheme {
         SearchPostScreen()
     }

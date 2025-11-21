@@ -7,23 +7,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 import sopt.org.millie.presentation.search.component.SearchTitle
-import sopt.org.millie.presentation.search.post.SearchPostScreen
 
 @Composable
 fun SearchPostTitle(
     modifier: Modifier = Modifier,
-){
+) {
     SearchTitle(
         title = "포스트",
         count = 736,
         modifier = modifier
-            .padding(vertical = 10.dp)
+            .padding(vertical = 10.dp),
     )
 }
 
 @Preview(showBackground = true)
 @Composable
-private fun SearchPostScreenPreview(){
+private fun SearchPostScreenPreview() {
     MillieTheme {
         SearchPostTitle()
     }
