@@ -2,7 +2,7 @@ package sopt.org.millie.presentation.search
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
@@ -27,12 +27,15 @@ import sopt.org.millie.core.designsystem.component.MillieTabbar
 import sopt.org.millie.core.designsystem.component.MillieTopappbar
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 import sopt.org.millie.presentation.search.book.SearchBookScreen
+import sopt.org.millie.presentation.search.library.SearchLibraryScreen
 import sopt.org.millie.presentation.search.model.SearchBannerModel
 import sopt.org.millie.presentation.search.model.SearchBookModel
+import sopt.org.millie.presentation.search.model.SearchLibraryModel
 
 @Composable
 fun SearchScreen(
     searchBookList: List<SearchBookModel>,
+    searchLibraryList: List<SearchLibraryModel>,
     searchBanner: SearchBannerModel,
     modifier: Modifier = Modifier,
 ) {
@@ -93,7 +96,7 @@ fun SearchScreen(
         ) {
             HorizontalPager(
                 state = pagerState,
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxSize(),
             ) { page ->
                 when (searchTabs[page]) {
                     "도서" -> {
@@ -112,7 +115,9 @@ fun SearchScreen(
                     }
 
                     "서재" -> {
-                        // TODO : 화면 추가
+                        SearchLibraryScreen(
+                            libraryList = searchLibraryList,
+                        )
                     }
                 }
             }
@@ -158,6 +163,24 @@ private fun SearchScreenPreview() {
                     author = "정해연",
                     rate = 36,
                     minute = 533,
+                ),
+            ),
+            searchLibraryList = listOf(
+                SearchLibraryModel(
+                    imgRes = R.drawable.img_search_library_1,
+                    bookTitle = "홍학의 자리",
+                ),
+                SearchLibraryModel(
+                    imgRes = R.drawable.img_search_library_1,
+                    bookTitle = "홍학의 자리",
+                ),
+                SearchLibraryModel(
+                    imgRes = R.drawable.img_search_library_1,
+                    bookTitle = "홍학의 자리",
+                ),
+                SearchLibraryModel(
+                    imgRes = R.drawable.img_search_library_1,
+                    bookTitle = "홍학의 자리",
                 ),
             ),
             searchBanner =
