@@ -13,12 +13,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.core.util.noRippleClickable
 
 @Composable
 fun BookDetailTag(
     tagBackgroundColor: Color,
     tagText: String,
     tagTextColor: Color,
+    onTagClick: () -> Unit,
     modifier: Modifier = Modifier,
     tagBorderColor: Color = Color.Transparent,
 ) {
@@ -27,6 +29,7 @@ fun BookDetailTag(
             .clip(shape = RoundedCornerShape(100.dp))
             .background(color = tagBackgroundColor)
             .border(width = 1.dp, color = tagBorderColor, shape = RoundedCornerShape(100.dp))
+            .noRippleClickable(onClick = onTagClick)
             .padding(horizontal = 16.dp, vertical = 6.dp),
     ) {
         Text(
@@ -46,6 +49,7 @@ private fun Preview() {
                 tagBackgroundColor = MillieTheme.colors.black,
                 tagText = "완독지수",
                 tagTextColor = MillieTheme.colors.white,
+                onTagClick = {},
             )
 
             BookDetailTag(
@@ -53,6 +57,7 @@ private fun Preview() {
                 tagText = "완독지수",
                 tagTextColor = MillieTheme.colors.black,
                 tagBorderColor = MillieTheme.colors.lightGray2,
+                onTagClick = {},
             )
         }
     }

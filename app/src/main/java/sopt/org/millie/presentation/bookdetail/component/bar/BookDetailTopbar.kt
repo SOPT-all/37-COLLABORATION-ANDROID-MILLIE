@@ -1,9 +1,10 @@
-package sopt.org.millie.presentation.bookdetail.component.topbar
+package sopt.org.millie.presentation.bookdetail.component.bar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -32,6 +33,7 @@ fun BookDetailTopbar(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_back),
             contentDescription = null,
             tint = Color.Unspecified,
+            modifier = Modifier.size(24.dp),
         )
 
         Spacer(modifier = Modifier.weight(1f))
@@ -40,6 +42,7 @@ fun BookDetailTopbar(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_heart),
             contentDescription = null,
             tint = Color.Unspecified,
+            modifier = Modifier.size(24.dp),
         )
 
         Spacer(modifier = Modifier.width(6.dp))
@@ -48,6 +51,7 @@ fun BookDetailTopbar(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_more),
             contentDescription = null,
             tint = Color.Unspecified,
+            modifier = Modifier.size(24.dp),
         )
     }
 }
