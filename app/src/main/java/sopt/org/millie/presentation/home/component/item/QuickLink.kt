@@ -25,7 +25,7 @@ fun QuickLinks(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(bottom = 8.dp),
+            .padding(vertical = 8.dp),
     ) {
         HomeTitleItem(
             title = "바로가기",
