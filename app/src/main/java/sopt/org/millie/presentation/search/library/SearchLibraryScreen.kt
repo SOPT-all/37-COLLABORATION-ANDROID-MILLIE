@@ -39,7 +39,7 @@ fun SearchLibraryScreen(
 
         Row(
             modifier = modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.spacedBy(19.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             libraryList.forEach {
