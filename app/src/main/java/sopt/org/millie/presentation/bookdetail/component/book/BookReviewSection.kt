@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,8 +25,7 @@ import sopt.org.millie.presentation.bookdetail.model.BookReviewModel
 fun BookReviewSection(
     totalReviewCount: Int,
     bookReviews: ImmutableList<BookReviewModel>,
-    onReview1LikeClick: () -> Unit,
-    onReview2LikeClick: () -> Unit,
+    onReviewLikeClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -40,7 +40,7 @@ fun BookReviewSection(
         bookReviews.forEachIndexed { index, bookReview ->
             BookDetailReview(
                 bookReview = bookReview,
-                onLikeClick = if (index == 0) onReview1LikeClick else onReview2LikeClick,
+                onLikeClick = onReviewLikeClick,
             )
 
             if (index == 0) Spacer(modifier = Modifier.height(35.dp))
@@ -75,6 +75,7 @@ private fun BookReviewSectionTopbar(
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_next),
             contentDescription = null,
+            modifier = Modifier.size(24.dp),
         )
     }
 }
@@ -88,19 +89,20 @@ private fun Preview() {
             bookReviews = persistentListOf(
                 BookReviewModel(
                     username = "aaaa",
+                    reviewId = 1,
                     dateOfReview = "2023.01.01",
                     contentOfReview = "리뷰1",
                     likedNum = 100,
                 ),
                 BookReviewModel(
                     username = "bbbb",
+                    reviewId = 2,
                     dateOfReview = "2023.01.01",
                     contentOfReview = "리뷰2",
                     likedNum = 100,
                 ),
             ),
-            onReview1LikeClick = {},
-            onReview2LikeClick = {},
+            onReviewLikeClick = {},
         )
     }
 }

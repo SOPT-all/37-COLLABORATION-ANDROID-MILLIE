@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -60,6 +60,7 @@ private fun BookSimilarSectionTopbar(
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_next),
             contentDescription = null,
+            modifier = Modifier.size(24.dp),
         )
     }
 }
@@ -74,11 +75,11 @@ private fun BookSimilarLists(
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        itemsIndexed(items = books, key = { _, book -> book.bookImage }) { index, book ->
+        items(count = books.size, key = { books[it].bookImage }) {
             BookDetailBook(
-                bookImage = book.bookImage,
-                bookTitle = book.bookTitle,
-                bookAuthor = book.bookAuthor,
+                bookImage = books[it].bookImage,
+                bookTitle = books[it].bookTitle,
+                bookAuthor = books[it].bookAuthor,
             )
         }
     }

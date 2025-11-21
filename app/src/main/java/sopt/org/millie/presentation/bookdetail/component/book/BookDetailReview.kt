@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -24,7 +25,7 @@ import sopt.org.millie.presentation.bookdetail.model.BookReviewModel
 @Composable
 fun BookDetailReview(
     bookReview: BookReviewModel,
-    onLikeClick: () -> Unit,
+    onLikeClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -36,19 +37,19 @@ fun BookDetailReview(
         )
 
         Text(
-            text = "${bookReview.dateOfReview}",
+            text = bookReview.dateOfReview,
             color = MillieTheme.colors.gray2,
             style = MillieTheme.typography.body.caption3,
         )
 
         Text(
-            text = "${bookReview.contentOfReview}",
+            text = bookReview.contentOfReview,
             color = MillieTheme.colors.black,
             style = MillieTheme.typography.body.body1,
         )
 
         BookDetailLikedTag(
-            onClick = onLikeClick,
+            onClick = { onLikeClick(bookReview.reviewId) },
             likedNum = bookReview.likedNum,
         )
     }
@@ -67,12 +68,13 @@ private fun UserInfo(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_book_detail_person),
             contentDescription = null,
             tint = Color.Unspecified,
+            modifier = Modifier.size(24.dp),
         )
 
         Spacer(modifier = Modifier.width(10.dp))
 
         Text(
-            text = "$username",
+            text = username,
             color = MillieTheme.colors.black,
             style = MillieTheme.typography.body.body1,
         )
@@ -82,6 +84,7 @@ private fun UserInfo(
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_more),
             contentDescription = null,
+            modifier = Modifier.size(24.dp),
         )
     }
 }
@@ -93,6 +96,7 @@ private fun Preview() {
         BookDetailReview(
             bookReview = BookReviewModel(
                 username = "어진 님",
+                reviewId = 1,
                 dateOfReview = "2023.06.06",
                 contentOfReview = "저는 책에 오타가 난 줄 알았어요",
                 likedNum = 10,

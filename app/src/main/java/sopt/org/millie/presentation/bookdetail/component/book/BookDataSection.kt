@@ -26,30 +26,16 @@ import androidx.compose.ui.unit.dp
 import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 import sopt.org.millie.presentation.bookdetail.component.tag.BookDetailTag
+import sopt.org.millie.presentation.bookdetail.model.BookDataType
 
 @Composable
 fun BookDataSection(
     onCompletedRateClick: () -> Unit,
     onAgeGenderClick: () -> Unit,
-    isCompletedTag: Boolean,
+    isCompletedGraphChanged: Boolean,
+    selectedType: BookDataType,
     modifier: Modifier = Modifier,
 ) {
-    val selectedBackground = MillieTheme.colors.black
-    val selectedText = MillieTheme.colors.white
-    val selectedBorder = Color.Transparent
-
-    val unselectedBackground = MillieTheme.colors.white
-    val unselectedText = MillieTheme.colors.black
-    val unselectedBorder = MillieTheme.colors.lightGray3
-
-    val completedBackground = if (isCompletedTag) selectedBackground else unselectedBackground
-    val completedText = if (isCompletedTag) selectedText else unselectedText
-    val completedBorder = if (isCompletedTag) selectedBorder else unselectedBorder
-
-    val ageGenderBackground = if (!isCompletedTag) selectedBackground else unselectedBackground
-    val ageGenderText = if (!isCompletedTag) selectedText else unselectedText
-    val ageGenderBorder = if (!isCompletedTag) selectedBorder else unselectedBorder
-
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -68,94 +54,99 @@ fun BookDataSection(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            BookDetailTag(
-                tagBackgroundColor = completedBackground,
-                tagText = "완독지수",
-                tagTextColor = completedText,
-                onTagClick = onCompletedRateClick,
-                tagBorderColor = completedBorder,
-            )
+            BookDataType.entries.forEach { bookDataType ->
+                val isSelected = bookDataType == selectedType
+                val (tagBackground, tagText, tagBorder) = if (isSelected) {
+                    Triple(MillieTheme.colors.black, MillieTheme.colors.white, Color.Transparent)
+                } else {
+                    Triple(MillieTheme.colors.white, MillieTheme.colors.black, MillieTheme.colors.lightGray3)
+                }
 
-            BookDetailTag(
-                tagBackgroundColor = ageGenderBackground,
-                tagText = "연령·성별 인기",
-                tagTextColor = ageGenderText,
-                onTagClick = onAgeGenderClick,
-                tagBorderColor = ageGenderBorder,
-            )
+                BookDetailTag(
+                    tagBackgroundColor = tagBackground,
+                    tagText = bookDataType.bookDataType,
+                    tagTextColor = tagText,
+                    onTagClick = when (bookDataType) {
+                        BookDataType.COMPLETED_RATE -> onCompletedRateClick
+                        BookDataType.AGE_GENDER -> onAgeGenderClick
+                    },
+                    tagBorderColor = tagBorder,
+                )
+            }
         }
+
         Spacer(modifier = Modifier.height(32.dp))
 
-        DataImage(isCompletedTag = isCompletedTag)
+        DataImage(
+            isCompletedGraphChanged = isCompletedGraphChanged,
+            bookDataType = selectedType,
+        )
     }
 }
 
 @Composable
 private fun DataImage(
-    isCompletedTag: Boolean,
+    isCompletedGraphChanged: Boolean,
+    bookDataType: BookDataType,
     modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier.fillMaxWidth(),
     ) {
-        if (isCompletedTag) {
-            Image(
-                painter = painterResource(id = R.drawable.img_completed_rate),
-                contentDescription = null,
-                modifier = Modifier.fillMaxWidth(),
-                contentScale = ContentScale.FillWidth,
-            )
-        } else {
-            Image(
-                painter = painterResource(id = R.drawable.img_age_gender),
-                contentDescription = null,
-                modifier = Modifier
-                    .fillMaxWidth(),
-                contentScale = ContentScale.FillWidth,
-            )
+        when (bookDataType) {
+            BookDataType.COMPLETED_RATE -> {
+                if (isCompletedGraphChanged) {
+                    Image(
+                        painter = painterResource(id = R.drawable.img_completed_rate1),
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxWidth(),
+                        contentScale = ContentScale.FillWidth,
+                    )
+                } else {
+                    Image(
+                        painter = painterResource(id = R.drawable.img_completed_rate2),
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxWidth(),
+                        contentScale = ContentScale.FillWidth,
+                    )
+                }
+            }
 
-            Spacer(modifier = Modifier.height(10.dp))
+            BookDataType.AGE_GENDER -> {
+                Image(
+                    painter = painterResource(id = R.drawable.img_age_gender),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    contentScale = ContentScale.FillWidth,
+                )
 
-            Text(
-                buildAnnotatedString {
-                    withStyle(
-                        style = MillieTheme.typography.body.body1.toSpanStyle(),
-                    ) {
-                        append("이 책이 속한 ")
-                    }
+                Spacer(modifier = Modifier.height(10.dp))
 
-                    withStyle(
-                        style = MillieTheme.typography.title.subHead2.toSpanStyle(),
-                    ) {
-                        append("소설 분야\n")
-                    }
+                Text(
+                    buildAnnotatedString {
+                        val body = MillieTheme.typography.body.body1.toSpanStyle()
+                        val title = MillieTheme.typography.title.subHead2.toSpanStyle()
 
-                    withStyle(
-                        style = MillieTheme.typography.body.body1.toSpanStyle(),
-                    ) {
-                        append("역시 ")
-                    }
+                        withStyle(body) { append("이 책이 속한 ") }
 
-                    withStyle(
-                        style = MillieTheme.typography.title.subHead2.toSpanStyle(),
-                    ) {
-                        append("20대 여성")
-                    }
+                        withStyle(title) { append("소설 분야\n") }
 
-                    withStyle(
-                        style = MillieTheme.typography.body.body1.toSpanStyle(),
-                    ) {
-                        append("이 가장 즐겨보고 있어요.")
-                    }
-                },
-                color = MillieTheme.colors.darkGray2,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(shape = RoundedCornerShape(16.dp))
-                    .background(color = MillieTheme.colors.lightGray1)
-                    .padding(vertical = 11.dp),
-                textAlign = TextAlign.Center,
-            )
+                        withStyle(body) { append("역시 ") }
+
+                        withStyle(title) { append("20대 여성") }
+
+                        withStyle(body) { append("이 가장 즐겨보고 있어요.") }
+                    },
+                    color = MillieTheme.colors.darkGray2,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(shape = RoundedCornerShape(16.dp))
+                        .background(color = MillieTheme.colors.lightGray1)
+                        .padding(vertical = 11.dp),
+                    textAlign = TextAlign.Center,
+                )
+            }
         }
     }
 }
@@ -167,7 +158,8 @@ private fun Preview() {
         BookDataSection(
             onCompletedRateClick = {},
             onAgeGenderClick = {},
-            isCompletedTag = false,
+            isCompletedGraphChanged = true,
+            selectedType = BookDataType.COMPLETED_RATE,
         )
     }
 }

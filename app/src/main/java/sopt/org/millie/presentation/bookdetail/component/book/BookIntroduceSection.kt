@@ -1,6 +1,5 @@
 package sopt.org.millie.presentation.bookdetail.component.book
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.core.util.noRippleClickable
 
 @Composable
 fun BookIntroduceSection(
@@ -34,7 +34,7 @@ fun BookIntroduceSection(
         Spacer(modifier = Modifier.height(10.dp))
 
         Text(
-            text = "$reviewContent",
+            text = reviewContent,
             color = MillieTheme.colors.darkGray1,
             style = MillieTheme.typography.body.body1,
         )
@@ -45,7 +45,7 @@ fun BookIntroduceSection(
             text = "더보기",
             modifier = Modifier
                 .align(alignment = Alignment.End)
-                .clickable(onClick = onClick),
+                .noRippleClickable(onClick = onClick),
             color = MillieTheme.colors.milliePurple,
             style = MillieTheme.typography.body.body1,
         )

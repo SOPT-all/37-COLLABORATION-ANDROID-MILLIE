@@ -4,9 +4,11 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
@@ -36,10 +38,9 @@ fun BookInfoSection(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         Text(
-            text = "$bookTitle",
+            text = bookTitle,
             color = MillieTheme.colors.black,
             style = MillieTheme.typography.title.headLine,
         )
@@ -49,6 +50,8 @@ fun BookInfoSection(
             color = MillieTheme.colors.gray3,
             style = MillieTheme.typography.body.body1,
         )
+
+        Spacer(modifier = Modifier.height(10.dp))
 
         BookStatsSection(
             totalReviewCount = totalReviewCount,
@@ -80,7 +83,7 @@ private fun BookStatsSection(
 
         VerticalDivider(
             thickness = 1.dp,
-            color = MillieTheme.colors.gray2,
+            color = MillieTheme.colors.lightGray2,
             modifier = Modifier.height(55.dp),
         )
 
@@ -120,6 +123,7 @@ private fun BookStatsItem(
             imageVector = ImageVector.vectorResource(id = imageRes),
             contentDescription = null,
             tint = Color.Unspecified,
+            modifier = Modifier.size(24.dp),
         )
 
         Row(
