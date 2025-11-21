@@ -2,7 +2,7 @@ package sopt.org.millie.presentation.search
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
@@ -26,9 +26,15 @@ import sopt.org.millie.core.designsystem.component.MillieSearchTextField
 import sopt.org.millie.core.designsystem.component.MillieTabbar
 import sopt.org.millie.core.designsystem.component.MillieTopappbar
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.presentation.search.book.SearchBookScreen
+import sopt.org.millie.presentation.search.model.SearchBookModel
 
 @Composable
 fun SearchScreen(
+    searchBookList: List<SearchBookModel>,
+    bannerTitle: String,
+    bannerContent: String,
+    bannerUrl: String,
     modifier: Modifier = Modifier,
 ) {
     val coroutineScope = rememberCoroutineScope()
@@ -84,16 +90,20 @@ fun SearchScreen(
         )
 
         Box(
-            modifier = Modifier
-                .weight(1f),
+            modifier = Modifier,
         ) {
             HorizontalPager(
                 state = pagerState,
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxWidth(),
             ) { page ->
                 when (searchTabs[page]) {
                     "도서" -> {
-                        // TODO : 화면 추가
+                        SearchBookScreen(
+                            bookList = searchBookList,
+                            bannerTitle = bannerTitle,
+                            bannerContent = bannerContent,
+                            bannerUrl = bannerUrl,
+                        )
                     }
 
                     "밀리로드" -> {
@@ -117,6 +127,45 @@ fun SearchScreen(
 @Composable
 private fun SearchScreenPreview() {
     MillieTheme {
-        SearchScreen()
+        SearchScreen(
+            searchBookList = listOf(
+                SearchBookModel(
+                    imageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                    reader = "",
+                    title = "홍학의 자리",
+                    author = "정해연",
+                    rate = 36,
+                    minute = 533,
+                    isAudioEnabled = false,
+                ),
+                SearchBookModel(
+                    imageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                    reader = "김지윤,박지윤",
+                    title = "홍학의 자리",
+                    author = "정해연",
+                    rate = 36,
+                    minute = 533,
+                ),
+                SearchBookModel(
+                    imageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                    reader = "김지윤,박지윤",
+                    title = "홍학의 자리",
+                    author = "정해연",
+                    rate = 36,
+                    minute = 533,
+                ),
+                SearchBookModel(
+                    imageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                    reader = "김지윤,박지윤",
+                    title = "홍학의 자리",
+                    author = "정해연",
+                    rate = 36,
+                    minute = 533,
+                ),
+            ),
+            bannerTitle = "《홍학의 자리》읽을 준비!",
+            bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
+            bannerUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+        )
     }
 }
