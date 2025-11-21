@@ -130,7 +130,10 @@ private fun LazyListScope.categoryTabContent(categoryList: List<BookCategoryMode
         )
     }
 
-    items(categoryList) { category ->
+    items(
+        items = categoryList,
+        key = { it.categoryId },
+    ) { category ->
         BookCategoryItem(
             bookImageUrl = category.imageUrl,
             title = category.title,
