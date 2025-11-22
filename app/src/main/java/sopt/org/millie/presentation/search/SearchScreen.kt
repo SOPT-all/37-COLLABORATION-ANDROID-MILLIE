@@ -26,9 +26,13 @@ import sopt.org.millie.presentation.search.library.SearchLibraryScreen
 import sopt.org.millie.presentation.search.model.SearchBannerModel
 import sopt.org.millie.presentation.search.model.SearchBookModel
 import sopt.org.millie.presentation.search.model.SearchLibraryModel
+import kotlin.String
 
 @Composable
 fun SearchScreen(
+    searchTabs: List<String>,
+    selectedTab: String,
+    onTabSelected: (String) -> Unit,
     searchBookList: List<SearchBookModel>,
     searchLibraryList: List<SearchLibraryModel>,
     searchBanner: SearchBannerModel,
@@ -37,8 +41,8 @@ fun SearchScreen(
 ) {
     var text by remember { mutableStateOf("") }
 
-    val searchTabs = listOf("도서", "밀리로드", "포스트", "서재")
-    var selectedTabs by remember { mutableStateOf("도서") }
+    // val searchTabs = listOf("도서", "밀리로드", "포스트", "서재")
+    // var selectedTabs by remember { mutableStateOf("도서") }
 
     Column(
         modifier = modifier.background(MillieTheme.colors.white),
@@ -75,11 +79,11 @@ fun SearchScreen(
 
         MillieTabbar(
             tabs = searchTabs,
-            selectedTab = selectedTabs,
-            onTabSelected = { selectedTabs = it },
+            selectedTab = selectedTab,
+            onTabSelected = { onTabSelected(selectedTab) },
         )
 
-        when (selectedTabs) {
+        when (selectedTab) {
             "도서" -> {
                 SearchBookScreen(
                     bookList = searchBookList,
@@ -109,7 +113,13 @@ fun SearchScreen(
 @Composable
 private fun SearchScreenPreview() {
     MillieTheme {
+        val searchTabs = listOf("도서", "밀리로드", "포스트", "서재")
+        var selectedTabs by remember { mutableStateOf("도서") }
+
         SearchScreen(
+            searchTabs = searchTabs,
+            selectedTab = selectedTabs,
+            onTabSelected = { selectedTabs = it },
             searchBookList = listOf(
                 SearchBookModel(
                     bookId = 1,
