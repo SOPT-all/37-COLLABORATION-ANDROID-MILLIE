@@ -11,10 +11,11 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
 fun SearchPostButton(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     MillieButton(
-        onClick = {},
+        onClick = onClick,
         buttonBackgroundColor = MillieTheme.colors.lightGray1,
         buttonText = "전체보기",
         buttonTextStyle = MillieTheme.typography.body.subBody2,
@@ -29,6 +30,6 @@ fun SearchPostButton(
 @Composable
 private fun SearchPostScreenPreview() {
     MillieTheme {
-        SearchPostButton()
+        SearchPostButton(onClick = {})
     }
 }

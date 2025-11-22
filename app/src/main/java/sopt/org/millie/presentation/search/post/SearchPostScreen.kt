@@ -40,7 +40,7 @@ fun SearchPostScreen(
         )
         }
 
-        item { SearchPostButton() }
+        item { SearchPostButton(onClick = {}) }
     }
 }
 
