@@ -15,7 +15,7 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
 fun SearchAudioTag(
-    reader: String,
+    voiceActor: String,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -29,7 +29,7 @@ fun SearchAudioTag(
         )
 
         Text(
-            text = reader,
+            text = voiceActor,
             modifier = Modifier
                 .padding(start = 4.dp),
             color = MillieTheme.colors.milliePurple,
@@ -44,6 +44,6 @@ fun SearchAudioTag(
 @Composable
 private fun SearchAudioTagPreview() {
     SearchAudioTag(
-        reader = "김지윤,박지윤",
+        voiceActor = "김지윤,박지윤",
     )
 }

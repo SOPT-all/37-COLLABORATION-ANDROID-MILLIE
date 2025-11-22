@@ -1,0 +1,182 @@
+package sopt.org.millie.presentation.search
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import sopt.org.millie.R
+import sopt.org.millie.core.designsystem.component.MillieSearchTextField
+import sopt.org.millie.core.designsystem.component.MillieTabbar
+import sopt.org.millie.core.designsystem.component.MillieTopappbar
+import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.presentation.search.book.SearchBookScreen
+import sopt.org.millie.presentation.search.library.SearchLibraryScreen
+import sopt.org.millie.presentation.search.model.SearchBannerModel
+import sopt.org.millie.presentation.search.model.SearchBookModel
+import sopt.org.millie.presentation.search.model.SearchLibraryModel
+
+@Composable
+fun SearchScreen(
+    searchBookList: List<SearchBookModel>,
+    searchLibraryList: List<SearchLibraryModel>,
+    searchBanner: SearchBannerModel,
+    onBookItemClick: (Long) -> Unit,
+    modifier: Modifier = Modifier,
+    searchViewModel: SearchViewModel = viewModel(),
+) {
+    var text by remember { mutableStateOf("") }
+
+    val searchUiState by searchViewModel.uiState.collectAsStateWithLifecycle()
+
+    Column(
+        modifier = modifier.background(MillieTheme.colors.white),
+    ) {
+        MillieTopappbar(
+            title = "검색결과",
+            navigationIcon = {
+                Icon(
+                    modifier = Modifier.size(24.dp),
+                    imageVector = ImageVector.vectorResource(R.drawable.ic_back_button),
+                    contentDescription = null,
+                    tint = MillieTheme.colors.darkGray1,
+                )
+            },
+        )
+
+        HorizontalDivider(
+            thickness = 1.dp,
+            color = MillieTheme.colors.lightGray1,
+        )
+
+        MillieSearchTextField(
+            value = text,
+            onValueChange = { text = it },
+            onCancelClick = { text = "" },
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        )
+
+        HorizontalDivider(
+            modifier = Modifier,
+            thickness = 1.dp,
+            color = MillieTheme.colors.lightGray2,
+        )
+
+        MillieTabbar(
+            tabs = searchUiState.searchTabs,
+            selectedTab = searchUiState.selectedTab,
+            onTabSelected = searchViewModel::onTabSelected,
+        )
+
+        when (searchUiState.selectedTab) {
+            "도서" -> {
+                SearchBookScreen(
+                    bookList = searchBookList,
+                    searchBanner = searchBanner,
+                    onBookItemClick = onBookItemClick,
+                )
+            }
+
+            "밀리로드" -> {
+                // TODO : 화면 추가
+            }
+
+            "포스트" -> {
+                // TODO : 화면 추가
+            }
+
+            "서재" -> {
+                SearchLibraryScreen(
+                    libraryList = searchLibraryList,
+                )
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun SearchScreenPreview() {
+    MillieTheme {
+        SearchScreen(
+            searchBookList = listOf(
+                SearchBookModel(
+                    bookId = 1,
+                    bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                    bookTitle = "홍학의 자리",
+                    bookAuthor = "정해연",
+                    completionRate = 36,
+                    completionTime = 533,
+                ),
+                SearchBookModel(
+                    bookId = 2,
+                    bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                    bookTitle = "홍학의 자리",
+                    bookAuthor = "정해연",
+                    completionRate = 36,
+                    completionTime = 533,
+                    isAudiobook = true,
+                    voiceActor = "김지윤,박지윤",
+                ),
+                SearchBookModel(
+                    bookId = 3,
+                    bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                    bookTitle = "홍학의 자리",
+                    bookAuthor = "정해연",
+                    completionRate = 36,
+                    completionTime = 533,
+                    isAudiobook = true,
+                    voiceActor = "김지윤,박지윤",
+                ),
+                SearchBookModel(
+                    bookId = 4,
+                    bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                    bookTitle = "홍학의 자리",
+                    bookAuthor = "정해연",
+                    completionRate = 36,
+                    completionTime = 533,
+                    isAudiobook = true,
+                    voiceActor = "김지윤,박지윤",
+                ),
+            ),
+            searchLibraryList = listOf(
+                SearchLibraryModel(
+                    imgRes = R.drawable.img_search_library_1,
+                    bookTitle = "홍학의 자리",
+                ),
+                SearchLibraryModel(
+                    imgRes = R.drawable.img_search_library_1,
+                    bookTitle = "홍학의 자리",
+                ),
+                SearchLibraryModel(
+                    imgRes = R.drawable.img_search_library_1,
+                    bookTitle = "홍학의 자리",
+                ),
+                SearchLibraryModel(
+                    imgRes = R.drawable.img_search_library_1,
+                    bookTitle = "홍학의 자리",
+                ),
+            ),
+            searchBanner =
+                SearchBannerModel(
+                    bannerTitle = "《홍학의 자리》읽을 준비!",
+                    bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
+                    bannerImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                ),
+            onBookItemClick = {},
+        )
+    }
+}
