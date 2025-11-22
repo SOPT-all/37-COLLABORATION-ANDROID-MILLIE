@@ -47,14 +47,14 @@ fun SearchBookScreen(
                 count = bookList.size,
             ) {
                 SearchBookItem(
-                    imageUrl = bookList[it].imageUrl,
-                    reader = bookList[it].reader,
-                    title = bookList[it].title,
-                    author = bookList[it].author,
-                    rate = bookList[it].rate,
-                    minute = bookList[it].minute,
+                    bookCoverImageUrl = bookList[it].bookCoverImageUrl,
+                    bookTitle = bookList[it].bookTitle,
+                    bookAuthor = bookList[it].bookAuthor,
+                    completionRate = bookList[it].completionRate,
+                    completionTime = bookList[it].completionTime,
                     onClickBookItem = onClickBookItem,
-                    isAudioEnabled = bookList[it].isAudioEnabled,
+                    isAudiobook = bookList[it].isAudiobook,
+                    voiceActor = bookList[it].voiceActor,
                 )
             }
         }
@@ -64,7 +64,7 @@ fun SearchBookScreen(
         SearchBanner(
             bannerTitle = searchBanner.bannerTitle,
             bannerContent = searchBanner.bannerContent,
-            bannerUrl = searchBanner.bannerUrl,
+            bannerImageUrl = searchBanner.bannerImageUrl,
             modifier = Modifier.padding(horizontal = 25.dp),
         )
 
@@ -78,44 +78,45 @@ private fun SearchBookScreenPreview() {
     SearchBookScreen(
         bookList = listOf(
             SearchBookModel(
-                imageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
-                reader = "",
-                title = "홍학의 자리",
-                author = "정해연",
-                rate = 36,
-                minute = 533,
-                isAudioEnabled = false,
+                bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                bookTitle = "홍학의 자리",
+                bookAuthor = "정해연",
+                completionRate = 36,
+                completionTime = 533,
             ),
             SearchBookModel(
-                imageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
-                reader = "김지윤,박지윤",
-                title = "홍학의 자리",
-                author = "정해연",
-                rate = 36,
-                minute = 533,
+                bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                bookTitle = "홍학의 자리",
+                bookAuthor = "정해연",
+                completionRate = 36,
+                completionTime = 533,
+                isAudiobook = true,
+                voiceActor = "김지윤,박지윤",
             ),
             SearchBookModel(
-                imageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
-                reader = "김지윤,박지윤",
-                title = "홍학의 자리",
-                author = "정해연",
-                rate = 36,
-                minute = 533,
+                bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                bookTitle = "홍학의 자리",
+                bookAuthor = "정해연",
+                completionRate = 36,
+                completionTime = 533,
+                isAudiobook = true,
+                voiceActor = "김지윤,박지윤",
             ),
             SearchBookModel(
-                imageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
-                reader = "김지윤,박지윤",
-                title = "홍학의 자리",
-                author = "정해연",
-                rate = 36,
-                minute = 533,
+                bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                bookTitle = "홍학의 자리",
+                bookAuthor = "정해연",
+                completionRate = 36,
+                completionTime = 533,
+                isAudiobook = true,
+                voiceActor = "김지윤,박지윤",
             ),
         ),
         searchBanner =
             SearchBannerModel(
             bannerTitle = "《홍학의 자리》읽을 준비!",
             bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
-            bannerUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+            bannerImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
         ),
         onClickBookItem = {},
     )

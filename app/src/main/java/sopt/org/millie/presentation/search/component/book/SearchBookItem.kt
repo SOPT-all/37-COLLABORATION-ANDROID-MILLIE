@@ -18,15 +18,15 @@ import sopt.org.millie.core.util.noRippleClickable
 
 @Composable
 fun SearchBookItem(
-    imageUrl: String,
-    reader: String,
-    title: String,
-    author: String,
-    rate: Int,
-    minute: Int,
+    bookCoverImageUrl: String,
+    bookTitle: String,
+    bookAuthor: String,
+    completionRate: Int,
+    completionTime: Int,
     onClickBookItem: () -> Unit,
     modifier: Modifier = Modifier,
-    isAudioEnabled: Boolean = true,
+    isAudiobook: Boolean = false,
+    voiceActor: String = "",
 ) {
     Column(
         modifier = modifier
@@ -36,7 +36,7 @@ fun SearchBookItem(
             ),
     ) {
         AsyncImage(
-            model = imageUrl,
+            model = bookCoverImageUrl,
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
@@ -52,23 +52,23 @@ fun SearchBookItem(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        if (isAudioEnabled) {
+        if (isAudiobook) {
             SearchAudioTag(
-                reader = reader,
+                voiceActor = voiceActor,
             )
             Spacer(modifier = Modifier.height(2.dp))
         }
 
         SearchTitleAuthor(
-            title = title,
-            author = author,
+            bookTitle = bookTitle,
+            bookAuthor = bookAuthor,
         )
 
         Spacer(modifier = Modifier.height(1.dp))
 
         SearchWandokRate(
-            rate = rate,
-            minute = minute,
+            rate = completionRate,
+            minute = completionTime,
         )
     }
 }
@@ -77,12 +77,13 @@ fun SearchBookItem(
 @Composable
 private fun SearchBookItemPreview() {
     SearchBookItem(
-        imageUrl = "",
-        reader = "김지윤,박지윤",
-        title = "홍학의 자리",
-        author = "정해연",
-        rate = 36,
-        minute = 533,
+        bookCoverImageUrl = "",
+        bookTitle = "홍학의 자리",
+        bookAuthor = "정해연",
+        completionRate = 36,
+        completionTime = 533,
         onClickBookItem = {},
+        isAudiobook = true,
+        voiceActor = "김지윤,박지윤",
     )
 }

@@ -5,5 +5,5 @@ import androidx.compose.runtime.Immutable
 data class SearchBannerModel(
     val bannerTitle: String,
     val bannerContent: String,
-    val bannerUrl: String,
+    val bannerImageUrl: String,
 )

@@ -3,11 +3,11 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 data class SearchBookModel(
-    val imageUrl: String,
-    val reader: String,
-    val title: String,
-    val author: String,
-    val rate: Int,
-    val minute: Int,
-    val isAudioEnabled: Boolean = true,
+    val bookCoverImageUrl: String,
+    val bookTitle: String,
+    val bookAuthor: String,
+    val completionRate: Int,
+    val completionTime: Int,
+    val isAudiobook: Boolean = false,
+    val voiceActor: String = "",
 )

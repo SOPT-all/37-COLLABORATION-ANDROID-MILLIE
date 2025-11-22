@@ -25,7 +25,7 @@ import sopt.org.millie.core.util.customShadow
 fun SearchBanner(
     bannerTitle: String,
     bannerContent: String,
-    bannerUrl: String,
+    bannerImageUrl: String,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -56,7 +56,7 @@ fun SearchBanner(
         }
 
         AsyncImage(
-            model = bannerUrl,
+            model = bannerImageUrl,
             contentDescription = null,
             modifier = Modifier
                 .size(width = 64.dp, height = 70.dp)
@@ -80,6 +80,6 @@ private fun BookBannerPreview() {
     SearchBanner(
         bannerTitle = "《홍학의 자리》읽을 준비!",
         bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
-        bannerUrl = "",
+        bannerImageUrl = "",
     )
 }
