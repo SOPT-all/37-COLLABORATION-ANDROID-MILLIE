@@ -28,7 +28,7 @@ fun SearchBookScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(vertical = 23.dp),
+            .padding(top = 24.dp, bottom = 37.dp),
     ) {
         SearchTitle(
             title = "도서",

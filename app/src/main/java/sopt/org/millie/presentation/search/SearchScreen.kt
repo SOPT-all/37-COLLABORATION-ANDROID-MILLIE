@@ -57,7 +57,6 @@ fun SearchScreen(
         )
 
         HorizontalDivider(
-            modifier = Modifier,
             thickness = 1.dp,
             color = MillieTheme.colors.lightGray1,
         )
@@ -81,31 +80,27 @@ fun SearchScreen(
             onTabSelected = { selectedTabs = it },
         )
 
-        Box(
-            modifier = Modifier,
-        ) {
-            when (selectedTabs) {
-                "도서" -> {
-                    SearchBookScreen(
-                        bookList = searchBookList,
-                        searchBanner = searchBanner,
-                        onClickBookItem = onClickBookItem,
-                    )
-                }
+        when (selectedTabs) {
+            "도서" -> {
+                SearchBookScreen(
+                    bookList = searchBookList,
+                    searchBanner = searchBanner,
+                    onClickBookItem = onClickBookItem,
+                )
+            }
 
-                "밀리로드" -> {
-                    // TODO : 화면 추가
-                }
+            "밀리로드" -> {
+                // TODO : 화면 추가
+            }
 
-                "포스트" -> {
-                    // TODO : 화면 추가
-                }
+            "포스트" -> {
+                // TODO : 화면 추가
+            }
 
-                "서재" -> {
-                    SearchLibraryScreen(
-                        libraryList = searchLibraryList,
-                    )
-                }
+            "서재" -> {
+                SearchLibraryScreen(
+                    libraryList = searchLibraryList,
+                )
             }
         }
     }
