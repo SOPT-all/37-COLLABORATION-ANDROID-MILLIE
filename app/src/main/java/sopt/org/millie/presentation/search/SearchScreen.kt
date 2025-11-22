@@ -32,7 +32,7 @@ fun SearchScreen(
     searchBookList: List<SearchBookModel>,
     searchLibraryList: List<SearchLibraryModel>,
     searchBanner: SearchBannerModel,
-    onClickBookItem: () -> Unit,
+    onBookItemClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var text by remember { mutableStateOf("") }
@@ -84,7 +84,7 @@ fun SearchScreen(
                 SearchBookScreen(
                     bookList = searchBookList,
                     searchBanner = searchBanner,
-                    onClickBookItem = onClickBookItem,
+                    onBookItemClick = onBookItemClick,
                 )
             }
 
@@ -174,7 +174,7 @@ private fun SearchScreenPreview() {
                     bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
                     bannerImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
                 ),
-            onClickBookItem = {},
+            onBookItemClick = {},
         )
     }
 }

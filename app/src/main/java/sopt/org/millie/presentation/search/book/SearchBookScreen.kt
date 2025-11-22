@@ -23,7 +23,7 @@ import sopt.org.millie.presentation.search.model.SearchBookModel
 fun SearchBookScreen(
     bookList: List<SearchBookModel>,
     searchBanner: SearchBannerModel,
-    onClickBookItem: () -> Unit,
+    onBookItemClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -49,12 +49,13 @@ fun SearchBookScreen(
                 key = { it.bookId },
             ) { book ->
                 SearchBookItem(
+                    bookId = book.bookId,
                     bookCoverImageUrl = book.bookCoverImageUrl,
                     bookTitle = book.bookTitle,
                     bookAuthor = book.bookAuthor,
                     completionRate = book.completionRate,
                     completionTime = book.completionTime,
-                    onClickBookItem = onClickBookItem,
+                    onBookItemClick = { onBookItemClick(book.bookId) },
                     isAudiobook = book.isAudiobook,
                     voiceActor = book.voiceActor,
                 )
@@ -124,6 +125,6 @@ private fun SearchBookScreenPreview() {
             bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
             bannerImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
         ),
-        onClickBookItem = {},
+        onBookItemClick = {},
     )
 }

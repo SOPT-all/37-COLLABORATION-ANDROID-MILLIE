@@ -18,12 +18,13 @@ import sopt.org.millie.core.util.noRippleClickable
 
 @Composable
 fun SearchBookItem(
+    bookId: Long,
     bookCoverImageUrl: String,
     bookTitle: String,
     bookAuthor: String,
     completionRate: Int,
     completionTime: Int,
-    onClickBookItem: () -> Unit,
+    onBookItemClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
     isAudiobook: Boolean = false,
     voiceActor: String = "",
@@ -32,7 +33,7 @@ fun SearchBookItem(
         modifier = modifier
             .width(103.dp)
             .noRippleClickable(
-                onClick = onClickBookItem,
+                onClick = { onBookItemClick(bookId) },
             ),
     ) {
         AsyncImage(
@@ -77,12 +78,13 @@ fun SearchBookItem(
 @Composable
 private fun SearchBookItemPreview() {
     SearchBookItem(
+        bookId = 1,
         bookCoverImageUrl = "",
         bookTitle = "홍학의 자리",
         bookAuthor = "정해연",
         completionRate = 36,
         completionTime = 533,
-        onClickBookItem = {},
+        onBookItemClick = {},
         isAudiobook = true,
         voiceActor = "김지윤,박지윤",
     )
