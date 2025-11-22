@@ -10,11 +10,12 @@ import sopt.org.millie.presentation.search.component.SearchTitle
 
 @Composable
 fun SearchPostTitle(
+    count: Int,
     modifier: Modifier = Modifier,
 ) {
     SearchTitle(
         title = "포스트",
-        count = 736,
+        count = count,
         modifier = modifier
             .padding(vertical = 10.dp),
     )
@@ -24,6 +25,8 @@ fun SearchPostTitle(
 @Composable
 private fun SearchPostScreenPreview() {
     MillieTheme {
-        SearchPostTitle()
+        SearchPostTitle(
+            count = 4,
+        )
     }
 }
