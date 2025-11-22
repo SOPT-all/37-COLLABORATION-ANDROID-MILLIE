@@ -1,5 +1,7 @@
 package sopt.org.millie.presentation.search.model
+import androidx.compose.runtime.Immutable
 
+@Immutable
 data class SearchBookModel(
     val imageUrl: String,
     val reader: String,
