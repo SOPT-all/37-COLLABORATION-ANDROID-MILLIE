@@ -3,6 +3,7 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 data class SearchBookModel(
+    val bookId: Int,
     val bookCoverImageUrl: String,
     val bookTitle: String,
     val bookAuthor: String,

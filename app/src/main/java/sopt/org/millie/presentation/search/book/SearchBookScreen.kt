@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -44,17 +45,18 @@ fun SearchBookScreen(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             items(
-                count = bookList.size,
-            ) {
+                items = bookList,
+                key = { it.bookId },
+            ) { book ->
                 SearchBookItem(
-                    bookCoverImageUrl = bookList[it].bookCoverImageUrl,
-                    bookTitle = bookList[it].bookTitle,
-                    bookAuthor = bookList[it].bookAuthor,
-                    completionRate = bookList[it].completionRate,
-                    completionTime = bookList[it].completionTime,
+                    bookCoverImageUrl = book.bookCoverImageUrl,
+                    bookTitle = book.bookTitle,
+                    bookAuthor = book.bookAuthor,
+                    completionRate = book.completionRate,
+                    completionTime = book.completionTime,
                     onClickBookItem = onClickBookItem,
-                    isAudiobook = bookList[it].isAudiobook,
-                    voiceActor = bookList[it].voiceActor,
+                    isAudiobook = book.isAudiobook,
+                    voiceActor = book.voiceActor,
                 )
             }
         }
