@@ -80,6 +80,7 @@ private fun SearchBookScreenPreview() {
     SearchBookScreen(
         bookList = listOf(
             SearchBookModel(
+                bookId = 1,
                 bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
                 bookTitle = "홍학의 자리",
                 bookAuthor = "정해연",
@@ -87,15 +88,7 @@ private fun SearchBookScreenPreview() {
                 completionTime = 533,
             ),
             SearchBookModel(
-                bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
-                bookTitle = "홍학의 자리",
-                bookAuthor = "정해연",
-                completionRate = 36,
-                completionTime = 533,
-                isAudiobook = true,
-                voiceActor = "김지윤,박지윤",
-            ),
-            SearchBookModel(
+                bookId = 2,
                 bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
                 bookTitle = "홍학의 자리",
                 bookAuthor = "정해연",
@@ -105,6 +98,17 @@ private fun SearchBookScreenPreview() {
                 voiceActor = "김지윤,박지윤",
             ),
             SearchBookModel(
+                bookId = 3,
+                bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                bookTitle = "홍학의 자리",
+                bookAuthor = "정해연",
+                completionRate = 36,
+                completionTime = 533,
+                isAudiobook = true,
+                voiceActor = "김지윤,박지윤",
+            ),
+            SearchBookModel(
+                bookId = 4,
                 bookCoverImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
                 bookTitle = "홍학의 자리",
                 bookAuthor = "정해연",
