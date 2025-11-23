@@ -11,6 +11,7 @@ val MilliePurple = Color(0xFFA451F7)
 val SubPurple = Color(0xFF534165)
 val AudioColor = Color(0xFFD16686)
 val AudioColor2 = Color(0xFF2C9285)
+val BannerColor = Color(0xFFE8F9F4)
 
 // Greyscale Colors
 val White = Color(0xFFFFFFFF)
@@ -36,6 +37,7 @@ data class MillieColors(
     val subPurple: Color = SubPurple,
     val audioColor: Color = AudioColor,
     val audioColor2: Color = AudioColor2,
+    val bannerColor: Color = BannerColor,
     val white: Color = White,
     val lightGray1: Color = LightGray1,
     val lightGray2: Color = LightGray2,
@@ -57,6 +59,7 @@ val defaultMillieColors = MillieColors(
     subPurple = SubPurple,
     audioColor = AudioColor,
     audioColor2 = AudioColor2,
+    bannerColor = BannerColor,
     white = White,
     lightGray1 = LightGray1,
     lightGray2 = LightGray2,
