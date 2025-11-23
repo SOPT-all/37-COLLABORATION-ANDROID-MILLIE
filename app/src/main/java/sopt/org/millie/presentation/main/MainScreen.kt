@@ -1,0 +1,45 @@
+package sopt.org.millie.presentation.main
+
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.compose.NavHost
+import sopt.org.millie.presentation.search.searchNavGraph
+import sopt.org.millie.presentation.setting.settingNavGraph
+import sopt.org.millie.presentation.shelf.shelfNavGraph
+import sopt.org.millie.presentation.today.todayNavGraph
+import sopt.org.millie.presentation.wandok.wandokNavGraph
+
+@Composable
+fun MainScreen(
+    navigator: MainNavigator,
+) {
+    val isBottomBarVisible by navigator.isBottomBarVisible.collectAsStateWithLifecycle()
+    val currentTab by navigator.currentTab.collectAsStateWithLifecycle()
+
+    Scaffold(
+        bottomBar = {
+            MainBottomBar(
+                visible = isBottomBarVisible,
+                tabs = MainTab.entries.toList(),
+                currentTab = currentTab,
+                onTabSelected = navigator::navigate,
+            )
+        },
+    ) { paddingValues ->
+        NavHost(
+            navController = navigator.navController,
+            startDestination = navigator.startDestination,
+            modifier = Modifier.padding(paddingValues),
+        ) {
+            todayNavGraph(paddingValues)
+            wandokNavGraph(paddingValues)
+            searchNavGraph(paddingValues)
+            shelfNavGraph(paddingValues)
+            settingNavGraph(paddingValues)
+        }
+    }
+}
