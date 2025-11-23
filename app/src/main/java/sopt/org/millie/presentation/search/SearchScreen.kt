@@ -8,9 +8,6 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
@@ -38,9 +35,8 @@ fun SearchScreen(
     modifier: Modifier = Modifier,
     searchViewModel: SearchViewModel = viewModel(),
 ) {
-    var text by remember { mutableStateOf("") }
-
     val searchUiState by searchViewModel.uiState.collectAsStateWithLifecycle()
+    val inputText by searchViewModel.text.collectAsStateWithLifecycle()
 
     Column(
         modifier = modifier.background(MillieTheme.colors.white),
@@ -63,9 +59,9 @@ fun SearchScreen(
         )
 
         MillieSearchTextField(
-            value = text,
-            onValueChange = { text = it },
-            onCancelClick = { text = "" },
+            value = inputText,
+            onValueChange = { searchViewModel.updateText(it) },
+            onCancelClick = { searchViewModel.clearText() },
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
         )
 
