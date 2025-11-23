@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.search
+package sopt.org.millie.presentation.search.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.navigation.NavController

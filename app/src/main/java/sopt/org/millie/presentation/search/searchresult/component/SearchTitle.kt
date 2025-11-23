@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.search.search.component
+package sopt.org.millie.presentation.search.searchresult.component
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding

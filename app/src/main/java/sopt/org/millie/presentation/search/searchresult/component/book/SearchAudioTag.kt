@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.search.search.component.book
+package sopt.org.millie.presentation.search.searchresult.component.book
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth

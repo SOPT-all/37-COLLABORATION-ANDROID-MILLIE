@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.main
+package sopt.org.millie.presentation.main.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn

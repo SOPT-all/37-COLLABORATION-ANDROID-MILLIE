@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.presentation.main.navigation.rememberMainNavigator
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

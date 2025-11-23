@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.main
+package sopt.org.millie.presentation.main.component
 
 import androidx.annotation.DrawableRes
 import sopt.org.millie.R

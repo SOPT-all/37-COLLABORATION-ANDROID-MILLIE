@@ -7,11 +7,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
-import sopt.org.millie.presentation.search.searchNavGraph
-import sopt.org.millie.presentation.setting.settingNavGraph
-import sopt.org.millie.presentation.shelf.shelfNavGraph
-import sopt.org.millie.presentation.today.todayNavGraph
-import sopt.org.millie.presentation.wandok.wandokNavGraph
+import sopt.org.millie.presentation.main.component.MainBottomBar
+import sopt.org.millie.presentation.main.component.MainTab
+import sopt.org.millie.presentation.main.navigation.MainNavigator
+import sopt.org.millie.presentation.search.navigation.searchNavGraph
+import sopt.org.millie.presentation.setting.navigation.settingNavGraph
+import sopt.org.millie.presentation.shelf.navigation.shelfNavGraph
+import sopt.org.millie.presentation.today.navigation.todayNavGraph
+import sopt.org.millie.presentation.wandok.navigation.wandokNavGraph
 
 @Composable
 fun MainScreen(

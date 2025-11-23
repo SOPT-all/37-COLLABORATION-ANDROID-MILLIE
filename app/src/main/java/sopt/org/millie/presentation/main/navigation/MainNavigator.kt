@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.main
+package sopt.org.millie.presentation.main.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -14,11 +14,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import sopt.org.millie.core.navigation.MainTabRoute
-import sopt.org.millie.presentation.search.navigateToSearch
-import sopt.org.millie.presentation.setting.navigateToSetting
-import sopt.org.millie.presentation.shelf.navigateToShelf
-import sopt.org.millie.presentation.today.navigateToToday
-import sopt.org.millie.presentation.wandok.navigateToWandok
+import sopt.org.millie.presentation.main.component.MainTab
+import sopt.org.millie.presentation.search.navigation.navigateToSearch
+import sopt.org.millie.presentation.setting.navigation.navigateToSetting
+import sopt.org.millie.presentation.shelf.navigation.navigateToShelf
+import sopt.org.millie.presentation.today.navigation.navigateToToday
+import sopt.org.millie.presentation.wandok.navigation.navigateToWandok
 
 class MainNavigator(
     val navController: NavHostController,

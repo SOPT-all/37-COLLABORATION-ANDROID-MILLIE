@@ -28,6 +28,6 @@ private fun WandokScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text("완독")
+        Text("Wandok")
     }
 }
