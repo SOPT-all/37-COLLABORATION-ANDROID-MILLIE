@@ -1,4 +1,4 @@
-package sopt.org.millie
+package sopt.org.millie.presentation.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -6,8 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import dagger.hilt.android.AndroidEntryPoint
 import sopt.org.millie.core.designsystem.theme.MillieTheme
-import sopt.org.millie.presentation.main.MainScreen
-import sopt.org.millie.presentation.main.rememberMainNavigator
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
