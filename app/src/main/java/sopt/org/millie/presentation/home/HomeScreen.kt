@@ -47,15 +47,12 @@ fun HomeRoute(
 
         is UiState.Success -> {
             HomeScreen(
-                value = uiState.searchKeyword,
+                uiState = uiState,
+                categoryList = categoryState.data,
                 onValueChange = viewModel::updateSearchKeyword,
                 onCancelClick = viewModel::clearSearch,
                 onSearchAction = viewModel::onSearchAction,
-                tabs = uiState.tabs,
-                selectedTab = uiState.selectedTab,
                 onTabSelected = viewModel::selectTab,
-                rankingItem = uiState.rankingItem,
-                categoryList = categoryState.data,
             )
         }
 
@@ -66,15 +63,12 @@ fun HomeRoute(
 
 @Composable
 private fun HomeScreen(
-    value: String,
+    uiState: HomeUiState,
+    categoryList: List<BookCategoryModel>,
     onValueChange: (String) -> Unit,
     onCancelClick: () -> Unit,
     onSearchAction: () -> Unit,
-    tabs: List<String>,
-    selectedTab: String,
     onTabSelected: (String) -> Unit,
-    rankingItem: RankingModel,
-    categoryList: List<BookCategoryModel>,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -85,16 +79,16 @@ private fun HomeScreen(
         HomeTopAppBar()
 
         HomeSearchTextField(
-            value = value,
+            value = uiState.searchKeyword,
             onValueChange = onValueChange,
             onCancelClick = onCancelClick,
             onSearchAction = onSearchAction,
         )
 
         RankingItem(
-            rank = rankingItem.rank,
-            bookTitle = rankingItem.bookTitle,
-            rankingIcon = rankingItem.rankingIcon,
+            rank = uiState.rankingItem.rank,
+            bookTitle = uiState.rankingItem.bookTitle,
+            rankingIcon = uiState.rankingItem.rankingIcon,
         )
 
         QuickLinks()
@@ -104,17 +98,17 @@ private fun HomeScreen(
         ) {
             item {
                 MillieTabbar(
-                    tabs = tabs,
-                    selectedTab = selectedTab,
+                    tabs = uiState.tabs,
+                    selectedTab = uiState.selectedTab,
                     onTabSelected = onTabSelected,
                     horizontalPadding = 23.dp,
                     modifier = Modifier.padding(top = 33.dp, bottom = 8.dp),
                 )
             }
 
-            when (selectedTab) {
+            when (uiState.selectedTab) {
                 "카테고리" -> categoryTabContent(categoryList)
-                else -> emptyTabContent(selectedTab)
+                else -> emptyTabContent(uiState.selectedTab)
             }
         }
     }
@@ -182,17 +176,16 @@ private fun LoadingScreen(
 private fun HomeScreenPreview() {
     MillieTheme {
         HomeScreen(
-            value = "",
-            onValueChange = {},
-            onCancelClick = {},
-            onSearchAction = {},
-            tabs = HomeConstants.HOME_TABS,
-            selectedTab = HomeConstants.DEFAULT_TAB,
-            onTabSelected = {},
-            rankingItem = RankingModel(
-                rank = 2,
-                bookTitle = "동화",
-                rankingIcon = R.drawable.ic_home_ranking_down,
+            uiState = HomeUiState(
+                searchKeyword = "",
+                tabs = HomeConstants.HOME_TABS,
+                selectedTab = HomeConstants.DEFAULT_TAB,
+                rankingItem = RankingModel(
+                    rank = 2,
+                    bookTitle = "동화",
+                    rankingIcon = R.drawable.ic_home_ranking_down,
+                ),
+                categoryList = UiState.Success(emptyList()),
             ),
             categoryList = listOf(
                 BookCategoryModel(
@@ -226,6 +219,10 @@ private fun HomeScreenPreview() {
                     imageUrl = "",
                 ),
             ),
+            onValueChange = {},
+            onCancelClick = {},
+            onSearchAction = {},
+            onTabSelected = {},
         )
     }
 }
