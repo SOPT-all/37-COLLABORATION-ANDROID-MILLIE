@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import sopt.org.millie.R
@@ -27,7 +28,28 @@ import sopt.org.millie.presentation.search.model.SearchBookModel
 import sopt.org.millie.presentation.search.model.SearchLibraryModel
 
 @Composable
-fun SearchScreen(
+fun SearchRoute(
+    searchViewModel: SearchViewModel = hiltViewModel()
+) {
+    val searchUiState by searchViewModel.uiState.collectAsStateWithLifecycle()
+
+    SearchScreen(
+        searchTabs = searchUiState.searchTabs,
+        selectedTab = searchUiState.selectedTab,
+        onSelectedTab = searchViewModel::onTabSelected,
+        searchBookList = (searchUiState.searchBookList) as List<SearchBookModel>,
+        searchLibraryList = (searchUiState.searchLibraryList) as List<SearchLibraryModel>,
+        searchBanner = (searchUiState.searchBanner) as SearchBannerModel,
+        onBookItemClick = searchViewModel::onBookItemClick,
+    )
+
+}
+
+@Composable
+private fun SearchScreen(
+    searchTabs: List<String>,
+    selectedTab: String,
+    onSelectedTab: (String) -> Unit,
     searchBookList: List<SearchBookModel>,
     searchLibraryList: List<SearchLibraryModel>,
     searchBanner: SearchBannerModel,
@@ -37,7 +59,6 @@ fun SearchScreen(
 ) {
     val searchUiState by searchViewModel.uiState.collectAsStateWithLifecycle()
     val inputText by searchViewModel.text.collectAsStateWithLifecycle()
-
     Column(
         modifier = modifier.background(MillieTheme.colors.white),
     ) {
@@ -72,9 +93,9 @@ fun SearchScreen(
         )
 
         MillieTabbar(
-            tabs = searchUiState.searchTabs,
-            selectedTab = searchUiState.selectedTab,
-            onTabSelected = searchViewModel::onTabSelected,
+            tabs = searchTabs,
+            selectedTab = selectedTab,
+            onTabSelected = onSelectedTab,
         )
 
         when (searchUiState.selectedTab) {
