@@ -23,10 +23,10 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
 fun SearchPostItem(
-    postImage: Int,
+    @DrawableRes postImage: Int,
     title: String,
     description: String,
-    writerImage: Int,
+    @DrawableRes writerImage: Int,
     writerName: String,
     writerDate: String,
     modifier: Modifier = Modifier,
@@ -87,7 +87,7 @@ private fun PostBookInfo(
 
 @Composable
 private fun PostWriterInfo(
-    writerUrl: Int,
+    @DrawableRes writerUrl: Int,
     writerName: String,
     writerDate: String,
     modifier: Modifier = Modifier,
