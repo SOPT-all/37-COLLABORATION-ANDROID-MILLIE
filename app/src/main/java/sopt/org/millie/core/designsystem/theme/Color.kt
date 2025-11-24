@@ -28,6 +28,7 @@ val Black = Color(0xFF000000)
 
 // Background Colors
 val Background = Color(0xFFFEFEFE)
+val BookDetailBackground = Color(0xFFE0E3ED)
 
 @Immutable
 data class MillieColors(
@@ -50,6 +51,7 @@ data class MillieColors(
     val darkGray2: Color = DarkGray2,
     val black: Color = Black,
     val background: Color = Background,
+    val bookDetailBackground: Color = BookDetailBackground,
 )
 
 val defaultMillieColors = MillieColors(
@@ -72,6 +74,7 @@ val defaultMillieColors = MillieColors(
     darkGray2 = DarkGray2,
     black = Black,
     background = Background,
+    bookDetailBackground = BookDetailBackground,
 )
 
 val localMillieColorsProvider = staticCompositionLocalOf { defaultMillieColors }

@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -20,8 +19,6 @@ import sopt.org.millie.presentation.search.home.constants.HomeConstants
 fun QuickLinks(
     modifier: Modifier = Modifier,
 ) {
-    val tags = remember { HomeConstants.QUICK_LINK_TAGS }
-
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -38,7 +35,7 @@ fun QuickLinks(
             horizontalArrangement = Arrangement.spacedBy(15.dp),
             contentPadding = PaddingValues(horizontal = 24.dp),
         ) {
-            items(tags) { tag ->
+            items(HomeConstants.QUICK_LINK_TAGS) { tag ->
                 CategoryTag(
                     iconRes = tag.iconRes,
                     title = tag.title,

@@ -11,8 +11,8 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
 fun SearchTitleAuthor(
-    title: String,
-    author: String,
+    bookTitle: String,
+    bookAuthor: String,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -20,12 +20,12 @@ fun SearchTitleAuthor(
         verticalArrangement = Arrangement.spacedBy(1.dp),
     ) {
         Text(
-            text = title,
+            text = bookTitle,
             color = MillieTheme.colors.black,
             style = MillieTheme.typography.title.subHead3,
         )
         Text(
-            text = author,
+            text = bookAuthor,
             color = MillieTheme.colors.gray3,
             style = MillieTheme.typography.body.subBody2,
         )
@@ -36,7 +36,7 @@ fun SearchTitleAuthor(
 @Composable
 private fun SearchTitleAuthorPreview() {
     SearchTitleAuthor(
-        title = "홍학의 자리",
-        author = "정해연",
+        bookTitle = "홍학의 자리",
+        bookAuthor = "정해연",
     )
 }
