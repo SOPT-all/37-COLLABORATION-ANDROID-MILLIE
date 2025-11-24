@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.bookdetail.model
+package sopt.org.millie.presentation.search.bookdetail.model
 
 import androidx.compose.runtime.Immutable
 import kotlinx.collections.immutable.ImmutableList

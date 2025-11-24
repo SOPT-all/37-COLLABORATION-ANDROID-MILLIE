@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.bookdetail.component.book
+package sopt.org.millie.presentation.search.bookdetail.component.book
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,8 +30,8 @@ import androidx.compose.ui.unit.dp
 import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 import sopt.org.millie.core.util.noRippleClickable
-import sopt.org.millie.presentation.bookdetail.model.BookDataType
 import sopt.org.millie.presentation.search.bookdetail.component.tag.BookDetailTag
+import sopt.org.millie.presentation.search.bookdetail.model.BookDataType
 
 @Composable
 fun BookDataSection(

@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.bookdetail.component.book
+package sopt.org.millie.presentation.search.bookdetail.component.book
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,8 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
-import sopt.org.millie.presentation.bookdetail.model.BookReviewModel
 import sopt.org.millie.presentation.search.bookdetail.component.tag.BookDetailLikedTag
+import sopt.org.millie.presentation.search.bookdetail.model.BookReviewModel
 
 @Composable
 fun BookDetailReview(

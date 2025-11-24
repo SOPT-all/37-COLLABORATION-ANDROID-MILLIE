@@ -1,4 +1,5 @@
 package sopt.org.millie.presentation.search.searchresult.book.model
+
 import androidx.compose.runtime.Immutable
 
 @Immutable

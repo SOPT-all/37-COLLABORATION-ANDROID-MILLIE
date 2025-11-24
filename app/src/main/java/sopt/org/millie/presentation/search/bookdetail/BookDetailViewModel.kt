@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.bookdetail
+package sopt.org.millie.presentation.search.bookdetail
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import sopt.org.millie.R
-import sopt.org.millie.presentation.bookdetail.model.BookDataType
-import sopt.org.millie.presentation.bookdetail.model.BookSimilarModel
+import sopt.org.millie.presentation.search.bookdetail.model.BookDataType
+import sopt.org.millie.presentation.search.bookdetail.model.BookSimilarModel
 import javax.inject.Inject
 
 @HiltViewModel

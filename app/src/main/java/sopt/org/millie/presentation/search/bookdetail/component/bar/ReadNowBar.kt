@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.bookdetail.component.bar
+package sopt.org.millie.presentation.search.bookdetail.component.bar
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background

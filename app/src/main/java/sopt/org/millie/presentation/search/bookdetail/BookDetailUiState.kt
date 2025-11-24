@@ -1,11 +1,11 @@
-package sopt.org.millie.presentation.bookdetail
+package sopt.org.millie.presentation.search.bookdetail
 
 import androidx.compose.runtime.Immutable
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
-import sopt.org.millie.presentation.bookdetail.model.BookDataType
-import sopt.org.millie.presentation.bookdetail.model.BookDetailModel
-import sopt.org.millie.presentation.bookdetail.model.BookSimilarModel
+import sopt.org.millie.presentation.search.bookdetail.model.BookDataType
+import sopt.org.millie.presentation.search.bookdetail.model.BookDetailModel
+import sopt.org.millie.presentation.search.bookdetail.model.BookSimilarModel
 
 @Immutable
 data class BookDetailUiState(

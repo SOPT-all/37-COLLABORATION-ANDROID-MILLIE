@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.bookdetail.component.book
+package sopt.org.millie.presentation.search.bookdetail.component.book
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,8 +21,7 @@ import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
-import sopt.org.millie.presentation.bookdetail.model.BookSimilarModel
-import sopt.org.millie.presentation.search.bookdetail.component.book.BookDetailBook
+import sopt.org.millie.presentation.search.bookdetail.model.BookSimilarModel
 
 @Composable
 fun BookSimilarSection(

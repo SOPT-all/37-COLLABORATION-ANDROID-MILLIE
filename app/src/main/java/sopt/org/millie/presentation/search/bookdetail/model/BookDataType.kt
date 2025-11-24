@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.bookdetail.model
+package sopt.org.millie.presentation.search.bookdetail.model
 
 enum class BookDataType(
     val bookDataType: String,
