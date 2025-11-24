@@ -16,8 +16,8 @@ import javax.inject.Inject
 class BookDetailViewModel
     @Inject
     constructor() : ViewModel() {
-    private val _uiState = MutableStateFlow(BookDetailState())
-    val uiState: StateFlow<BookDetailState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(BookDetailUiState())
+    val uiState: StateFlow<BookDetailUiState> = _uiState.asStateFlow()
 
     init {
         loadData()
@@ -83,5 +83,9 @@ class BookDetailViewModel
                 isCompletedGraphChanged = !it.isCompletedGraphChanged,
             )
         }
+    }
+
+    fun onReviewLikeClicked(reviewId: Long) {
+        // TODO: 서버 연결
     }
 }

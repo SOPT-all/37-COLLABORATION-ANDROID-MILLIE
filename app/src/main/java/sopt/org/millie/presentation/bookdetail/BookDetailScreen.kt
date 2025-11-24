@@ -1,7 +1,6 @@
 package sopt.org.millie.presentation.bookdetail
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -45,16 +45,18 @@ fun BookDetailRoute(
         onCompletedRateClick = viewModel::onCompletedRateClicked,
         onAgeGenderClick = viewModel::onAgeGenderClicked,
         onImageClick = viewModel::onImageClicked,
+        onReviewLikeClick = viewModel::onReviewLikeClicked,
     )
 }
 
 @Composable
 private fun BookDetailScreen(
-    uiState: BookDetailState,
+    uiState: BookDetailUiState,
     onBackButtonClick: () -> Unit,
     onCompletedRateClick: () -> Unit,
     onAgeGenderClick: () -> Unit,
     onImageClick: () -> Unit,
+    onReviewLikeClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
@@ -75,6 +77,7 @@ private fun BookDetailScreen(
                 onCompletedRateClick = onCompletedRateClick,
                 onAgeGenderClick = onAgeGenderClick,
                 onImageClick = onImageClick,
+                onReviewLikeClick = onReviewLikeClick,
             )
         }
     }
@@ -82,11 +85,12 @@ private fun BookDetailScreen(
 
 @Composable
 private fun BookDetailContent(
-    uiState: BookDetailState,
+    uiState: BookDetailUiState,
     onBackButtonClick: () -> Unit,
     onCompletedRateClick: () -> Unit,
     onAgeGenderClick: () -> Unit,
     onImageClick: () -> Unit,
+    onReviewLikeClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -116,6 +120,7 @@ private fun BookDetailContent(
                     ),
                     offsetX = 4.dp,
                     offsetY = 8.dp,
+                    blur = 8.dp,
                 )
                 .customShadow(
                     shape = RoundedCornerShape(8.dp),
@@ -124,6 +129,7 @@ private fun BookDetailContent(
                     ),
                     offsetX = 12.dp,
                     offsetY = 8.dp,
+                    blur = 24.dp,
                 ),
             contentScale = ContentScale.Crop,
         )
@@ -142,15 +148,17 @@ private fun BookDetailContent(
                 .background(color = MillieTheme.colors.background)
                 .padding(top = 40.dp),
         ) {
-            BookInfoSection(
-                bookTitle = uiState.bookDetailUiModel.bookTitle,
-                bookAuthor = uiState.bookDetailUiModel.bookAuthor,
-                bookType = uiState.bookDetailUiModel.bookType,
-                publishDate = uiState.bookDetailUiModel.publishedDate,
-                totalReviewCount = uiState.bookDetailUiModel.totalReviewCount,
-                bookRate = uiState.bookDetailUiModel.bookRate,
-                completionRate = uiState.bookDetailUiModel.completionRate,
-            )
+            with(uiState.bookDetailUiModel) {
+                BookInfoSection(
+                    bookTitle = bookTitle,
+                    bookAuthor = bookAuthor,
+                    bookType = bookType,
+                    publishDate = publishedDate,
+                    totalReviewCount = totalReviewCount,
+                    bookRate = bookRate,
+                    completionRate = completionRate,
+                )
+            }
 
             Spacer(modifier = Modifier.height(10.dp))
 
@@ -170,7 +178,8 @@ private fun BookDetailContent(
             BookReviewSection(
                 totalReviewCount = uiState.bookDetailUiModel.totalReviewCount,
                 bookReviews = uiState.bookDetailUiModel.reviews,
-                onReviewLikeClick = {},
+                onReviewLikeClick = onReviewLikeClick,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 30.dp),
             )
 
             Line()
@@ -198,11 +207,9 @@ private fun BookDetailContent(
 private fun Line(
     modifier: Modifier = Modifier,
 ) {
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(3.dp)
-            .background(color = MillieTheme.colors.lightGray1),
+    HorizontalDivider(
+        thickness = 3.dp,
+        color = MillieTheme.colors.lightGray1,
     )
 }
 
@@ -211,11 +218,12 @@ private fun Line(
 private fun Preview() {
     MillieTheme {
         BookDetailScreen(
-            uiState = BookDetailState(),
+            uiState = BookDetailUiState(),
             onBackButtonClick = {},
             onCompletedRateClick = {},
             onAgeGenderClick = {},
             onImageClick = {},
+            onReviewLikeClick = {},
         )
     }
 }
