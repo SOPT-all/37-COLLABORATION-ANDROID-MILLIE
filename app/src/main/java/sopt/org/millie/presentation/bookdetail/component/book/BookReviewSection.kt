@@ -88,18 +88,22 @@ private fun Preview() {
             totalReviewCount = 100,
             bookReviews = persistentListOf(
                 BookReviewModel(
-                    username = "aaaa",
+                    reviewerName = "aaaa",
+                    bookId = 0,
                     reviewId = 1,
                     dateOfReview = "2023.01.01",
                     contentOfReview = "리뷰1",
                     likedNum = 100,
+                    isLiked = true
                 ),
                 BookReviewModel(
-                    username = "bbbb",
+                    reviewerName = "bbbb",
+                    bookId = 1,
                     reviewId = 2,
                     dateOfReview = "2023.01.01",
                     contentOfReview = "리뷰2",
                     likedNum = 100,
+                    isLiked = false
                 ),
             ),
             onReviewLikeClick = {},
