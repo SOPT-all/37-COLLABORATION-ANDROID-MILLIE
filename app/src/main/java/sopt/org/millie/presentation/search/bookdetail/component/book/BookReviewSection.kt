@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.bookdetail.component.book
+package sopt.org.millie.presentation.search.bookdetail.component.book
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,7 +19,6 @@ import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
-import sopt.org.millie.presentation.search.bookdetail.component.book.BookDetailReview
 import sopt.org.millie.presentation.search.bookdetail.model.BookReviewModel
 
 @Composable

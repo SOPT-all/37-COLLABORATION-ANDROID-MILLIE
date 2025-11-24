@@ -29,6 +29,7 @@ import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookMod
 import sopt.org.millie.presentation.search.searchresult.constants.SearchResultConstants
 import sopt.org.millie.presentation.search.searchresult.library.SearchLibraryScreen
 import sopt.org.millie.presentation.search.searchresult.library.model.SearchLibraryModel
+import sopt.org.millie.presentation.search.searchresult.post.SearchPostScreen
 
 @Composable
 fun SearchRoute(
@@ -117,7 +118,7 @@ private fun SearchScreen(
             }
 
             "포스트" -> {
-                // TODO : 화면 추가
+               SearchPostScreen()
             }
 
             "서재" -> {
@@ -134,14 +135,15 @@ private fun SearchScreen(
 private fun SearchScreenPreview() {
     MillieTheme {
         var text by remember { mutableStateOf("") }
+        var selectedTab by remember { mutableStateOf(SearchResultConstants.SELECTED_TAB) }
 
         SearchScreen(
             value = text,
             onValueChange = { text = it },
             onCancelClick = { text = "" },
             searchTabs = SearchResultConstants.SEARCH_TABS,
-            selectedTab = SearchResultConstants.SELECTED_TAB,
-            onSelectedTab = { },
+            selectedTab = selectedTab,
+            onSelectedTab = { selectedTab = it },
             searchBookList = listOf(
                 SearchBookModel(
                     bookId = 1,
