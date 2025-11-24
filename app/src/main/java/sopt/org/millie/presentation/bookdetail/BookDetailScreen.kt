@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -56,22 +57,26 @@ private fun BookDetailScreen(
     onImageClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxSize(),
-    ) {
-        BookDetailContent(
-            uiState = uiState,
-            onBackButtonClick = onBackButtonClick,
-            onCompletedRateClick = onCompletedRateClick,
-            onAgeGenderClick = onAgeGenderClick,
-            onImageClick = onImageClick,
-        )
-
-        ReadNowBar(
-            onButtonClick = {},
-            modifier = Modifier.weight(1f),
-        )
+    Scaffold(
+        bottomBar = {
+            ReadNowBar(
+                onButtonClick = {},
+            )
+        },
+    ) { innerPadding ->
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(innerPadding),
+        ) {
+            BookDetailContent(
+                uiState = uiState,
+                onBackButtonClick = onBackButtonClick,
+                onCompletedRateClick = onCompletedRateClick,
+                onAgeGenderClick = onAgeGenderClick,
+                onImageClick = onImageClick,
+            )
+        }
     }
 }
 
@@ -134,7 +139,7 @@ private fun BookDetailContent(
                     ),
                     offsetY = (-5).dp,
                 )
-                .background(color = MillieTheme.colors.white)
+                .background(color = MillieTheme.colors.background)
                 .padding(top = 40.dp),
         ) {
             BookInfoSection(
