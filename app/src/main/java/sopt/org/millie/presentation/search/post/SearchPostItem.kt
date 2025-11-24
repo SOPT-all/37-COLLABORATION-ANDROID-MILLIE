@@ -1,5 +1,7 @@
 package sopt.org.millie.presentation.search.post
 
+import androidx.annotation.DrawableRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -21,10 +24,10 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
 fun SearchPostItem(
-    postImageUrl: String,
+    postImage: Int,
     title: String,
     description: String,
-    writerUrl: String,
+    writerImage: Int,
     writerName: String,
     writerDate: String,
     modifier: Modifier = Modifier,
@@ -36,7 +39,7 @@ fun SearchPostItem(
             .background(color = MillieTheme.colors.white),
     ) {
         MillieImage(
-            imageUrl = postImageUrl,
+            imageUrl = postImage,
             modifier = Modifier
                 .align(Alignment.Top)
                 .size(width = 91.dp, height = 132.dp),
@@ -49,7 +52,7 @@ fun SearchPostItem(
         ) {
             PostBookInfo(title = title, description = description)
 
-            PostWriterInfo(writerUrl = writerUrl, writerName = writerName, writerDate = writerDate)
+            PostWriterInfo(writerUrl = writerImage, writerName = writerName, writerDate = writerDate)
         }
     }
 }
@@ -85,7 +88,7 @@ private fun PostBookInfo(
 
 @Composable
 private fun PostWriterInfo(
-    writerUrl: String,
+    writerUrl: Int,
     writerName: String,
     writerDate: String,
     modifier: Modifier = Modifier,
@@ -124,11 +127,11 @@ private fun PostWriterInfo(
 
 @Composable
 private fun MillieImage(
-    imageUrl: String,
+    @DrawableRes imageUrl: Int,
     modifier: Modifier = Modifier,
 ) {
-    AsyncImage(
-        model = imageUrl,
+    Image(
+        painter = painterResource(id = imageUrl),
         contentDescription = null,
         modifier = modifier,
     )
