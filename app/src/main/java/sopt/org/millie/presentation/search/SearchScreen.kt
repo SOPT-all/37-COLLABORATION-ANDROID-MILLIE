@@ -8,6 +8,9 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
@@ -15,13 +18,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.component.MillieSearchTextField
 import sopt.org.millie.core.designsystem.component.MillieTabbar
 import sopt.org.millie.core.designsystem.component.MillieTopappbar
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 import sopt.org.millie.presentation.search.book.SearchBookScreen
+import sopt.org.millie.presentation.search.constants.SearchConstants
 import sopt.org.millie.presentation.search.library.SearchLibraryScreen
 import sopt.org.millie.presentation.search.model.SearchBannerModel
 import sopt.org.millie.presentation.search.model.SearchBookModel
@@ -29,11 +32,14 @@ import sopt.org.millie.presentation.search.model.SearchLibraryModel
 
 @Composable
 fun SearchRoute(
-    searchViewModel: SearchViewModel = hiltViewModel()
+    searchViewModel: SearchViewModel = hiltViewModel(),
 ) {
     val searchUiState by searchViewModel.uiState.collectAsStateWithLifecycle()
 
     SearchScreen(
+        value = searchUiState.searchInput,
+        onValueChange = searchViewModel::updateText,
+        onCancelClick = searchViewModel::clearText,
         searchTabs = searchUiState.searchTabs,
         selectedTab = searchUiState.selectedTab,
         onSelectedTab = searchViewModel::onTabSelected,
@@ -42,11 +48,13 @@ fun SearchRoute(
         searchBanner = (searchUiState.searchBanner) as SearchBannerModel,
         onBookItemClick = searchViewModel::onBookItemClick,
     )
-
 }
 
 @Composable
 private fun SearchScreen(
+    value: String,
+    onValueChange: (String) -> Unit,
+    onCancelClick: () -> Unit,
     searchTabs: List<String>,
     selectedTab: String,
     onSelectedTab: (String) -> Unit,
@@ -55,10 +63,7 @@ private fun SearchScreen(
     searchBanner: SearchBannerModel,
     onBookItemClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
-    searchViewModel: SearchViewModel = viewModel(),
 ) {
-    val searchUiState by searchViewModel.uiState.collectAsStateWithLifecycle()
-    val inputText by searchViewModel.text.collectAsStateWithLifecycle()
     Column(
         modifier = modifier.background(MillieTheme.colors.white),
     ) {
@@ -80,9 +85,9 @@ private fun SearchScreen(
         )
 
         MillieSearchTextField(
-            value = inputText,
-            onValueChange = { searchViewModel.updateText(it) },
-            onCancelClick = { searchViewModel.clearText() },
+            value = value,
+            onValueChange = onValueChange,
+            onCancelClick = onCancelClick,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
         )
 
@@ -98,7 +103,7 @@ private fun SearchScreen(
             onTabSelected = onSelectedTab,
         )
 
-        when (searchUiState.selectedTab) {
+        when (selectedTab) {
             "도서" -> {
                 SearchBookScreen(
                     bookList = searchBookList,
@@ -128,7 +133,15 @@ private fun SearchScreen(
 @Composable
 private fun SearchScreenPreview() {
     MillieTheme {
+        var text by remember { mutableStateOf("") }
+
         SearchScreen(
+            value = text,
+            onValueChange = { text = it },
+            onCancelClick = { text = "" },
+            searchTabs = SearchConstants.SEARCH_TABS,
+            selectedTab = SearchConstants.SELECTED_TAB,
+            onSelectedTab = { },
             searchBookList = listOf(
                 SearchBookModel(
                     bookId = 1,

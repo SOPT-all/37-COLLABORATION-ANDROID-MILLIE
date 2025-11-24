@@ -15,18 +15,19 @@ class SearchViewModel
     private val _uiState = MutableStateFlow(SearchUiState())
     val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
 
-    private val _text = MutableStateFlow("")
-    val text: StateFlow<String> = _text.asStateFlow()
-
     fun onTabSelected(tab: String) {
         _uiState.update { it.copy(selectedTab = tab) }
     }
 
     fun updateText(newText: String) {
-        _text.value = newText
+        _uiState.update { it.copy(searchInput = newText) }
     }
 
     fun clearText() {
-        _text.value = ""
+        _uiState.update { it.copy(searchInput = "") }
+    }
+
+    fun onBookItemClick(bookId: Long) {
+        // TODO: 이동 로직 추가
     }
 }

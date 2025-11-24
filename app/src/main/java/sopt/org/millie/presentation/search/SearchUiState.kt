@@ -9,6 +9,7 @@ import sopt.org.millie.presentation.search.model.SearchLibraryModel
 
 @Immutable
 data class SearchUiState(
+    val searchInput: String = "",
     val searchTabs: List<String> = SearchConstants.SEARCH_TABS,
     val selectedTab: String = SearchConstants.SELECTED_TAB,
     val searchBookList: UiState<List<SearchBookModel>> = UiState.Loading,
