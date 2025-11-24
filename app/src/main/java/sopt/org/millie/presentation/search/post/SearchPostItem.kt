@@ -1,5 +1,7 @@
-package sopt.org.millie.presentation.search
+package sopt.org.millie.presentation.search.post
 
+import androidx.annotation.DrawableRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,30 +16,35 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.core.util.customShadow
 
 @Composable
-fun PostItem(
-    postImageUrl: String,
+fun SearchPostItem(
+    @DrawableRes postImage: Int,
     title: String,
     description: String,
-    writerUrl: String,
+    @DrawableRes writerImage: Int,
     writerName: String,
     writerDate: String,
     modifier: Modifier = Modifier,
 ) {
+    val postShape = RoundedCornerShape(8.dp)
+
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(8.dp))
+            .customShadow(shape = postShape, color = MillieTheme.colors.black.copy(alpha = 0.05f), offsetY = 4.dp, blur = 21.dp)
+            .clip(postShape)
             .background(color = MillieTheme.colors.white),
     ) {
         MillieImage(
-            imageUrl = postImageUrl,
+            imageUrl = postImage,
             modifier = Modifier
                 .align(Alignment.Top)
                 .size(width = 91.dp, height = 132.dp),
@@ -50,7 +57,7 @@ fun PostItem(
         ) {
             PostBookInfo(title = title, description = description)
 
-            PostWriterInfo(writerUrl = writerUrl, writerName = writerName, writerDate = writerDate)
+            PostWriterInfo(writerUrl = writerImage, writerName = writerName, writerDate = writerDate)
         }
     }
 }
@@ -86,7 +93,7 @@ private fun PostBookInfo(
 
 @Composable
 private fun PostWriterInfo(
-    writerUrl: String,
+    @DrawableRes writerUrl: Int,
     writerName: String,
     writerDate: String,
     modifier: Modifier = Modifier,
@@ -125,11 +132,11 @@ private fun PostWriterInfo(
 
 @Composable
 private fun MillieImage(
-    imageUrl: String,
+    @DrawableRes imageUrl: Int,
     modifier: Modifier = Modifier,
 ) {
-    AsyncImage(
-        model = imageUrl,
+    Image(
+        painter = painterResource(id = imageUrl),
         contentDescription = null,
         modifier = modifier,
     )
@@ -137,13 +144,13 @@ private fun MillieImage(
 
 @Preview(showBackground = true)
 @Composable
-private fun SearchPostPreview() {
+private fun SearchPostScreenPreview() {
     MillieTheme {
-        PostItem(
-            postImageUrl = "",
+        SearchPostItem(
+            postImage = R.drawable.img_searh_post_book,
             title = "홍학의 자리",
             description = "독서를 취미로 삼고자 좋아하는 이꼬르영 유튜버의 추천 및 이미 베스트셀러로 유명세를 타던 홍학의자리를 읽…",
-            writerUrl = "",
+            writerImage = R.drawable.img_search_post_reviewer_1,
             writerName = "뇌쉑걸의 서재",
             writerDate = "2024.02.05",
         )
