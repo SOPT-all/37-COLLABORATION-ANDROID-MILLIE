@@ -18,8 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.core.util.customShadow
 
 @Composable
 fun SearchPostItem(
@@ -31,10 +34,13 @@ fun SearchPostItem(
     writerDate: String,
     modifier: Modifier = Modifier,
 ) {
+    val postShape = RoundedCornerShape(8.dp)
+
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(8.dp))
+            .customShadow(shape = postShape, color = MillieTheme.colors.black.copy(alpha = 0.05f), offsetY = 4.dp, blur = 21.dp)
+            .clip(postShape)
             .background(color = MillieTheme.colors.white),
     ) {
         MillieImage(
@@ -134,4 +140,19 @@ private fun MillieImage(
         contentDescription = null,
         modifier = modifier,
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun SearchPostScreenPreview() {
+    MillieTheme {
+        SearchPostItem(
+            postImage = R.drawable.img_searh_post_book,
+            title = "홍학의 자리",
+            description = "독서를 취미로 삼고자 좋아하는 이꼬르영 유튜버의 추천 및 이미 베스트셀러로 유명세를 타던 홍학의자리를 읽…",
+            writerImage = R.drawable.img_search_post_reviewer_1,
+            writerName = "뇌쉑걸의 서재",
+            writerDate = "2024.02.05",
+        )
+    }
 }
