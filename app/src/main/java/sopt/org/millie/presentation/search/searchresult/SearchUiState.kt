@@ -2,9 +2,9 @@ package sopt.org.millie.presentation.search.searchresult
 
 import androidx.compose.runtime.Immutable
 import sopt.org.millie.core.util.UiState
-import sopt.org.millie.presentation.search.searchresult.constants.SearchResultConstants
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBannerModel
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
+import sopt.org.millie.presentation.search.searchresult.constants.SearchResultConstants
 import sopt.org.millie.presentation.search.searchresult.library.model.SearchLibraryModel
 
 @Immutable

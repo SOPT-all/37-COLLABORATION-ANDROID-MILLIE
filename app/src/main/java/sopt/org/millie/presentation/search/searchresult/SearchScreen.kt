@@ -24,10 +24,10 @@ import sopt.org.millie.core.designsystem.component.MillieTabbar
 import sopt.org.millie.core.designsystem.component.MillieTopappbar
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 import sopt.org.millie.presentation.search.searchresult.book.SearchBookScreen
-import sopt.org.millie.presentation.search.searchresult.constants.SearchResultConstants
-import sopt.org.millie.presentation.search.searchresult.library.SearchLibraryScreen
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBannerModel
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
+import sopt.org.millie.presentation.search.searchresult.constants.SearchResultConstants
+import sopt.org.millie.presentation.search.searchresult.library.SearchLibraryScreen
 import sopt.org.millie.presentation.search.searchresult.library.model.SearchLibraryModel
 
 @Composable
