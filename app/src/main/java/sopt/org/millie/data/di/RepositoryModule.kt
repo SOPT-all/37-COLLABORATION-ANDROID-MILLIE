@@ -1,4 +1,19 @@
 package sopt.org.millie.data.di
 
-class RepositoryModule {
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import sopt.org.millie.data.repository.SearchRepository
+import sopt.org.millie.data.repositoryimpl.SearchRepositoryImpl
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class RepositoryModule {
+    @Binds
+    @Singleton
+    abstract fun bindsSearchRepository(
+        searchRepositoryImpl: SearchRepositoryImpl,
+    ): SearchRepository
 }
