@@ -10,5 +10,5 @@ data class BookDetailState(
     val bookDetailUiModel: BookDetailModel = BookDetailModel(),
     val isCompletedGraphChanged: Boolean = true,
     val selectedType: BookDataType = BookDataType.COMPLETED_RATE,
-    val similarBooks: ImmutableList<BookSimilarModel> = persistentListOf()
+    val similarBooks: ImmutableList<BookSimilarModel> = persistentListOf(),
 )

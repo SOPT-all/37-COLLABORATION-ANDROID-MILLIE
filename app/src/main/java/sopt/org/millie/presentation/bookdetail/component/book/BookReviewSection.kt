@@ -94,7 +94,7 @@ private fun Preview() {
                     dateOfReview = "2023.01.01",
                     contentOfReview = "리뷰1",
                     likedNum = 100,
-                    isLiked = true
+                    isLiked = true,
                 ),
                 BookReviewModel(
                     reviewerName = "bbbb",
@@ -103,7 +103,7 @@ private fun Preview() {
                     dateOfReview = "2023.01.01",
                     contentOfReview = "리뷰2",
                     likedNum = 100,
-                    isLiked = false
+                    isLiked = false,
                 ),
             ),
             onReviewLikeClick = {},

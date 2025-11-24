@@ -43,7 +43,7 @@ fun BookDetailRoute(
         onBackButtonClick = viewModel::onBackButtonClicked,
         onCompletedRateClick = viewModel::onCompletedRateClicked,
         onAgeGenderClick = viewModel::onAgeGenderClicked,
-        onImageClick = viewModel::onImageClicked
+        onImageClick = viewModel::onImageClicked,
     )
 }
 
@@ -84,7 +84,6 @@ private fun BookDetailContent(
     onImageClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -108,21 +107,20 @@ private fun BookDetailContent(
                 .customShadow(
                     shape = RoundedCornerShape(8.dp),
                     color = MillieTheme.colors.black.copy(
-                        alpha = 0.1f
+                        alpha = 0.1f,
                     ),
                     offsetX = 4.dp,
-                    offsetY = 8.dp
+                    offsetY = 8.dp,
                 )
                 .customShadow(
                     shape = RoundedCornerShape(8.dp),
                     color = MillieTheme.colors.black.copy(
-                        alpha = 0.2f
+                        alpha = 0.2f,
                     ),
                     offsetX = 12.dp,
-                    offsetY = 8.dp
+                    offsetY = 8.dp,
                 ),
             contentScale = ContentScale.Crop,
-
         )
 
         Column(
@@ -132,12 +130,12 @@ private fun BookDetailContent(
                 .customShadow(
                     shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp),
                     color = MillieTheme.colors.black.copy(
-                        alpha = 0.1f
+                        alpha = 0.1f,
                     ),
-                    offsetY = (-5).dp
+                    offsetY = (-5).dp,
                 )
                 .background(color = MillieTheme.colors.white)
-                .padding(top = 40.dp)
+                .padding(top = 40.dp),
         ) {
             BookInfoSection(
                 bookTitle = uiState.bookDetailUiModel.bookTitle,
@@ -159,7 +157,7 @@ private fun BookDetailContent(
 
             BookIntroduceSection(
                 bookDescription = uiState.bookDetailUiModel.bookDescription,
-                modifier = Modifier.padding(top = 50.dp, bottom = 30.dp)
+                modifier = Modifier.padding(top = 50.dp, bottom = 30.dp),
             )
 
             Line()
@@ -178,14 +176,14 @@ private fun BookDetailContent(
                 isCompletedGraphChanged = uiState.isCompletedGraphChanged,
                 selectedType = uiState.selectedType,
                 onImageClick = onImageClick,
-                modifier = Modifier.padding(vertical = 30.dp)
+                modifier = Modifier.padding(vertical = 30.dp),
             )
 
             Line()
 
             BookSimilarSection(
                 books = uiState.similarBooks,
-                modifier = Modifier.padding(top = 30.dp, bottom = 20.dp)
+                modifier = Modifier.padding(top = 30.dp, bottom = 20.dp),
             )
         }
     }
@@ -193,13 +191,13 @@ private fun BookDetailContent(
 
 @Composable
 private fun Line(
-    modifier: Modifier = Modifier
-){
+    modifier: Modifier = Modifier,
+) {
     Box(
         modifier = modifier
             .fillMaxWidth()
             .height(3.dp)
-            .background(color = MillieTheme.colors.lightGray1)
+            .background(color = MillieTheme.colors.lightGray1),
     )
 }
 
@@ -212,8 +210,7 @@ private fun Preview() {
             onBackButtonClick = {},
             onCompletedRateClick = {},
             onAgeGenderClick = {},
-            onImageClick = {}
+            onImageClick = {},
         )
     }
-
 }

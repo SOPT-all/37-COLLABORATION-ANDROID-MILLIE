@@ -13,7 +13,9 @@ import sopt.org.millie.presentation.bookdetail.model.BookSimilarModel
 import javax.inject.Inject
 
 @HiltViewModel
-class BookDetailViewModel @Inject constructor() : ViewModel() {
+class BookDetailViewModel
+    @Inject
+    constructor() : ViewModel() {
     private val _uiState = MutableStateFlow(BookDetailState())
     val uiState: StateFlow<BookDetailState> = _uiState.asStateFlow()
 
@@ -48,7 +50,6 @@ class BookDetailViewModel @Inject constructor() : ViewModel() {
                 bookTitle = "홍학의 자리",
                 bookAuthor = "정해연",
             ),
-
             )
 
         _uiState.update {
@@ -57,7 +58,7 @@ class BookDetailViewModel @Inject constructor() : ViewModel() {
     }
 
     fun onBackButtonClicked() {
-        //TODO: 네비 연결
+        // TODO: 네비 연결
     }
 
     fun onCompletedRateClicked() {
