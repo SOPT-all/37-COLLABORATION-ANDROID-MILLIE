@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Icon
@@ -17,23 +18,28 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.core.util.noRippleClickable
 
 @Composable
 fun BookDetailTopbar(
     bookDetailTopbarBackgroundColor: Color,
+    onBackButtonClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(color = bookDetailTopbarBackgroundColor),
+            .background(color = bookDetailTopbarBackgroundColor)
+            .padding(horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_back),
             contentDescription = null,
             tint = Color.Unspecified,
-            modifier = Modifier.size(24.dp),
+            modifier = Modifier
+                .size(24.dp)
+                .noRippleClickable(onClick = onBackButtonClick),
         )
 
         Spacer(modifier = Modifier.weight(1f))
@@ -62,6 +68,7 @@ private fun Preview() {
     MillieTheme {
         BookDetailTopbar(
             bookDetailTopbarBackgroundColor = MillieTheme.colors.white,
+            onBackButtonClick = {},
         )
     }
 }

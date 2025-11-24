@@ -33,7 +33,7 @@ fun BookDetailReview(
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         UserInfo(
-            username = bookReview.username,
+            username = bookReview.reviewerName,
         )
 
         Text(
@@ -95,11 +95,13 @@ private fun Preview() {
     MillieTheme {
         BookDetailReview(
             bookReview = BookReviewModel(
-                username = "어진 님",
+                reviewerName = "어진 님",
+                bookId = 0,
                 reviewId = 1,
                 dateOfReview = "2023.06.06",
                 contentOfReview = "저는 책에 오타가 난 줄 알았어요",
                 likedNum = 10,
+                isLiked = false,
             ),
             onLikeClick = {},
         )

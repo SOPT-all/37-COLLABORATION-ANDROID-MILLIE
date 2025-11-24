@@ -1,6 +1,7 @@
 package sopt.org.millie.presentation.bookdetail.component.bar
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,6 +31,7 @@ fun ReadNowBar(
     Column(
         modifier = modifier
             .fillMaxWidth()
+            .background(color = MillieTheme.colors.background)
             .padding(bottom = 10.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp),

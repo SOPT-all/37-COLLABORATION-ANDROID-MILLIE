@@ -16,7 +16,7 @@ import sopt.org.millie.core.util.noRippleClickable
 
 @Composable
 fun BookIntroduceSection(
-    reviewContent: String,
+    bookDescription: String,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
 ) {
@@ -34,7 +34,7 @@ fun BookIntroduceSection(
         Spacer(modifier = Modifier.height(10.dp))
 
         Text(
-            text = reviewContent,
+            text = bookDescription,
             color = MillieTheme.colors.darkGray1,
             style = MillieTheme.typography.body.body1,
         )
@@ -57,7 +57,7 @@ fun BookIntroduceSection(
 private fun Preview() {
     MillieTheme {
         BookIntroduceSection(
-            reviewContent = "dfasdjfasdfasdfas",
+            bookDescription = "dfasdjfasdfasdfas",
             onClick = {},
         )
     }
