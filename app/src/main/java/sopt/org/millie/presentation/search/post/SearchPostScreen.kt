@@ -41,10 +41,12 @@ fun SearchPostScreen(
             )
         }
 
-        item { SearchPostButton(
+        item {
+            SearchPostButton(
             onClick = onClick,
-            modifier = Modifier.padding(horizontal = 2.dp)
-        ) }
+            modifier = Modifier.padding(horizontal = 2.dp),
+        )
+        }
     }
 }
 
@@ -53,7 +55,7 @@ fun SearchPostScreen(
 private fun SearchPostScreenPreview() {
     MillieTheme {
         SearchPostScreen(
-            onClick = {}
+            onClick = {},
         )
     }
 }

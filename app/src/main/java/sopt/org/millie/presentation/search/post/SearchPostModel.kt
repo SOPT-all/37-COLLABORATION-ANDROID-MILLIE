@@ -1,11 +1,7 @@
 package sopt.org.millie.presentation.search.post
 
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import java.util.UUID
 import sopt.org.millie.R
-import sopt.org.millie.core.designsystem.theme.MillieTheme
-
+import java.util.UUID
 
 data class SearchPostListModel(
     val postImage: Int,
