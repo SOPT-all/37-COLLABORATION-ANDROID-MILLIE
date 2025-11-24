@@ -1,7 +1,10 @@
 package sopt.org.millie.presentation.home.constants
 
+import androidx.annotation.DrawableRes
+import androidx.compose.runtime.Immutable
 import sopt.org.millie.R
 
+@Immutable
 object HomeConstants {
     val QUICK_LINK_TAGS = listOf(
         QuickLinkItem(R.drawable.ic_home_ranking, "밀리 랭킹"),
@@ -14,7 +17,7 @@ object HomeConstants {
     const val DEFAULT_TAB = "카테고리"
 
     data class QuickLinkItem(
-        val iconRes: Int,
+        @DrawableRes val iconRes: Int,
         val title: String,
     )
 }
