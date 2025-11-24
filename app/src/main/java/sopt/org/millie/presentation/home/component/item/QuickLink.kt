@@ -20,8 +20,6 @@ import sopt.org.millie.presentation.home.constants.HomeConstants
 fun QuickLinks(
     modifier: Modifier = Modifier,
 ) {
-    val tags = remember { HomeConstants.QUICK_LINK_TAGS }
-
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -38,7 +36,7 @@ fun QuickLinks(
             horizontalArrangement = Arrangement.spacedBy(15.dp),
             contentPadding = PaddingValues(horizontal = 24.dp),
         ) {
-            items(tags) { tag ->
+            items(HomeConstants.QUICK_LINK_TAGS ) { tag ->
                 CategoryTag(
                     iconRes = tag.iconRes,
                     title = tag.title,
