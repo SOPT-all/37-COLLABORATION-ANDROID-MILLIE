@@ -1,4 +1,5 @@
-package sopt.org.millie.presentation.search.model
+package sopt.org.millie.presentation.search.searchresult.library.model
+
 import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Immutable
 

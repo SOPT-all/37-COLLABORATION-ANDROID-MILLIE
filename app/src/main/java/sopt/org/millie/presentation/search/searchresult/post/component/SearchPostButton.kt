@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.search.post
+package sopt.org.millie.presentation.search.searchresult.post.component
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable

@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.search.post
+package sopt.org.millie.presentation.search.searchresult.post
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -12,6 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.presentation.search.searchresult.post.component.SearchPostButton
+import sopt.org.millie.presentation.search.searchresult.post.component.SearchPostItem
+import sopt.org.millie.presentation.search.searchresult.post.component.SearchPostTitle
+import sopt.org.millie.presentation.search.searchresult.post.model.posts
 
 @Composable
 fun SearchPostScreen(
@@ -43,9 +47,9 @@ fun SearchPostScreen(
 
         item {
             SearchPostButton(
-            onClick = onClick,
-            modifier = Modifier.padding(horizontal = 2.dp),
-        )
+                onClick = onClick,
+                modifier = Modifier.padding(horizontal = 2.dp),
+            )
         }
     }
 }

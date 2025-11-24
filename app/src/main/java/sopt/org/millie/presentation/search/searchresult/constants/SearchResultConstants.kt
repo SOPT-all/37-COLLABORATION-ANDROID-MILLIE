@@ -1,6 +1,6 @@
-package sopt.org.millie.presentation.search.constants
+package sopt.org.millie.presentation.search.searchresult.constants
 
-object SearchConstants {
+object SearchResultConstants {
     val SEARCH_TABS = listOf("도서", "밀리로드", "포스트", "서재")
 
     const val SELECTED_TAB = "도서"

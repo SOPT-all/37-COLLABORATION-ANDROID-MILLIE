@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.search.searchresult.component.library
+package sopt.org.millie.presentation.search.searchresult.library.component
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image

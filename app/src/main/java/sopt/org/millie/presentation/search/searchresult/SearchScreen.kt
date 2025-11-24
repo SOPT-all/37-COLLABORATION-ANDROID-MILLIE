@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.search
+package sopt.org.millie.presentation.search.searchresult
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -23,12 +23,12 @@ import sopt.org.millie.core.designsystem.component.MillieSearchTextField
 import sopt.org.millie.core.designsystem.component.MillieTabbar
 import sopt.org.millie.core.designsystem.component.MillieTopappbar
 import sopt.org.millie.core.designsystem.theme.MillieTheme
-import sopt.org.millie.presentation.search.book.SearchBookScreen
-import sopt.org.millie.presentation.search.constants.SearchConstants
-import sopt.org.millie.presentation.search.library.SearchLibraryScreen
-import sopt.org.millie.presentation.search.model.SearchBannerModel
-import sopt.org.millie.presentation.search.model.SearchBookModel
-import sopt.org.millie.presentation.search.model.SearchLibraryModel
+import sopt.org.millie.presentation.search.searchresult.book.SearchBookScreen
+import sopt.org.millie.presentation.search.searchresult.constants.SearchResultConstants
+import sopt.org.millie.presentation.search.searchresult.library.SearchLibraryScreen
+import sopt.org.millie.presentation.search.searchresult.book.model.SearchBannerModel
+import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
+import sopt.org.millie.presentation.search.searchresult.library.model.SearchLibraryModel
 
 @Composable
 fun SearchRoute(
@@ -139,8 +139,8 @@ private fun SearchScreenPreview() {
             value = text,
             onValueChange = { text = it },
             onCancelClick = { text = "" },
-            searchTabs = SearchConstants.SEARCH_TABS,
-            selectedTab = SearchConstants.SELECTED_TAB,
+            searchTabs = SearchResultConstants.SEARCH_TABS,
+            selectedTab = SearchResultConstants.SELECTED_TAB,
             onSelectedTab = { },
             searchBookList = listOf(
                 SearchBookModel(

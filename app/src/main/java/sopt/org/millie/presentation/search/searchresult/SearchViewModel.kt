@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.search
+package sopt.org.millie.presentation.search.searchresult
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

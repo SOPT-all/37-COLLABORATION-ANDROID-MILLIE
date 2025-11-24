@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.search.searchresult.component.book
+package sopt.org.millie.presentation.search.searchresult.book.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

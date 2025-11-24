@@ -24,7 +24,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 import sopt.org.millie.core.util.customShadow
-import sopt.org.millie.presentation.bookdetail.component.bar.BookDetailTopbar
 import sopt.org.millie.presentation.bookdetail.component.bar.ReadNowBar
 import sopt.org.millie.presentation.bookdetail.component.book.BookDataSection
 import sopt.org.millie.presentation.bookdetail.component.book.BookInfoSection
@@ -32,6 +31,7 @@ import sopt.org.millie.presentation.bookdetail.component.book.BookInfoSubtitle
 import sopt.org.millie.presentation.bookdetail.component.book.BookIntroduceSection
 import sopt.org.millie.presentation.bookdetail.component.book.BookReviewSection
 import sopt.org.millie.presentation.bookdetail.component.book.BookSimilarSection
+import sopt.org.millie.presentation.search.bookdetail.component.bar.BookDetailTopbar
 
 @Composable
 fun BookDetailRoute(

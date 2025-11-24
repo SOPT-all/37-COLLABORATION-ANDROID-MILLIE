@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.search.post
+package sopt.org.millie.presentation.search.searchresult.post.model
 
 import androidx.compose.runtime.Immutable
 import sopt.org.millie.R

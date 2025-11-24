@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.search.book
+package sopt.org.millie.presentation.search.searchresult.book
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,11 +13,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import sopt.org.millie.presentation.search.component.SearchTitle
-import sopt.org.millie.presentation.search.component.book.SearchBanner
-import sopt.org.millie.presentation.search.component.book.SearchBookItem
-import sopt.org.millie.presentation.search.model.SearchBannerModel
-import sopt.org.millie.presentation.search.model.SearchBookModel
+import sopt.org.millie.presentation.search.searchresult.book.model.SearchBannerModel
+import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
+import sopt.org.millie.presentation.search.searchresult.component.SearchTitle
+import sopt.org.millie.presentation.search.searchresult.book.component.SearchBanner
+import sopt.org.millie.presentation.search.searchresult.book.component.SearchBookItem
 
 @Composable
 fun SearchBookScreen(

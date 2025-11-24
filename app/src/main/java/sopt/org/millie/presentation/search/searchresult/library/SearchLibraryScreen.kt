@@ -1,4 +1,4 @@
-package sopt.org.millie.presentation.search.library
+package sopt.org.millie.presentation.search.searchresult.library
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,9 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import sopt.org.millie.R
-import sopt.org.millie.presentation.search.component.SearchTitle
-import sopt.org.millie.presentation.search.component.library.LibraryItem
-import sopt.org.millie.presentation.search.model.SearchLibraryModel
+import sopt.org.millie.presentation.search.searchresult.component.SearchTitle
+import sopt.org.millie.presentation.search.searchresult.library.component.LibraryItem
+import sopt.org.millie.presentation.search.searchresult.library.model.SearchLibraryModel
 
 @Composable
 fun SearchLibraryScreen(
