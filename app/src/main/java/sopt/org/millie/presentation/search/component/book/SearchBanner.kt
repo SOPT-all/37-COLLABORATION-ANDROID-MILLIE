@@ -2,12 +2,14 @@ package sopt.org.millie.presentation.search.component.book
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,12 +27,13 @@ import sopt.org.millie.core.util.customShadow
 fun SearchBanner(
     bannerTitle: String,
     bannerContent: String,
-    bannerUrl: String,
+    bannerImageUrl: String,
     modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
+            .height(IntrinsicSize.Max)
             .clip(RoundedCornerShape(11.dp))
             .background(color = MillieTheme.colors.bannerColor)
             .padding(start = 7.dp, end = 18.dp),
@@ -56,10 +59,12 @@ fun SearchBanner(
         }
 
         AsyncImage(
-            model = bannerUrl,
+            model = bannerImageUrl,
             contentDescription = null,
             modifier = Modifier
-                .size(width = 64.dp, height = 70.dp)
+                .fillMaxHeight()
+                .padding(top = 14.dp)
+                .aspectRatio(0.9f)
                 .customShadow(
                     shape = RoundedCornerShape(topEnd = 4.dp),
                     color = MillieTheme.colors.black.copy(alpha = 0.05f),
@@ -77,9 +82,11 @@ fun SearchBanner(
 @Preview(showBackground = true)
 @Composable
 private fun BookBannerPreview() {
-    SearchBanner(
-        bannerTitle = "《홍학의 자리》읽을 준비!",
-        bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
-        bannerUrl = "",
-    )
+    MillieTheme {
+        SearchBanner(
+            bannerTitle = "《홍학의 자리》읽을 준비!",
+            bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
+            bannerImageUrl = "",
+        )
+    }
 }
