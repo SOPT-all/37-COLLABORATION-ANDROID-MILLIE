@@ -12,6 +12,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -25,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.core.util.noRippleClickable
 import sopt.org.millie.presentation.bookdetail.component.tag.BookDetailTag
 import sopt.org.millie.presentation.bookdetail.model.BookDataType
 
@@ -34,6 +39,7 @@ fun BookDataSection(
     onAgeGenderClick: () -> Unit,
     isCompletedGraphChanged: Boolean,
     selectedType: BookDataType,
+    onImageClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -80,6 +86,7 @@ fun BookDataSection(
         DataImage(
             isCompletedGraphChanged = isCompletedGraphChanged,
             bookDataType = selectedType,
+            onImageClick = onImageClick,
         )
     }
 }
@@ -88,6 +95,7 @@ fun BookDataSection(
 private fun DataImage(
     isCompletedGraphChanged: Boolean,
     bookDataType: BookDataType,
+    onImageClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -97,16 +105,20 @@ private fun DataImage(
             BookDataType.COMPLETED_RATE -> {
                 if (isCompletedGraphChanged) {
                     Image(
-                        painter = painterResource(id = R.drawable.img_completed_rate1),
+                        painter = painterResource(id = R.drawable.img_completed_rate_1),
                         contentDescription = null,
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .noRippleClickable(onClick = onImageClick),
                         contentScale = ContentScale.FillWidth,
                     )
                 } else {
                     Image(
-                        painter = painterResource(id = R.drawable.img_completed_rate2),
+                        painter = painterResource(id = R.drawable.img_completed_rate_2),
                         contentDescription = null,
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .noRippleClickable(onClick = onImageClick),
                         contentScale = ContentScale.FillWidth,
                     )
                 }
@@ -155,11 +167,17 @@ private fun DataImage(
 @Composable
 private fun Preview() {
     MillieTheme {
+        var isCompletedGraphChanged by remember { mutableStateOf(true) }
+        var selectedType by remember { mutableStateOf(BookDataType.COMPLETED_RATE) }
+
         BookDataSection(
-            onCompletedRateClick = {},
-            onAgeGenderClick = {},
-            isCompletedGraphChanged = true,
-            selectedType = BookDataType.COMPLETED_RATE,
+            onCompletedRateClick = { selectedType = BookDataType.COMPLETED_RATE },
+            onAgeGenderClick = { selectedType = BookDataType.AGE_GENDER },
+            isCompletedGraphChanged = isCompletedGraphChanged,
+            selectedType = selectedType,
+            onImageClick = {
+                isCompletedGraphChanged = !isCompletedGraphChanged
+            },
         )
     }
 }
