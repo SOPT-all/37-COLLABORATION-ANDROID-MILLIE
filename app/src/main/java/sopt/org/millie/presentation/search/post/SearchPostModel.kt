@@ -1,8 +1,10 @@
 package sopt.org.millie.presentation.search.post
 
+import androidx.compose.runtime.Immutable
 import sopt.org.millie.R
 import java.util.UUID
 
+@Immutable
 data class SearchPostListModel(
     val postImage: Int,
     val title: String,

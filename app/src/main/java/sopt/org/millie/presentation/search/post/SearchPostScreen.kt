@@ -15,13 +15,13 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 
 @Composable
 fun SearchPostScreen(
-    onClick: () -> Unit = {},
     modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
 ) {
     LazyColumn(
         modifier = modifier
             .fillMaxWidth()
-            .background(MillieTheme.colors.white),
+            .background(MillieTheme.colors.background),
         contentPadding = PaddingValues(horizontal = 21.dp),
         verticalArrangement = Arrangement.spacedBy(15.dp),
     ) {
