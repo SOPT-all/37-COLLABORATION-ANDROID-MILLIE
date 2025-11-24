@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -84,7 +82,7 @@ fun SearchBanner(
 @Preview(showBackground = true)
 @Composable
 private fun BookBannerPreview() {
-    MillieTheme{
+    MillieTheme {
         SearchBanner(
             bannerTitle = "《홍학의 자리》읽을 준비!",
             bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
