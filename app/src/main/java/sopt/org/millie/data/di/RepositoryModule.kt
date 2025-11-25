@@ -4,9 +4,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import sopt.org.millie.data.repository.BookDetailRepository
 import sopt.org.millie.data.repository.SearchRepository
-import sopt.org.millie.data.repositoryimpl.BookDetailRepositoryImpl
 import sopt.org.millie.data.repositoryimpl.SearchRepositoryImpl
 import javax.inject.Singleton
 
@@ -18,10 +16,4 @@ abstract class RepositoryModule {
     abstract fun bindsSearchRepository(
         searchRepositoryImpl: SearchRepositoryImpl,
     ): SearchRepository
-
-    @Binds
-    @Singleton
-    abstract fun bindsBookDetailRepository(
-        bookDetailRepositoryImpl: BookDetailRepositoryImpl,
-    ): BookDetailRepository
 }

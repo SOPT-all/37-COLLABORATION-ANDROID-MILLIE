@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import sopt.org.millie.R
-import sopt.org.millie.data.repository.BookDetailRepository
+import sopt.org.millie.data.repository.SearchRepository
 import sopt.org.millie.presentation.search.bookdetail.model.BookDataType
 import sopt.org.millie.presentation.search.bookdetail.model.BookSimilarModel
 import javax.inject.Inject
@@ -19,7 +19,7 @@ import javax.inject.Inject
 class BookDetailViewModel
 @Inject
 constructor(
-    private val bookDetailRepository: BookDetailRepository,
+    private val searchRepository: SearchRepository,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(BookDetailUiState())
     val uiState: StateFlow<BookDetailUiState> = _uiState.asStateFlow()
@@ -33,7 +33,7 @@ constructor(
         loadDummyData()
 
         viewModelScope.launch {
-            bookDetailRepository.getBookDetailInformation(bookId)
+            searchRepository.getBookDetailInformation(bookId)
                 .onSuccess { bookDetailModel ->
                     _uiState.update {
                         it.copy(bookDetailUiModel = bookDetailModel)
