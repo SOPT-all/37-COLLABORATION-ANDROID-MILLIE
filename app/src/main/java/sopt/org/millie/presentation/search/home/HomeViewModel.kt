@@ -3,6 +3,7 @@ package sopt.org.millie.presentation.search.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -55,7 +56,7 @@ constructor(
                             imageUrl = it.imageUrl,
                         )
                     }
-                    _uiState.update { it.copy(categoryList = UiState.Success(categoryModels)) }
+                    _uiState.update { it.copy(categoryList = UiState.Success(categoryModels.toImmutableList())) }
                 }
                 .onFailure { }
         }
