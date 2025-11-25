@@ -11,8 +11,8 @@ data class CategoryResponseModel(
 
 fun CategoryResponseDto.toModel() =
     CategoryResponseModel(
-        categoryId = categoryId,
-        title = title,
-        description = description,
-        imageUrl = imageUrl,
+        categoryId = this.categoryId,
+        title = this.title,
+        description = this.description,
+        imageUrl = this.imageUrl,
     )
