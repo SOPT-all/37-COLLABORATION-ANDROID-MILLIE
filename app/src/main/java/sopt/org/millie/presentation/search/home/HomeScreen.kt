@@ -21,6 +21,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.component.MillieTabbar
 import sopt.org.millie.core.designsystem.theme.MillieTheme
@@ -66,7 +68,7 @@ fun HomeRoute(
 @Composable
 private fun HomeScreen(
     uiState: HomeUiState,
-    categoryList: List<BookCategoryModel>,
+    categoryList: ImmutableList<BookCategoryModel>,
     onValueChange: (String) -> Unit,
     onCancelClick: () -> Unit,
     onSearchAction: () -> Unit,
@@ -116,7 +118,7 @@ private fun HomeScreen(
     }
 }
 
-private fun LazyListScope.categoryTabContent(categoryList: List<BookCategoryModel>) {
+private fun LazyListScope.categoryTabContent(categoryList: ImmutableList<BookCategoryModel>) {
     item {
         HomeTitleItem(
             title = "카테고리",
@@ -187,9 +189,9 @@ private fun HomeScreenPreview() {
                     bookTitle = "동화",
                     rankingIcon = R.drawable.ic_home_ranking_down,
                 ),
-                categoryList = UiState.Success(emptyList()),
+                categoryList = UiState.Success(persistentListOf()),
             ),
-            categoryList = listOf(
+            categoryList = persistentListOf(
                 BookCategoryModel(
                     categoryId = 1,
                     title = "소설",
