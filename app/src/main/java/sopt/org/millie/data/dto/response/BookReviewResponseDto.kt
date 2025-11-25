@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ReviewResponseDto(
+data class BookReviewResponseDto(
     @SerialName("reviewId")
     val reviewId: Long,
     @SerialName("bookId")

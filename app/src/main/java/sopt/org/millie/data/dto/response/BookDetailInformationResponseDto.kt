@@ -22,9 +22,9 @@ data class BookDetailInformationResponseDto(
     @SerialName("totalReviewCount")
     val totalReviewCount: Int,
     @SerialName("completionRate")
-    val completionRate: String,
+    val completionRate: Int,
     @SerialName("bookDescription")
     val bookDescription: String,
     @SerialName("reviews")
-    val reviews: List<ReviewResponseDto>,
+    val reviews: List<BookReviewResponseDto>,
 )
