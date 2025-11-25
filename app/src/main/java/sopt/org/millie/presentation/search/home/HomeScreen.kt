@@ -51,6 +51,7 @@ fun HomeRoute(
 
         is UiState.Success -> {
             HomeScreen(
+                paddingValues = paddingValues,
                 uiState = uiState,
                 categoryList = categoryState.data,
                 onValueChange = viewModel::updateSearchKeyword,
@@ -67,6 +68,7 @@ fun HomeRoute(
 
 @Composable
 private fun HomeScreen(
+    paddingValues: PaddingValues,
     uiState: HomeUiState,
     categoryList: ImmutableList<BookCategoryModel>,
     onValueChange: (String) -> Unit,
@@ -78,7 +80,8 @@ private fun HomeScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(MillieTheme.colors.white),
+            .background(MillieTheme.colors.white)
+            .padding(paddingValues),
     ) {
         HomeTopAppBar()
 
@@ -180,6 +183,7 @@ private fun LoadingScreen(
 private fun HomeScreenPreview() {
     MillieTheme {
         HomeScreen(
+            paddingValues = PaddingValues(0.dp),
             uiState = HomeUiState(
                 searchKeyword = "",
                 tabs = HomeConstants.HOME_TABS,
