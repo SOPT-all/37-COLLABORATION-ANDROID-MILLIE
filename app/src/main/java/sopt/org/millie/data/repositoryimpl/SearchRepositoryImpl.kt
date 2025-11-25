@@ -1,8 +1,6 @@
 package sopt.org.millie.data.repositoryimpl
 
 import sopt.org.millie.core.util.suspendRunCatching
-import kotlinx.collections.immutable.persistentListOf
-import sopt.org.millie.core.util.suspendRunCatching
 import sopt.org.millie.data.datasource.SearchDataSource
 import sopt.org.millie.data.model.BookDetailModel
 import sopt.org.millie.data.model.CategoryResponseModel
