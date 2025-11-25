@@ -26,13 +26,15 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 import sopt.org.millie.core.util.noRippleClickable
 
 @Composable
 internal fun MainBottomBar(
     visible: Boolean,
-    tabs: List<MainTab>,
+    tabs: ImmutableList<MainTab>,
     currentTab: MainTab?,
     onTabSelected: (MainTab) -> Unit,
 ) {
@@ -107,7 +109,7 @@ private fun MainBottomBarPreview() {
         Column(modifier = Modifier) {
             MainBottomBar(
                 visible = true,
-                tabs = MainTab.entries.toList(),
+                tabs = MainTab.entries.toImmutableList(),
                 currentTab = MainTab.SEARCH,
                 onTabSelected = {},
             )
