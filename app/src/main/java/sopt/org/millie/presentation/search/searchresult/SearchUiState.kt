@@ -13,6 +13,6 @@ data class SearchUiState(
     val searchTabs: List<String> = SearchResultConstants.SEARCH_TABS,
     val selectedTab: String = SearchResultConstants.SELECTED_TAB,
     val searchBookList: UiState<List<SearchBookModel>> = UiState.Loading,
-    val searchLibraryList: UiState<List<SearchLibraryModel>> = UiState.Loading,
+    val searchLibraryList: List<SearchLibraryModel> = emptyList(),
     val searchBanner: UiState<SearchBannerModel> = UiState.Loading,
 )

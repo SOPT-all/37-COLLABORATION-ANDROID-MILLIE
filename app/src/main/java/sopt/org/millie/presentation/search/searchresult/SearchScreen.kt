@@ -2,6 +2,7 @@ package sopt.org.millie.presentation.search.searchresult
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.HorizontalDivider
@@ -23,6 +24,7 @@ import sopt.org.millie.core.designsystem.component.MillieSearchTextField
 import sopt.org.millie.core.designsystem.component.MillieTabbar
 import sopt.org.millie.core.designsystem.component.MillieTopappbar
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.core.util.UiState
 import sopt.org.millie.presentation.search.searchresult.book.SearchBookScreen
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBannerModel
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
@@ -33,22 +35,32 @@ import sopt.org.millie.presentation.search.searchresult.post.SearchPostScreen
 
 @Composable
 fun SearchRoute(
+    paddingValues: PaddingValues,
     searchViewModel: SearchViewModel = hiltViewModel(),
 ) {
     val searchUiState by searchViewModel.uiState.collectAsStateWithLifecycle()
 
-    SearchScreen(
-        value = searchUiState.searchInput,
-        onValueChange = searchViewModel::updateText,
-        onCancelClick = searchViewModel::clearText,
-        searchTabs = searchUiState.searchTabs,
-        selectedTab = searchUiState.selectedTab,
-        onSelectedTab = searchViewModel::onTabSelected,
-        searchBookList = (searchUiState.searchBookList) as List<SearchBookModel>,
-        searchLibraryList = (searchUiState.searchLibraryList) as List<SearchLibraryModel>,
-        searchBanner = (searchUiState.searchBanner) as SearchBannerModel,
-        onBookItemClick = searchViewModel::onBookItemClick,
-    )
+    when (val searchBookState = searchUiState.searchBookList) {
+        is UiState.Success -> {
+            val searchBannerState = (searchUiState.searchBanner as UiState.Success)
+            SearchScreen(
+                value = searchUiState.searchInput,
+                onValueChange = searchViewModel::updateText,
+                onCancelClick = searchViewModel::clearText,
+                searchTabs = searchUiState.searchTabs,
+                selectedTab = searchUiState.selectedTab,
+                onSelectedTab = searchViewModel::onTabSelected,
+                searchBookList = searchBookState.data,
+                searchLibraryList = searchUiState.searchLibraryList,
+                searchBanner = searchBannerState.data,
+                onBookItemClick = searchViewModel::onBookItemClick,
+            )
+        }
+
+        is UiState.Loading -> {}
+        is UiState.Failure -> {}
+        is UiState.Empty -> {}
+    }
 }
 
 @Composable

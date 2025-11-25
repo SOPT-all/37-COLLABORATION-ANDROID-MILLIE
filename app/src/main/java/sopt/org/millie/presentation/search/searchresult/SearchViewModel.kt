@@ -9,9 +9,11 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import okhttp3.internal.toImmutableList
+import sopt.org.millie.R
 import sopt.org.millie.core.util.UiState
 import sopt.org.millie.data.repository.SearchRepository
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
+import sopt.org.millie.presentation.search.searchresult.library.model.SearchLibraryModel
 import javax.inject.Inject
 import kotlin.Long
 import kotlin.String
@@ -27,6 +29,7 @@ class SearchViewModel
 
     init {
         loadSearchResult("자리")
+        loadLibraryList()
     }
 
     fun onTabSelected(tab: String) {
@@ -72,5 +75,27 @@ class SearchViewModel
                 }
                 .onFailure { }
         }
+    }
+
+    fun loadLibraryList() {
+        val dummyLibraries = listOf(
+            SearchLibraryModel(
+                imgRes = R.drawable.img_search_library_1,
+                bookTitle = "홍학의 자리",
+            ),
+            SearchLibraryModel(
+                imgRes = R.drawable.img_search_library_1,
+                bookTitle = "홍학의 자리",
+            ),
+            SearchLibraryModel(
+                imgRes = R.drawable.img_search_library_1,
+                bookTitle = "홍학의 자리",
+            ),
+            SearchLibraryModel(
+                imgRes = R.drawable.img_search_library_1,
+                bookTitle = "홍학의 자리",
+            ),
+        )
+        _uiState.update { it.copy(searchLibraryList = dummyLibraries) }
     }
 }
