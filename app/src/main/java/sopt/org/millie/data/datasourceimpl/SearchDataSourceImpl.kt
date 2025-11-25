@@ -2,6 +2,7 @@ package sopt.org.millie.data.datasourceimpl
 
 import sopt.org.millie.core.network.BaseResponse
 import sopt.org.millie.data.datasource.SearchDataSource
+import sopt.org.millie.data.dto.response.BookSearchResponseDto
 import sopt.org.millie.data.dto.response.CategoryResponseDto
 import sopt.org.millie.data.service.SearchService
 import javax.inject.Inject
@@ -13,4 +14,9 @@ class SearchDataSourceImpl
 ) : SearchDataSource {
     override suspend fun getCategories(): BaseResponse<List<CategoryResponseDto>> =
         searchService.getCategories()
+
+    override suspend fun getBooks(
+        keyword: String,
+    ): BaseResponse<List<BookSearchResponseDto>> =
+        searchService.getBooks(keyword)
 }
