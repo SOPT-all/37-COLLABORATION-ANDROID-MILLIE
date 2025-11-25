@@ -1,5 +1,6 @@
 package sopt.org.millie.presentation.search.searchresult
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,11 +28,6 @@ class SearchViewModel
     private val _uiState = MutableStateFlow(SearchUiState())
     val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
 
-    init {
-        loadSearchResult("자리")
-        loadLibraryList()
-    }
-
     fun onTabSelected(tab: String) {
         _uiState.update { it.copy(selectedTab = tab) }
     }
@@ -50,22 +46,24 @@ class SearchViewModel
 
     fun loadSearchResult(keyword: String) {
         viewModelScope.launch {
+            Log.d("SearchVM", "loadSearchResult called with $keyword")
             searchRepository.getBooks(keyword)
                 .onSuccess { bookSearchResponseModels ->
-                    val bookModels = bookSearchResponseModels.map {
+                    Log.d("SearchVM", "Got ${bookSearchResponseModels.books.size} books")
+                    val bookModels = bookSearchResponseModels.books.map {
                         SearchBookModel(
-                            bookId = it.books.first().bookId,
-                            bookCoverImageUrl = it.books.first().bookCoverImageUrl,
-                            bookTitle = it.books.first().bookTitle,
-                            bookAuthor = it.books.first().bookAuthor,
-                            completionRate = it.books.first().completionRate,
-                            completionTime = it.books.first().completionTime,
-                            isAudiobook = it.books.first().isAudiobook,
-                            voiceActor = it.books.firstOrNull()?.voiceActor,
+                            bookId = it.bookId,
+                            bookCoverImageUrl = it.bookCoverImageUrl,
+                            bookTitle = it.bookTitle,
+                            bookAuthor = it.bookAuthor,
+                            completionRate = it.completionRate,
+                            completionTime = it.completionTime,
+                            isAudiobook = it.isAudiobook,
+                            voiceActor = it.voiceActor,
                         )
                     }
 
-                    val bannerModels = bookSearchResponseModels.first().banner
+                    val bannerModels = bookSearchResponseModels.banner
                     _uiState.update {
                         it.copy(
                             searchBookList = UiState.Success(bookModels.toImmutableList()),

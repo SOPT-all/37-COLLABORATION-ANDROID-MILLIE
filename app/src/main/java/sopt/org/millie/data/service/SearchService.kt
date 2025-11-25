@@ -13,5 +13,5 @@ interface SearchService {
     @GET("books")
     suspend fun getBooks(
         @Query("keyword") keyword: String,
-    ): BaseResponse<List<BookSearchResponseDto>>
+    ): BaseResponse<BookSearchResponseDto>
 }

@@ -19,8 +19,8 @@ class SearchRepositoryImpl
             searchDataSource.getCategories().data?.map { it.toModel() } ?: persistentListOf()
         }
 
-    override suspend fun getBooks(keyword: String): Result<List<BookSearchResponseModel>> =
+    override suspend fun getBooks(keyword: String): Result<BookSearchResponseModel> =
         suspendRunCatching {
-            searchDataSource.getBooks(keyword).data?.map { it.toModel() } ?: persistentListOf()
+            searchDataSource.getBooks(keyword).data?.toModel() ?: throw IllegalArgumentException()
         }
 }

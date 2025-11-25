@@ -17,6 +17,6 @@ class SearchDataSourceImpl
 
     override suspend fun getBooks(
         keyword: String,
-    ): BaseResponse<List<BookSearchResponseDto>> =
+    ): BaseResponse<BookSearchResponseDto> =
         searchService.getBooks(keyword)
 }

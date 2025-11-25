@@ -6,5 +6,5 @@ import sopt.org.millie.data.model.CategoryResponseModel
 interface SearchRepository {
     suspend fun getCategories(): Result<List<CategoryResponseModel>>
 
-    suspend fun getBooks(keyword: String): Result<List<BookSearchResponseModel>>
+    suspend fun getBooks(keyword: String): Result<BookSearchResponseModel>
 }
