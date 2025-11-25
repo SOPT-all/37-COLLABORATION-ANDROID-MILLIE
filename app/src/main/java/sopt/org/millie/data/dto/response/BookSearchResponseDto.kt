@@ -18,7 +18,7 @@ data class BookSearchResponseDto(
 @Serializable
 data class BookListDto(
     @SerialName("bookId")
-    val bookId: Int,
+    val bookId: Long,
     @SerialName("bookCoverImageUrl")
     val bookCoverImageUrl: String,
     @SerialName("bookTitle")
@@ -38,7 +38,7 @@ data class BookListDto(
 @Serializable
 data class BannerDto(
     @SerialName("bannerId")
-    val bannerId: Int,
+    val bannerId: Long,
     @SerialName("bannerTitle")
     val bannerTitle: String,
     @SerialName("bannerContent")

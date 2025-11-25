@@ -3,13 +3,15 @@ package sopt.org.millie.data.model
 import sopt.org.millie.data.dto.response.BannerDto
 import sopt.org.millie.data.dto.response.BookListDto
 import sopt.org.millie.data.dto.response.BookSearchResponseDto
+import sopt.org.millie.presentation.search.searchresult.book.model.SearchBannerModel
+import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
 import kotlin.String
 
 data class BookSearchResponseModel(
     val keyword: String,
     val bookCount: Int,
-    val books: List<BookListModel>,
-    val banner: BannerModel,
+    val books: List<SearchBookModel>,
+    val banner: SearchBannerModel,
 )
 
 fun BookSearchResponseDto.toModel() =
@@ -20,19 +22,8 @@ fun BookSearchResponseDto.toModel() =
         banner = this.banner.toModel(),
     )
 
-data class BookListModel(
-    val bookId: Int,
-    val bookCoverImageUrl: String,
-    val bookTitle: String,
-    val bookAuthor: String,
-    val completionRate: Int,
-    val completionTime: Int,
-    val isAudiobook: Boolean,
-    val voiceActor: String,
-)
-
 fun BookListDto.toModel() =
-    BookListModel(
+    SearchBookModel(
         bookId = this.bookId,
         bookCoverImageUrl = this.bookCoverImageUrl,
         bookTitle = this.bookTitle,
@@ -43,15 +34,8 @@ fun BookListDto.toModel() =
         voiceActor = this.voiceActor,
     )
 
-data class BannerModel(
-    val bannerId: Int,
-    val bannerTitle: String,
-    val bannerContent: String,
-    val bannerImageUrl: String,
-)
-
 fun BannerDto.toModel() =
-    BannerModel(
+    SearchBannerModel(
         bannerId = this.bannerId,
         bannerTitle = this.bannerTitle,
         bannerContent = this.bannerContent,
