@@ -6,5 +6,6 @@ import sopt.org.millie.data.dto.response.CategoryResponseDto
 
 interface SearchDataSource {
     suspend fun getCategories(): BaseResponse<List<CategoryResponseDto>>
+
     suspend fun getBookDetailInformation(bookId: Long): BaseResponse<BookDetailInformationResponseDto>
 }
