@@ -1,31 +1,45 @@
 package sopt.org.millie.presentation.search.bookdetail
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import sopt.org.millie.R
+import sopt.org.millie.data.repository.SearchRepository
 import sopt.org.millie.presentation.search.bookdetail.model.BookDataType
 import sopt.org.millie.presentation.search.bookdetail.model.BookSimilarModel
 import javax.inject.Inject
 
 @HiltViewModel
 class BookDetailViewModel
-    @Inject
-    constructor() : ViewModel() {
+@Inject
+constructor(
+    private val searchRepository: SearchRepository,
+) : ViewModel() {
     private val _uiState = MutableStateFlow(BookDetailUiState())
     val uiState: StateFlow<BookDetailUiState> = _uiState.asStateFlow()
 
     init {
-        loadData()
+        loadData(bookId = 1L)
+        // TODO: 이전 화면에서 받아오는 bookId 값으로 변경해주기
     }
 
-    private fun loadData() {
+    private fun loadData(bookId: Long) {
         loadDummyData()
-        // TODO: 서버 연결
+
+        viewModelScope.launch {
+            searchRepository.getBookDetailInformation(bookId)
+                .onSuccess { bookDetailModel ->
+                    _uiState.update {
+                        it.copy(bookDetailUiModel = bookDetailModel)
+                    }
+                }
+        }
     }
 
     private fun loadDummyData() {
@@ -50,7 +64,7 @@ class BookDetailViewModel
                 bookTitle = "홍학의 자리",
                 bookAuthor = "정해연",
             ),
-            )
+        )
 
         _uiState.update {
             it.copy(similarBooks = dummySimilarBooks)

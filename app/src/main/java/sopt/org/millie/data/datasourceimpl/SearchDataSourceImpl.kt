@@ -13,4 +13,7 @@ class SearchDataSourceImpl
 ) : SearchDataSource {
     override suspend fun getCategories(): BaseResponse<List<CategoryResponseDto>> =
         searchService.getCategories()
+
+    override suspend fun getBookDetailInformation(bookId: Long) =
+        searchService.getBookDetailInformation(bookId)
 }
