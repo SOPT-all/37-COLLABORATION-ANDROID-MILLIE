@@ -57,7 +57,7 @@ fun SearchBookScreen(
                     completionTime = book.completionTime,
                     onBookItemClick = { onBookItemClick(book.bookId) },
                     isAudiobook = book.isAudiobook,
-                    voiceActor = book.voiceActor,
+                    voiceActor = book.voiceActor ?: "",
                 )
             }
         }
@@ -121,9 +121,10 @@ private fun SearchBookScreenPreview() {
         ),
         searchBanner =
             SearchBannerModel(
-            bannerTitle = "《홍학의 자리》읽을 준비!",
-            bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
-            bannerImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
+                bannerId = 1,
+                bannerTitle = "《홍학의 자리》읽을 준비!",
+                bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
+                bannerImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
         ),
         onBookItemClick = {},
     )

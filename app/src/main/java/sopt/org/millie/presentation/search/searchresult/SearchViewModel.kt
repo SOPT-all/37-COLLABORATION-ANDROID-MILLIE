@@ -10,10 +10,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import okhttp3.internal.toImmutableList
 import sopt.org.millie.core.util.UiState
-import sopt.org.millie.data.model.BookSearchResponseModel
 import sopt.org.millie.data.repository.SearchRepository
-import sopt.org.millie.presentation.search.home.model.BookCategoryModel
-import sopt.org.millie.presentation.search.searchresult.book.model.SearchBannerModel
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
 import javax.inject.Inject
 import kotlin.Long
@@ -27,6 +24,10 @@ class SearchViewModel
     ) : ViewModel() {
     private val _uiState = MutableStateFlow(SearchUiState())
     val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
+
+    init {
+        loadSearchResult("자리")
+    }
 
     fun onTabSelected(tab: String) {
         _uiState.update { it.copy(selectedTab = tab) }
@@ -44,7 +45,7 @@ class SearchViewModel
         // TODO: 이동 로직 추가
     }
 
-    fun loadBooks(keyword: String) {
+    fun loadSearchResult(keyword: String) {
         viewModelScope.launch {
             searchRepository.getBooks(keyword)
                 .onSuccess { bookSearchResponseModels ->
@@ -57,7 +58,7 @@ class SearchViewModel
                             completionRate = it.books.first().completionRate,
                             completionTime = it.books.first().completionTime,
                             isAudiobook = it.books.first().isAudiobook,
-                            voiceActor = it.books.firstOrNull()?.voiceActor
+                            voiceActor = it.books.firstOrNull()?.voiceActor,
                         )
                     }
 
@@ -65,7 +66,7 @@ class SearchViewModel
                     _uiState.update {
                         it.copy(
                             searchBookList = UiState.Success(bookModels.toImmutableList()),
-                            searchBanner = UiState.Success(bannerModels)
+                            searchBanner = UiState.Success(bannerModels),
                         )
                     }
                 }
