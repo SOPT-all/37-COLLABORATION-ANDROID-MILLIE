@@ -7,6 +7,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
+import kotlinx.collections.immutable.toImmutableList
 import sopt.org.millie.presentation.main.component.MainBottomBar
 import sopt.org.millie.presentation.main.component.MainTab
 import sopt.org.millie.presentation.main.navigation.MainNavigator
@@ -27,7 +28,7 @@ fun MainScreen(
         bottomBar = {
             MainBottomBar(
                 visible = isBottomBarVisible,
-                tabs = MainTab.entries.toList(),
+                tabs = MainTab.entries.toImmutableList(),
                 currentTab = currentTab,
                 onTabSelected = navigator::navigate,
             )
