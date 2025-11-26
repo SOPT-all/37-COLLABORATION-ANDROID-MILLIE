@@ -7,4 +7,5 @@ import androidx.compose.runtime.Immutable
 data class SearchLibraryModel(
     @DrawableRes val imgRes: Int,
     val bookTitle: String,
+    val isEvan: Boolean = false,
 )

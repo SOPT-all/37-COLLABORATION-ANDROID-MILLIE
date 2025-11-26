@@ -40,14 +40,29 @@ fun SearchLibraryScreen(
         Row(
             modifier = modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
+            verticalAlignment = Alignment.Top,
         ) {
-            libraryList.forEach {
-                LibraryItem(
-                    imgRes = it.imgRes,
-                    bookTitle = it.bookTitle,
-                )
-            }
+            LibraryItem(
+                imgRes = R.drawable.img_search_library_1,
+                bookTitle = "홍학의 자리",
+            )
+
+            LibraryItem(
+                imgRes = R.drawable.img_search_library_2,
+                bookTitle = "홍학의 자리",
+                isEvan = true,
+            )
+
+            LibraryItem(
+                imgRes = R.drawable.img_search_library_1,
+                bookTitle = "홍학의 자리",
+                isEvan = true,
+            )
+
+            LibraryItem(
+                imgRes = R.drawable.img_search_library_3,
+                bookTitle = "홍학의 자리",
+            )
         }
     }
 }
@@ -62,15 +77,17 @@ private fun SearchLibraryScreenPreview() {
                 bookTitle = "홍학의 자리",
             ),
             SearchLibraryModel(
-                imgRes = R.drawable.img_search_library_1,
+                imgRes = R.drawable.img_search_library_2,
                 bookTitle = "홍학의 자리",
+                isEvan = true,
             ),
             SearchLibraryModel(
                 imgRes = R.drawable.img_search_library_1,
                 bookTitle = "홍학의 자리",
+                isEvan = true,
             ),
             SearchLibraryModel(
-                imgRes = R.drawable.img_search_library_1,
+                imgRes = R.drawable.img_search_library_3,
                 bookTitle = "홍학의 자리",
             ),
         ),

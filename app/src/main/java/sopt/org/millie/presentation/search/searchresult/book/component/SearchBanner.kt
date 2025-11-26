@@ -53,6 +53,7 @@ fun SearchBanner(
 
             Text(
                 text = bannerContent,
+                modifier = Modifier.padding(start = 8.dp),
                 color = MillieTheme.colors.gray3,
                 style = MillieTheme.typography.body.body1,
             )
@@ -85,7 +86,7 @@ private fun BookBannerPreview() {
     MillieTheme {
         SearchBanner(
             bannerTitle = "《홍학의 자리》읽을 준비!",
-            bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
+            bannerContent = "'이 책'부터 읽어야 재미가 2배",
             bannerImageUrl = "",
         )
     }
