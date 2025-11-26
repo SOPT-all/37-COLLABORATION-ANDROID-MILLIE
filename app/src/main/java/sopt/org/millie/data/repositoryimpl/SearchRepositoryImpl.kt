@@ -3,8 +3,8 @@ package sopt.org.millie.data.repositoryimpl
 import kotlinx.collections.immutable.persistentListOf
 import sopt.org.millie.core.util.suspendRunCatching
 import sopt.org.millie.data.datasource.SearchDataSource
-import sopt.org.millie.data.model.BookSearchResponseModel
 import sopt.org.millie.data.model.BookDetailModel
+import sopt.org.millie.data.model.BookSearchResponseModel
 import sopt.org.millie.data.model.CategoryResponseModel
 import sopt.org.millie.data.model.toModel
 import sopt.org.millie.data.repository.SearchRepository
