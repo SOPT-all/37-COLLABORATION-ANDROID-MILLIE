@@ -1,6 +1,7 @@
 package sopt.org.millie.presentation.search.searchresult
 
 import androidx.compose.runtime.Immutable
+import kotlinx.collections.immutable.persistentListOf
 import sopt.org.millie.core.util.UiState
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBannerModel
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
@@ -13,7 +14,7 @@ data class SearchUiState(
     val searchTabs: List<String> = SearchResultConstants.SEARCH_TABS,
     val selectedTab: String = SearchResultConstants.SELECTED_TAB,
     val searchResult: UiState<SearchResultData> = UiState.Loading,
-    val searchLibraryList: List<SearchLibraryModel> = emptyList(),
+    val searchLibraryList: List<SearchLibraryModel> = persistentListOf(),
 )
 
 @Immutable

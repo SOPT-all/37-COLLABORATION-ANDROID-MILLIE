@@ -19,6 +19,7 @@ import sopt.org.millie.presentation.search.navigation.SearchResultRoute
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBannerModel
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
 import sopt.org.millie.presentation.search.searchresult.library.model.SearchLibraryModel
+import timber.log.Timber
 import javax.inject.Inject
 import kotlin.Long
 import kotlin.String
@@ -37,6 +38,7 @@ class SearchViewModel
 
     init {
         loadSearchResult(keyword)
+        updateText(keyword)
         loadLibraryList()
     }
 
@@ -80,7 +82,7 @@ class SearchViewModel
 
                     val searchResultData = SearchResultData(
                         bookList = bookModels,
-                        banner = bookSearchResponseModels.banner
+                        banner = bookSearchResponseModels.banner,
                     )
 
                     _uiState.update {
@@ -88,7 +90,7 @@ class SearchViewModel
                     }
                 }
                 .onFailure {
-                    Log.d("SearchVM", "FAIL: ${it.message}")
+                    Timber.d("FAIL: ${it.message}")
                 }
         }
     }
