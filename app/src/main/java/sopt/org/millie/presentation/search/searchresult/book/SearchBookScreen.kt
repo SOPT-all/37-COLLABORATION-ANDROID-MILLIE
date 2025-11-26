@@ -66,7 +66,7 @@ fun SearchBookScreen(
                     completionTime = book.completionTime,
                     onBookItemClick = { onBookItemClick(book.bookId) },
                     isAudiobook = book.isAudiobook,
-                    voiceActor = book.voiceActor ?: "",
+                    voiceActor = book.voiceActor,
                 )
             }
         }

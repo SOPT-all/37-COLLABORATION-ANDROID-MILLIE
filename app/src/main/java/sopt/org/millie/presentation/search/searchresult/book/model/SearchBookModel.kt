@@ -11,5 +11,5 @@ data class SearchBookModel(
     val completionRate: Int,
     val completionTime: Int,
     val isAudiobook: Boolean = false,
-    val voiceActor: String? = "",
+    val voiceActor: String = "",
 )
