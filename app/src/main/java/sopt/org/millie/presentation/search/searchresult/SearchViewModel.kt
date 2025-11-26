@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import okhttp3.internal.toImmutableList
 import sopt.org.millie.R
 import sopt.org.millie.core.util.UiState
 import sopt.org.millie.data.repository.SearchRepository
@@ -78,7 +79,7 @@ class SearchViewModel
                     }
 
                     val searchResultData = SearchResultData(
-                        bookList = bookModels,
+                        bookList = bookModels.toImmutableList(),
                         banner = bookSearchResponseModels.banner,
                     )
 

@@ -38,7 +38,7 @@ import sopt.org.millie.presentation.search.searchresult.post.SearchPostScreen
 @Composable
 fun SearchRoute(
     paddingValues: PaddingValues,
-    onBackButtonClick: () -> Unit,
+    navigateUp: () -> Unit,
     searchViewModel: SearchViewModel = hiltViewModel(),
 ) {
     val searchUiState by searchViewModel.uiState.collectAsStateWithLifecycle()
@@ -57,7 +57,7 @@ fun SearchRoute(
                 searchBanner = searchResultState.data.banner,
                 onSearchAction = searchViewModel::onSearchAction,
                 onBookItemClick = searchViewModel::onBookItemClick,
-                onBackButtonClick = onBackButtonClick,
+                onBackButtonClick = navigateUp,
             )
         }
 
