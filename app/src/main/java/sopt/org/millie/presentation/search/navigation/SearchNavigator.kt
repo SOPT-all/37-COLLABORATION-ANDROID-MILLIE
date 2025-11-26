@@ -59,7 +59,7 @@ fun NavGraphBuilder.searchNavGraph(
         composable<SearchResultRoute> {
             SearchRoute(
                 paddingValues = paddingValues,
-                onBackButtonClick = navController::navigateUp
+                onBackButtonClick = navController::navigateUp,
             )
         }
 

@@ -57,7 +57,7 @@ fun SearchRoute(
                 searchBanner = searchResultState.data.banner,
                 onSearchAction = searchViewModel::onSearchAction,
                 onBookItemClick = searchViewModel::onBookItemClick,
-                onBackButtonClick = onBackButtonClick
+                onBackButtonClick = onBackButtonClick,
             )
         }
 
@@ -234,7 +234,7 @@ private fun SearchScreenPreview() {
                 ),
             onSearchAction = {},
             onBookItemClick = {},
-            onBackButtonClick = {}
+            onBackButtonClick = {},
         )
     }
 }

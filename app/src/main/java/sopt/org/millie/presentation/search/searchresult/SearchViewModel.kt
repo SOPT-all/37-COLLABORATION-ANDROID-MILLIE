@@ -1,6 +1,5 @@
 package sopt.org.millie.presentation.search.searchresult
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,12 +10,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import okhttp3.internal.toImmutableList
 import sopt.org.millie.R
 import sopt.org.millie.core.util.UiState
 import sopt.org.millie.data.repository.SearchRepository
 import sopt.org.millie.presentation.search.navigation.SearchResultRoute
-import sopt.org.millie.presentation.search.searchresult.book.model.SearchBannerModel
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
 import sopt.org.millie.presentation.search.searchresult.library.model.SearchLibraryModel
 import timber.log.Timber

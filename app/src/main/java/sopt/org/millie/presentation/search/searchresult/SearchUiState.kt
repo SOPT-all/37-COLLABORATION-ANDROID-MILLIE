@@ -20,5 +20,5 @@ data class SearchUiState(
 @Immutable
 data class SearchResultData(
     val bookList: List<SearchBookModel>,
-    val banner: SearchBannerModel
+    val banner: SearchBannerModel,
 )
