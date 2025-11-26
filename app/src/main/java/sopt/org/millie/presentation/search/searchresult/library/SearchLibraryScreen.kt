@@ -50,21 +50,19 @@ fun SearchLibraryScreen(
             LibraryItem(
                 imgRes = R.drawable.img_search_library_2,
                 bookTitle = "홍학의 자리",
-                isEvan = true
+                isEvan = true,
             )
 
             LibraryItem(
                 imgRes = R.drawable.img_search_library_1,
                 bookTitle = "홍학의 자리",
-                isEvan = true
+                isEvan = true,
             )
 
             LibraryItem(
                 imgRes = R.drawable.img_search_library_3,
                 bookTitle = "홍학의 자리",
             )
-
-
         }
     }
 }
@@ -81,12 +79,12 @@ private fun SearchLibraryScreenPreview() {
             SearchLibraryModel(
                 imgRes = R.drawable.img_search_library_2,
                 bookTitle = "홍학의 자리",
-                isEvan = true
+                isEvan = true,
             ),
             SearchLibraryModel(
                 imgRes = R.drawable.img_search_library_1,
                 bookTitle = "홍학의 자리",
-                isEvan = true
+                isEvan = true,
             ),
             SearchLibraryModel(
                 imgRes = R.drawable.img_search_library_3,

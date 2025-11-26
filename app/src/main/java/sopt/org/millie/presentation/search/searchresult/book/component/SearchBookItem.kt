@@ -50,7 +50,7 @@ fun SearchBookItem(
                     offsetY = 4.dp,
                 )
                 .clip(RoundedCornerShape(topEnd = 4.dp, bottomEnd = 4.dp)),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
 
         Spacer(modifier = Modifier.height(10.dp))
