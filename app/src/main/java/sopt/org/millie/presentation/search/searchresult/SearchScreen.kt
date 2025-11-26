@@ -26,6 +26,7 @@ import sopt.org.millie.core.designsystem.component.MillieTabbar
 import sopt.org.millie.core.designsystem.component.MillieTopappbar
 import sopt.org.millie.core.designsystem.theme.MillieTheme
 import sopt.org.millie.core.util.UiState
+import sopt.org.millie.core.util.noRippleClickable
 import sopt.org.millie.presentation.search.searchresult.book.SearchBookScreen
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBannerModel
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
@@ -37,6 +38,7 @@ import sopt.org.millie.presentation.search.searchresult.post.SearchPostScreen
 @Composable
 fun SearchRoute(
     paddingValues: PaddingValues,
+    onBackButtonClick: () -> Unit,
     searchViewModel: SearchViewModel = hiltViewModel(),
 ) {
     val searchUiState by searchViewModel.uiState.collectAsStateWithLifecycle()
@@ -55,6 +57,7 @@ fun SearchRoute(
                 searchBanner = searchResultState.data.banner,
                 onSearchAction = searchViewModel::onSearchAction,
                 onBookItemClick = searchViewModel::onBookItemClick,
+                onBackButtonClick = onBackButtonClick
             )
         }
 
@@ -77,6 +80,7 @@ private fun SearchScreen(
     searchBanner: SearchBannerModel,
     onSearchAction: () -> Unit,
     onBookItemClick: (Long) -> Unit,
+    onBackButtonClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -88,7 +92,9 @@ private fun SearchScreen(
             title = "검색결과",
             navigationIcon = {
                 Icon(
-                    modifier = Modifier.size(24.dp),
+                    modifier = Modifier
+                        .size(24.dp)
+                        .noRippleClickable(onClick = onBackButtonClick),
                     imageVector = ImageVector.vectorResource(R.drawable.ic_back_button),
                     contentDescription = null,
                     tint = MillieTheme.colors.darkGray1,
@@ -228,6 +234,7 @@ private fun SearchScreenPreview() {
                 ),
             onSearchAction = {},
             onBookItemClick = {},
+            onBackButtonClick = {}
         )
     }
 }
