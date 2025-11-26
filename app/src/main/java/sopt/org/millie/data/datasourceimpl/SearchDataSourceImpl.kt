@@ -19,4 +19,7 @@ class SearchDataSourceImpl
         keyword: String,
     ): BaseResponse<BookSearchResponseDto> =
         searchService.getBooks(keyword)
+    
+    override suspend fun getBookDetailInformation(bookId: Long) =
+        searchService.getBookDetailInformation(bookId)
 }

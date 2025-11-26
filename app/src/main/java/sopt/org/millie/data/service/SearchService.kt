@@ -4,6 +4,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import sopt.org.millie.core.network.BaseResponse
 import sopt.org.millie.data.dto.response.BookSearchResponseDto
+import retrofit2.http.Path
+import sopt.org.millie.core.network.BaseResponse
+import sopt.org.millie.data.dto.response.BookDetailInformationResponseDto
 import sopt.org.millie.data.dto.response.CategoryResponseDto
 
 interface SearchService {
@@ -14,4 +17,9 @@ interface SearchService {
     suspend fun getBooks(
         @Query("keyword") keyword: String,
     ): BaseResponse<BookSearchResponseDto>
+
+    @GET("books/{bookId}")
+    suspend fun getBookDetailInformation(
+        @Path("bookId") bookId: Long,
+    ): BaseResponse<BookDetailInformationResponseDto>
 }
