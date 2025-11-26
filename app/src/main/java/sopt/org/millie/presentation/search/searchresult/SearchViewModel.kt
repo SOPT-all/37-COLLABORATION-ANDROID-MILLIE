@@ -1,8 +1,10 @@
 package sopt.org.millie.presentation.search.searchresult
 
 import android.util.Log
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,6 +15,7 @@ import okhttp3.internal.toImmutableList
 import sopt.org.millie.R
 import sopt.org.millie.core.util.UiState
 import sopt.org.millie.data.repository.SearchRepository
+import sopt.org.millie.presentation.search.navigation.SearchResultRoute
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
 import sopt.org.millie.presentation.search.searchresult.library.model.SearchLibraryModel
 import javax.inject.Inject
@@ -23,10 +26,18 @@ import kotlin.String
 class SearchViewModel
     @Inject
     constructor(
+        savedStateHandle: SavedStateHandle,
         private val searchRepository: SearchRepository,
     ) : ViewModel() {
     private val _uiState = MutableStateFlow(SearchUiState())
     val uiState: StateFlow<SearchUiState> = _uiState.asStateFlow()
+
+    val keyword = savedStateHandle.toRoute<SearchResultRoute>().keyword
+
+    init {
+        loadSearchResult(keyword)
+        loadLibraryList()
+    }
 
     fun onTabSelected(tab: String) {
         _uiState.update { it.copy(selectedTab = tab) }
@@ -46,7 +57,7 @@ class SearchViewModel
 
     fun loadSearchResult(keyword: String) {
         viewModelScope.launch {
-            Log.d("SearchVM", "loadSearchResult called with $keyword")
+            Log.d("SearchVM", "loadSearchResult - $keyword")
             searchRepository.getBooks(keyword)
                 .onSuccess { bookSearchResponseModels ->
                     Log.d("SearchVM", "Got ${bookSearchResponseModels.books.size} books")

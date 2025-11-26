@@ -6,7 +6,6 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import androidx.navigation.toRoute
 import kotlinx.serialization.Serializable
 import sopt.org.millie.core.navigation.MainTabRoute
 import sopt.org.millie.presentation.search.home.HomeRoute
@@ -60,7 +59,6 @@ fun NavGraphBuilder.searchNavGraph(
         composable<SearchResultRoute> { navBackStackEntry ->
             SearchRoute(
                 paddingValues = paddingValues,
-                keyword = navBackStackEntry.toRoute<SearchResultRoute>().keyword,
             )
         }
 

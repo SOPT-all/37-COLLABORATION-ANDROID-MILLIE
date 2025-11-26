@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,15 +37,14 @@ import sopt.org.millie.presentation.search.searchresult.post.SearchPostScreen
 @Composable
 fun SearchRoute(
     paddingValues: PaddingValues,
-    keyword: String,
     searchViewModel: SearchViewModel = hiltViewModel(),
 ) {
     val searchUiState by searchViewModel.uiState.collectAsStateWithLifecycle()
 
-    LaunchedEffect(keyword) {
+    /*LaunchedEffect(keyword) {
         searchViewModel.loadSearchResult(keyword)
         searchViewModel.loadLibraryList()
-    }
+    }*/
 
     when (val searchBookState = searchUiState.searchBookList) {
         is UiState.Success -> {
