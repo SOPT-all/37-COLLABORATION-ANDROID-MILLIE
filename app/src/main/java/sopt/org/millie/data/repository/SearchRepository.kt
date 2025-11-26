@@ -1,8 +1,8 @@
 package sopt.org.millie.data.repository
 
 import sopt.org.millie.data.model.BookDetailModel
-import sopt.org.millie.data.model.BookSearchResponseModel
 import sopt.org.millie.data.model.BookReviewModel
+import sopt.org.millie.data.model.BookSearchResponseModel
 import sopt.org.millie.data.model.CategoryResponseModel
 
 interface SearchRepository {

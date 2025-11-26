@@ -45,7 +45,7 @@ fun NavController.navigateToSearchResult(
 fun NavController.navigateToBookDetail(
     bookId: Long,
     navOptions: NavOptions? = null,
-){
+) {
     navigate(SearchBookDetailRoute(bookId), navOptions)
 }
 
