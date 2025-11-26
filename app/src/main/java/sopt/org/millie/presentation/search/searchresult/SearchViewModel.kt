@@ -16,6 +16,7 @@ import sopt.org.millie.R
 import sopt.org.millie.core.util.UiState
 import sopt.org.millie.data.repository.SearchRepository
 import sopt.org.millie.presentation.search.navigation.SearchResultRoute
+import sopt.org.millie.presentation.search.searchresult.book.model.SearchBannerModel
 import sopt.org.millie.presentation.search.searchresult.book.model.SearchBookModel
 import sopt.org.millie.presentation.search.searchresult.library.model.SearchLibraryModel
 import javax.inject.Inject
@@ -77,12 +78,13 @@ class SearchViewModel
                         )
                     }
 
-                    val bannerModels = bookSearchResponseModels.banner
+                    val searchResultData = SearchResultData(
+                        bookList = bookModels,
+                        banner = bookSearchResponseModels.banner
+                    )
+
                     _uiState.update {
-                        it.copy(
-                            searchBookList = UiState.Success(bookModels.toImmutableList()),
-                            searchBanner = UiState.Success(bannerModels),
-                        )
+                        it.copy(searchResult = UiState.Success(searchResultData))
                     }
                 }
                 .onFailure {

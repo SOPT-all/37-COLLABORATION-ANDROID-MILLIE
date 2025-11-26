@@ -41,9 +41,8 @@ fun SearchRoute(
 ) {
     val searchUiState by searchViewModel.uiState.collectAsStateWithLifecycle()
 
-    when (val searchBookState = searchUiState.searchBookList) {
+    when (val searchResultState = searchUiState.searchResult) {
         is UiState.Success -> {
-            val searchBannerState = (searchUiState.searchBanner as UiState.Success)
             SearchScreen(
                 value = searchUiState.searchInput,
                 onValueChange = searchViewModel::updateText,
@@ -51,9 +50,9 @@ fun SearchRoute(
                 searchTabs = searchUiState.searchTabs,
                 selectedTab = searchUiState.selectedTab,
                 onSelectedTab = searchViewModel::onTabSelected,
-                searchBookList = searchBookState.data,
+                searchBookList = searchResultState.data.bookList,
                 searchLibraryList = searchUiState.searchLibraryList,
-                searchBanner = searchBannerState.data,
+                searchBanner = searchResultState.data.banner,
                 onSearchAction = searchViewModel::onSearchAction,
                 onBookItemClick = searchViewModel::onBookItemClick,
             )

@@ -12,7 +12,12 @@ data class SearchUiState(
     val searchInput: String = "",
     val searchTabs: List<String> = SearchResultConstants.SEARCH_TABS,
     val selectedTab: String = SearchResultConstants.SELECTED_TAB,
-    val searchBookList: UiState<List<SearchBookModel>> = UiState.Loading,
+    val searchResult: UiState<SearchResultData> = UiState.Loading,
     val searchLibraryList: List<SearchLibraryModel> = emptyList(),
-    val searchBanner: UiState<SearchBannerModel> = UiState.Loading,
+)
+
+@Immutable
+data class SearchResultData(
+    val bookList: List<SearchBookModel>,
+    val banner: SearchBannerModel
 )
