@@ -25,6 +25,7 @@ import sopt.org.millie.core.designsystem.theme.MillieTheme
 fun BookDetailLikedTag(
     onClick: () -> Unit,
     likedNum: Int,
+    isLiked: Boolean,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -36,7 +37,13 @@ fun BookDetailLikedTag(
         horizontalArrangement = Arrangement.spacedBy(3.dp),
     ) {
         Icon(
-            imageVector = ImageVector.vectorResource(id = R.drawable.ic_detail_heart_small),
+            imageVector = ImageVector.vectorResource(
+                id = if (isLiked) {
+                    R.drawable.ic_detail_heart_small_filled
+                } else {
+                    R.drawable.ic_detail_heart_small
+                },
+            ),
             contentDescription = null,
             tint = Color.Unspecified,
             modifier = Modifier
@@ -64,6 +71,7 @@ private fun Preview() {
     MillieTheme {
         BookDetailLikedTag(
             onClick = {},
+            isLiked = true,
             likedNum = 724,
         )
     }

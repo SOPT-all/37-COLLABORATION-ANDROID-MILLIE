@@ -12,9 +12,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import sopt.org.millie.R
-import sopt.org.millie.data.model.BookReviewModel
 import sopt.org.millie.data.repository.SearchRepository
-import sopt.org.millie.presentation.search.bookdetail.BookDetailUiState
 import sopt.org.millie.presentation.search.bookdetail.model.BookDataType
 import sopt.org.millie.presentation.search.bookdetail.model.BookSimilarModel
 import javax.inject.Inject
@@ -113,9 +111,11 @@ constructor(
                                             likedNum = bookReviewModel.likedNum,
                                             isLiked = bookReviewModel.isLiked,
                                         )
-                                    } else review
-                                }.toImmutableList()
-                            )
+                                    } else {
+                                        review
+                                    }
+                                }.toImmutableList(),
+                            ),
                         )
                     }
                 }
