@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import kotlinx.serialization.Serializable
 import sopt.org.millie.core.navigation.MainTabRoute
+import sopt.org.millie.presentation.search.bookdetail.BookDetailRoute
 import sopt.org.millie.presentation.search.home.HomeRoute
 import sopt.org.millie.presentation.search.searchresult.SearchRoute
 
@@ -21,6 +22,10 @@ data class SearchResultRoute(
 )
 
 // 책 상세 네비 라우트 정의
+@Serializable
+data class SearchBookDetailRoute(
+    val bookId: Long,
+)
 
 fun NavController.navigateToSearch(
     navOptions: NavOptions,
@@ -37,6 +42,12 @@ fun NavController.navigateToSearchResult(
 }
 
 // 책 상세 화면 네비게이션
+fun NavController.navigateToBookDetail(
+    bookId: Long,
+    navOptions: NavOptions? = null,
+){
+    navigate(SearchBookDetailRoute(bookId), navOptions)
+}
 
 fun NavGraphBuilder.searchNavGraph(
     navController: NavController,
@@ -60,9 +71,18 @@ fun NavGraphBuilder.searchNavGraph(
             SearchRoute(
                 paddingValues = paddingValues,
                 navigateUp = navController::navigateUp,
+                onBookItemClick = { bookId ->
+                    navController.navigateToBookDetail(bookId)
+                },
             )
         }
 
         // 3. 책 상세 화면
+        composable<SearchBookDetailRoute> {
+            BookDetailRoute(
+                paddingValues = paddingValues,
+                navigateUp = navController::navigateUp,
+            )
+        }
     }
 }

@@ -2,6 +2,7 @@ package sopt.org.millie.presentation.search.bookdetail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,13 +36,15 @@ import sopt.org.millie.presentation.search.bookdetail.component.book.BookSimilar
 
 @Composable
 fun BookDetailRoute(
+    paddingValues: PaddingValues,
+    navigateUp: () -> Unit,
     viewModel: BookDetailViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     BookDetailScreen(
         uiState = uiState,
-        onBackButtonClick = viewModel::onBackButtonClicked,
+        onBackButtonClick = navigateUp,
         onCompletedRateClick = viewModel::onCompletedRateClicked,
         onAgeGenderClick = viewModel::onAgeGenderClicked,
         onImageClick = viewModel::onImageClicked,
