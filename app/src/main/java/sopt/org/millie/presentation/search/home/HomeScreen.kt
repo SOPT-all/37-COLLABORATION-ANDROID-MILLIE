@@ -40,6 +40,7 @@ import sopt.org.millie.presentation.search.home.model.RankingModel
 @Composable
 fun HomeRoute(
     paddingValues: PaddingValues,
+    onSearchAction: (String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -55,7 +56,7 @@ fun HomeRoute(
                 categoryList = categoryState.data,
                 onValueChange = viewModel::updateSearchKeyword,
                 onCancelClick = viewModel::clearSearch,
-                onSearchAction = viewModel::onSearchAction,
+                onSearchAction = { onSearchAction(uiState.searchKeyword) },
                 onTabSelected = viewModel::selectTab,
             )
         }

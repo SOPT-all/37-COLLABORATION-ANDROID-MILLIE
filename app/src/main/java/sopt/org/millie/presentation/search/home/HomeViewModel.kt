@@ -41,7 +41,7 @@ constructor(
 
     fun onSearchAction() {
         val keyword = _uiState.value.searchKeyword
-        // navigateToSearch(keyword) 이동 로직
+        // navigateToSearch(keyword)
     }
 
     fun loadCategories() {

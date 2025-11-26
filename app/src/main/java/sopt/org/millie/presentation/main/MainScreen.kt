@@ -41,7 +41,7 @@ fun MainScreen(
         ) {
             todayNavGraph(paddingValues)
             wandokNavGraph(paddingValues)
-            searchNavGraph(paddingValues)
+            searchNavGraph(navigator.navController, paddingValues)
             shelfNavGraph(paddingValues)
             settingNavGraph(paddingValues)
         }
