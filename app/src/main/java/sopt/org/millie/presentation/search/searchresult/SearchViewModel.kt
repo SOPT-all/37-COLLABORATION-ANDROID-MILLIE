@@ -55,6 +55,11 @@ class SearchViewModel
         // TODO: 이동 로직 추가
     }
 
+    fun onSearchAction() {
+        val keyword = _uiState.value.searchInput
+        loadSearchResult(keyword)
+    }
+
     fun loadSearchResult(keyword: String) {
         viewModelScope.launch {
             searchRepository.getBooks(keyword)

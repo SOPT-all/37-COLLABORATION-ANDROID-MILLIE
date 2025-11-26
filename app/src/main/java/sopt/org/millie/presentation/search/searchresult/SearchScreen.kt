@@ -41,11 +41,6 @@ fun SearchRoute(
 ) {
     val searchUiState by searchViewModel.uiState.collectAsStateWithLifecycle()
 
-    /*LaunchedEffect(keyword) {
-        searchViewModel.loadSearchResult(keyword)
-        searchViewModel.loadLibraryList()
-    }*/
-
     when (val searchBookState = searchUiState.searchBookList) {
         is UiState.Success -> {
             val searchBannerState = (searchUiState.searchBanner as UiState.Success)
@@ -59,6 +54,7 @@ fun SearchRoute(
                 searchBookList = searchBookState.data,
                 searchLibraryList = searchUiState.searchLibraryList,
                 searchBanner = searchBannerState.data,
+                onSearchAction = searchViewModel::onSearchAction,
                 onBookItemClick = searchViewModel::onBookItemClick,
             )
         }
@@ -80,6 +76,7 @@ private fun SearchScreen(
     searchBookList: List<SearchBookModel>,
     searchLibraryList: List<SearchLibraryModel>,
     searchBanner: SearchBannerModel,
+    onSearchAction: () -> Unit,
     onBookItemClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -110,6 +107,7 @@ private fun SearchScreen(
             onValueChange = onValueChange,
             onCancelClick = onCancelClick,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            onSearchAction = onSearchAction,
         )
 
         HorizontalDivider(
@@ -229,6 +227,7 @@ private fun SearchScreenPreview() {
                     bannerContent = "  ‘이 책'부터 읽어야 재미가 2배",
                     bannerImageUrl = "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954681155.jpg",
                 ),
+            onSearchAction = {},
             onBookItemClick = {},
         )
     }
