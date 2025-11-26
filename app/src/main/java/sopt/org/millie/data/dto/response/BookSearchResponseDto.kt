@@ -32,7 +32,7 @@ data class BookListDto(
     @SerialName("isAudiobook")
     val isAudiobook: Boolean,
     @SerialName("voiceActor")
-    val voiceActor: String,
+    val voiceActor: String?,
 )
 
 @Serializable

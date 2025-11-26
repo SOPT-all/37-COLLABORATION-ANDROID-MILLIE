@@ -57,10 +57,8 @@ class SearchViewModel
 
     fun loadSearchResult(keyword: String) {
         viewModelScope.launch {
-            Log.d("SearchVM", "loadSearchResult - $keyword")
             searchRepository.getBooks(keyword)
                 .onSuccess { bookSearchResponseModels ->
-                    Log.d("SearchVM", "Got ${bookSearchResponseModels.books.size} books")
                     val bookModels = bookSearchResponseModels.books.map {
                         SearchBookModel(
                             bookId = it.bookId,
@@ -82,7 +80,9 @@ class SearchViewModel
                         )
                     }
                 }
-                .onFailure { }
+                .onFailure {
+                    Log.d("SearchVM", "FAIL: ${it.message}")
+                }
         }
     }
 

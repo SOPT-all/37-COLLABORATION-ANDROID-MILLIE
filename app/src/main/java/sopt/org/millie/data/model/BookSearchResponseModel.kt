@@ -31,7 +31,7 @@ fun BookListDto.toModel() =
         completionRate = this.completionRate,
         completionTime = this.completionTime,
         isAudiobook = this.isAudiobook,
-        voiceActor = this.voiceActor,
+        voiceActor = this.voiceActor ?: "",
     )
 
 fun BannerDto.toModel() =
