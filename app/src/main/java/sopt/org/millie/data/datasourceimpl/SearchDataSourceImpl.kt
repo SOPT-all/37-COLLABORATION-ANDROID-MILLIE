@@ -16,4 +16,7 @@ class SearchDataSourceImpl
 
     override suspend fun getBookDetailInformation(bookId: Long) =
         searchService.getBookDetailInformation(bookId)
+
+    override suspend fun postReviewLike(reviewId: Long) =
+        searchService.postReviewLike(reviewId)
 }
