@@ -56,7 +56,7 @@ fun NavGraphBuilder.searchNavGraph(
         }
 
         // 2. 검색 결과 화면
-        composable<SearchResultRoute> { navBackStackEntry ->
+        composable<SearchResultRoute> {
             SearchRoute(
                 paddingValues = paddingValues,
             )
