@@ -2,6 +2,7 @@ package sopt.org.millie.presentation.search.searchresult.library.component
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -23,6 +24,7 @@ fun LibraryItem(
     @DrawableRes imgRes: Int,
     bookTitle: String,
     modifier: Modifier = Modifier,
+    isEvan: Boolean = false
 ) {
     Column(
         modifier = modifier,
@@ -43,6 +45,14 @@ fun LibraryItem(
             color = MillieTheme.colors.gray4,
             style = MillieTheme.typography.body.subBody2,
         )
+
+        if(isEvan) {
+            Text(
+                text = "에반하다",
+                color = MillieTheme.colors.gray4,
+                style = MillieTheme.typography.body.subBody2,
+            )
+        }
 
         Text(
             text = "서재",

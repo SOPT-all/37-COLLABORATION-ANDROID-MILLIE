@@ -208,7 +208,7 @@ private fun SearchScreenPreview() {
                     bookTitle = "홍학의 자리",
                 ),
                 SearchLibraryModel(
-                    imgRes = R.drawable.img_search_library_1,
+                    imgRes = R.drawable.img_search_library_2,
                     bookTitle = "홍학의 자리",
                 ),
                 SearchLibraryModel(
@@ -216,7 +216,7 @@ private fun SearchScreenPreview() {
                     bookTitle = "홍학의 자리",
                 ),
                 SearchLibraryModel(
-                    imgRes = R.drawable.img_search_library_1,
+                    imgRes = R.drawable.img_search_library_3,
                     bookTitle = "홍학의 자리",
                 ),
             ),
