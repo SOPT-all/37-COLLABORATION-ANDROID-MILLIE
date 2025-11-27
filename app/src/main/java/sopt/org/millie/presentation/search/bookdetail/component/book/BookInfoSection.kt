@@ -46,7 +46,7 @@ fun BookInfoSection(
         )
 
         Text(
-            text = "$bookAuthor $bookType·$publishDate",
+            text = "$bookAuthor $bookType · $publishDate",
             color = MillieTheme.colors.gray3,
             style = MillieTheme.typography.body.body1,
         )
