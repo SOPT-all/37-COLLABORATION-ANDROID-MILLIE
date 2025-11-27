@@ -95,7 +95,7 @@ private fun BookStatsSection(
 
         VerticalDivider(
             thickness = 1.dp,
-            color = MillieTheme.colors.gray2,
+            color = MillieTheme.colors.lightGray2,
             modifier = Modifier.height(55.dp),
         )
 
