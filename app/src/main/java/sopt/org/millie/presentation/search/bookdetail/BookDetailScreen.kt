@@ -144,7 +144,7 @@ private fun BookDetailContent(
                             alpha = 0.1f,
                         ),
                         offsetY = (-5).dp,
-                        blur = 20.dp
+                        blur = 20.dp,
                     )
                     .clip(RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp))
                     .background(color = MillieTheme.colors.background)

@@ -118,7 +118,7 @@ private fun HomeScreen(
 
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(top = 8.dp)
+            contentPadding = PaddingValues(top = 8.dp),
         ) {
             when (uiState.selectedTab) {
                 "카테고리" -> categoryTabContent(categoryList)
