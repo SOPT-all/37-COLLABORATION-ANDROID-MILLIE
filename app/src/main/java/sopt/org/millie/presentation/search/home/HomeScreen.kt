@@ -22,7 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import sopt.org.millie.R
@@ -100,9 +99,7 @@ private fun HomeScreen(
         )
 
         RankingItem(
-            rank = uiState.rankingItem.rank,
-            bookTitle = uiState.rankingItem.bookTitle,
-            rankingIcon = uiState.rankingItem.rankingIcon,
+            rankingList = uiState.rankingList
         )
 
         QuickLinks()
@@ -195,10 +192,17 @@ private fun HomeScreenPreview() {
                 searchKeyword = "",
                 tabs = HomeConstants.HOME_TABS,
                 selectedTab = HomeConstants.DEFAULT_TAB,
-                rankingItem = RankingModel(
-                    rank = 2,
-                    bookTitle = "동화",
-                    rankingIcon = R.drawable.ic_home_ranking_down,
+                rankingList = persistentListOf(
+                    RankingModel(
+                        rank = 1,
+                        bookTitle = "소설",
+                        rankingIcon = R.drawable.ic_home_ranking_up,
+                    ),
+                    RankingModel(
+                        rank = 2,
+                        bookTitle = "동화",
+                        rankingIcon = R.drawable.ic_home_ranking_down,
+                    ),
                 ),
                 categoryList = UiState.Success(persistentListOf()),
             ),
