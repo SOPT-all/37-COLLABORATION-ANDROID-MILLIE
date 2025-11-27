@@ -72,7 +72,7 @@ fun MillieSearchTextField(
             ) {
                 Icon(
                     imageVector = ImageVector.vectorResource(R.drawable.ic_search),
-                    contentDescription = "검색",
+                    contentDescription = null,
                     tint = MillieTheme.colors.gray3,
                     modifier = Modifier.size(24.dp),
                 )
@@ -109,7 +109,7 @@ fun MillieSearchTextField(
     )
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = false)
 @Composable
 private fun MillieSearchTextFieldPreview() {
     MillieTheme {
