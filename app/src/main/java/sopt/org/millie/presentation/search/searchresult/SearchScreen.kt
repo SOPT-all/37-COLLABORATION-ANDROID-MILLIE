@@ -160,7 +160,7 @@ private fun SearchScreenPreview() {
             state = SearchUiState(
                 searchInput = "",
                 searchTabs = SearchResultConstants.SEARCH_TABS,
-                selectedTab = SearchResultConstants.SELECTED_TAB
+                selectedTab = SearchResultConstants.SELECTED_TAB,
             ),
             onValueChange = { text = it },
             onCancelClick = { text = "" },

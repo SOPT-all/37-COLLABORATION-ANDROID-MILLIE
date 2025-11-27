@@ -103,12 +103,12 @@ class SearchViewModel
             SearchLibraryModel(
                 imgRes = R.drawable.img_search_library_2,
                 bookTitle = "홍학의 자리",
-                isEvan = true
+                isEvan = true,
             ),
             SearchLibraryModel(
                 imgRes = R.drawable.img_search_library_1,
                 bookTitle = "홍학의 자리",
-                isEvan = true
+                isEvan = true,
             ),
             SearchLibraryModel(
                 imgRes = R.drawable.img_search_library_3,

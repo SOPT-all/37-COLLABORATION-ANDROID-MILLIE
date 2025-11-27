@@ -46,7 +46,7 @@ fun SearchLibraryScreen(
                 LibraryItem(
                     imgRes = item.imgRes,
                     bookTitle = item.bookTitle,
-                    isEvan = item.isEvan
+                    isEvan = item.isEvan,
                 )
             }
         }
