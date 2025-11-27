@@ -120,10 +120,9 @@ private fun BookDetailContent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 84.dp, vertical = 46.dp)
-                    .clip(shape = RoundedCornerShape(8.dp))
                     .customShadow(
                         shape = RoundedCornerShape(8.dp),
-                        color = MillieTheme.colors.subPurple.copy(
+                        color = MillieTheme.colors.black.copy(
                             alpha = 0.1f,
                         ),
                         offsetX = 4.dp,
@@ -132,11 +131,14 @@ private fun BookDetailContent(
                     )
                     .customShadow(
                         shape = RoundedCornerShape(8.dp),
-                        color = MillieTheme.colors.subPurple,
+                        color = MillieTheme.colors.black.copy(
+                            alpha = 0.2f
+                        ),
                         offsetX = 12.dp,
                         offsetY = 8.dp,
                         blur = 24.dp,
-                    ),
+                    )
+                    .clip(shape = RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.Crop,
             )
 
