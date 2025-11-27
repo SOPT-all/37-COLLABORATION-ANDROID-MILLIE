@@ -138,14 +138,15 @@ private fun BookDetailContent(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .clip(RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp))
                     .customShadow(
                         shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp),
                         color = MillieTheme.colors.black.copy(
                             alpha = 0.1f,
                         ),
                         offsetY = (-5).dp,
+                        blur = 20.dp,
                     )
+                    .clip(RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp))
                     .background(color = MillieTheme.colors.background)
                     .padding(top = 40.dp),
             ) {
