@@ -30,6 +30,7 @@ fun SearchBookScreen(
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
+        modifier = modifier,
         contentPadding = PaddingValues(horizontal = 17.dp, vertical = 24.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
