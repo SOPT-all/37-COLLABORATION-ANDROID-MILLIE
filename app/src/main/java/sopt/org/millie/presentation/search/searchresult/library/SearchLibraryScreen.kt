@@ -42,27 +42,13 @@ fun SearchLibraryScreen(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.Top,
         ) {
-            LibraryItem(
-                imgRes = R.drawable.img_search_library_1,
-                bookTitle = "홍학의 자리",
-            )
-
-            LibraryItem(
-                imgRes = R.drawable.img_search_library_2,
-                bookTitle = "홍학의 자리",
-                isEvan = true,
-            )
-
-            LibraryItem(
-                imgRes = R.drawable.img_search_library_1,
-                bookTitle = "홍학의 자리",
-                isEvan = true,
-            )
-
-            LibraryItem(
-                imgRes = R.drawable.img_search_library_3,
-                bookTitle = "홍학의 자리",
-            )
+            libraryList.forEach { item ->
+                LibraryItem(
+                    imgRes = item.imgRes,
+                    bookTitle = item.bookTitle,
+                    isEvan = item.isEvan
+                )
+            }
         }
     }
 }
