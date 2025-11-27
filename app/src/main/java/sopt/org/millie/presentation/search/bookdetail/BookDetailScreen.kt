@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,15 +16,10 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.BottomCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -78,6 +74,7 @@ private fun BookDetailScreen(
         onAgeGenderClick = onAgeGenderClick,
         onImageClick = onImageClick,
         onReviewLikeClick = onReviewLikeClick,
+        modifier = modifier
     )
 }
 
@@ -92,8 +89,6 @@ private fun BookDetailContent(
     onReviewLikeClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val density = LocalDensity.current
-    var readNowBarHeight by remember { mutableStateOf(0.dp) }
 
     Box(
         modifier = Modifier
@@ -105,7 +100,6 @@ private fun BookDetailContent(
                 .fillMaxSize()
                 .background(color = MillieTheme.colors.bookDetailBackground)
                 .verticalScroll(state = rememberScrollState())
-                .padding(bottom = readNowBarHeight),
         ) {
             Spacer(modifier = Modifier.height(22.dp + paddingValues.calculateTopPadding()))
 
@@ -206,7 +200,8 @@ private fun BookDetailContent(
                 BookSimilarSection(
                     books = uiState.similarBooks,
                     modifier = Modifier
-                        .padding(top = 30.dp, bottom = 20.dp),
+                        .padding(top = 30.dp, bottom = 20.dp)
+                        .navigationBarsPadding(),
                 )
             }
         }
@@ -214,12 +209,7 @@ private fun BookDetailContent(
         ReadNowBar(
             onButtonClick = {},
             modifier = Modifier
-                .align(alignment = BottomCenter)
-                .onGloballyPositioned {
-                    readNowBarHeight = with(density) {
-                        it.size.height.toDp()
-                    }
-                },
+                .align(alignment = BottomCenter),
         )
     }
 }
