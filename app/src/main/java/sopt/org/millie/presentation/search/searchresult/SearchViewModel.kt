@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -94,21 +95,23 @@ class SearchViewModel
     }
 
     fun loadLibraryList() {
-        val dummyLibraries = listOf(
+        val dummyLibraries = persistentListOf(
             SearchLibraryModel(
                 imgRes = R.drawable.img_search_library_1,
                 bookTitle = "홍학의 자리",
             ),
             SearchLibraryModel(
-                imgRes = R.drawable.img_search_library_1,
+                imgRes = R.drawable.img_search_library_2,
                 bookTitle = "홍학의 자리",
+                isEvan = true,
             ),
             SearchLibraryModel(
                 imgRes = R.drawable.img_search_library_1,
                 bookTitle = "홍학의 자리",
+                isEvan = true,
             ),
             SearchLibraryModel(
-                imgRes = R.drawable.img_search_library_1,
+                imgRes = R.drawable.img_search_library_3,
                 bookTitle = "홍학의 자리",
             ),
         )

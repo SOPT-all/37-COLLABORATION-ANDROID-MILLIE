@@ -60,9 +60,7 @@ fun NavGraphBuilder.searchNavGraph(
         composable<SearchHomeRoute> {
             HomeRoute(
                 paddingValues = paddingValues,
-                onSearchAction = { keyword ->
-                    navController.navigateToSearchResult(keyword)
-                },
+                onSearchAction = navController::navigateToSearchResult,
             )
         }
 

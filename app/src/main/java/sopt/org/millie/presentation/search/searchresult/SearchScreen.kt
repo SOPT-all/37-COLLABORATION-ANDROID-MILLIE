@@ -47,15 +47,13 @@ fun SearchRoute(
     when (val searchResultState = searchUiState.searchResult) {
         is UiState.Success -> {
             SearchScreen(
-                value = searchUiState.searchInput,
-                onValueChange = searchViewModel::updateText,
-                onCancelClick = searchViewModel::clearText,
-                searchTabs = searchUiState.searchTabs,
-                selectedTab = searchUiState.selectedTab,
-                onSelectedTab = searchViewModel::onTabSelected,
+                state = searchUiState,
                 searchBookList = searchResultState.data.bookList,
                 searchLibraryList = searchUiState.searchLibraryList,
                 searchBanner = searchResultState.data.banner,
+                onValueChange = searchViewModel::updateText,
+                onCancelClick = searchViewModel::clearText,
+                onSelectedTab = searchViewModel::onTabSelected,
                 onSearchAction = searchViewModel::onSearchAction,
                 onBookItemClick = navigateToBookDetail,
                 onBackButtonClick = navigateUp,
@@ -70,15 +68,13 @@ fun SearchRoute(
 
 @Composable
 private fun SearchScreen(
-    value: String,
-    onValueChange: (String) -> Unit,
-    onCancelClick: () -> Unit,
-    searchTabs: List<String>,
-    selectedTab: String,
-    onSelectedTab: (String) -> Unit,
+    state: SearchUiState,
     searchBookList: List<SearchBookModel>,
     searchLibraryList: List<SearchLibraryModel>,
     searchBanner: SearchBannerModel,
+    onValueChange: (String) -> Unit,
+    onCancelClick: () -> Unit,
+    onSelectedTab: (String) -> Unit,
     onSearchAction: () -> Unit,
     onBookItemClick: (Long) -> Unit,
     onBackButtonClick: () -> Unit,
@@ -109,7 +105,7 @@ private fun SearchScreen(
         )
 
         MillieSearchTextField(
-            value = value,
+            value = state.searchInput,
             onValueChange = onValueChange,
             onCancelClick = onCancelClick,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
@@ -123,12 +119,12 @@ private fun SearchScreen(
         )
 
         MillieTabbar(
-            tabs = searchTabs,
-            selectedTab = selectedTab,
+            tabs = state.searchTabs,
+            selectedTab = state.selectedTab,
             onTabSelected = onSelectedTab,
         )
 
-        when (selectedTab) {
+        when (state.selectedTab) {
             "도서" -> {
                 SearchBookScreen(
                     bookList = searchBookList,
@@ -162,11 +158,13 @@ private fun SearchScreenPreview() {
         var selectedTab by remember { mutableStateOf(SearchResultConstants.SELECTED_TAB) }
 
         SearchScreen(
-            value = text,
+            state = SearchUiState(
+                searchInput = "",
+                searchTabs = SearchResultConstants.SEARCH_TABS,
+                selectedTab = SearchResultConstants.SELECTED_TAB,
+            ),
             onValueChange = { text = it },
             onCancelClick = { text = "" },
-            searchTabs = SearchResultConstants.SEARCH_TABS,
-            selectedTab = selectedTab,
             onSelectedTab = { selectedTab = it },
             searchBookList = listOf(
                 SearchBookModel(
