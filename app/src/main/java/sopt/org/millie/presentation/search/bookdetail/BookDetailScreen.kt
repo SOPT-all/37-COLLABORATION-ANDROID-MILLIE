@@ -74,7 +74,7 @@ private fun BookDetailScreen(
         onAgeGenderClick = onAgeGenderClick,
         onImageClick = onImageClick,
         onReviewLikeClick = onReviewLikeClick,
-        modifier = modifier
+        modifier = modifier,
     )
 }
 
@@ -89,7 +89,6 @@ private fun BookDetailContent(
     onReviewLikeClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -99,7 +98,7 @@ private fun BookDetailContent(
             modifier = modifier
                 .fillMaxSize()
                 .background(color = MillieTheme.colors.bookDetailBackground)
-                .verticalScroll(state = rememberScrollState())
+                .verticalScroll(state = rememberScrollState()),
         ) {
             Spacer(modifier = Modifier.height(22.dp + paddingValues.calculateTopPadding()))
 
@@ -126,7 +125,7 @@ private fun BookDetailContent(
                     .customShadow(
                         shape = RoundedCornerShape(8.dp),
                         color = MillieTheme.colors.black.copy(
-                            alpha = 0.2f
+                            alpha = 0.2f,
                         ),
                         offsetX = 12.dp,
                         offsetY = 8.dp,
