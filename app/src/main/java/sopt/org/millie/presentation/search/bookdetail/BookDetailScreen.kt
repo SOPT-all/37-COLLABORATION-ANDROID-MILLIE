@@ -1,6 +1,7 @@
 package sopt.org.millie.presentation.search.bookdetail
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -12,12 +13,17 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment.Companion.BottomCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -44,6 +50,7 @@ fun BookDetailRoute(
 
     BookDetailScreen(
         uiState = uiState,
+        paddingValues = paddingValues,
         onBackButtonClick = navigateUp,
         onCompletedRateClick = viewModel::onCompletedRateClicked,
         onAgeGenderClick = viewModel::onAgeGenderClicked,
@@ -55,6 +62,7 @@ fun BookDetailRoute(
 @Composable
 private fun BookDetailScreen(
     uiState: BookDetailUiState,
+    paddingValues: PaddingValues,
     onBackButtonClick: () -> Unit,
     onCompletedRateClick: () -> Unit,
     onAgeGenderClick: () -> Unit,
@@ -62,33 +70,21 @@ private fun BookDetailScreen(
     onReviewLikeClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Scaffold(
-        bottomBar = {
-            ReadNowBar(
-                onButtonClick = {},
-            )
-        },
-    ) { innerPadding ->
-        Column(
-            modifier = modifier
-                .fillMaxSize()
-                .padding(innerPadding),
-        ) {
-            BookDetailContent(
-                uiState = uiState,
-                onBackButtonClick = onBackButtonClick,
-                onCompletedRateClick = onCompletedRateClick,
-                onAgeGenderClick = onAgeGenderClick,
-                onImageClick = onImageClick,
-                onReviewLikeClick = onReviewLikeClick,
-            )
-        }
-    }
+    BookDetailContent(
+        uiState = uiState,
+        paddingValues = paddingValues,
+        onBackButtonClick = onBackButtonClick,
+        onCompletedRateClick = onCompletedRateClick,
+        onAgeGenderClick = onAgeGenderClick,
+        onImageClick = onImageClick,
+        onReviewLikeClick = onReviewLikeClick,
+    )
 }
 
 @Composable
 private fun BookDetailContent(
     uiState: BookDetailUiState,
+    paddingValues: PaddingValues,
     onBackButtonClick: () -> Unit,
     onCompletedRateClick: () -> Unit,
     onAgeGenderClick: () -> Unit,
@@ -96,113 +92,135 @@ private fun BookDetailContent(
     onReviewLikeClick: (Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(
-        modifier = modifier
+    val density = LocalDensity.current
+    var readNowBarHeight by remember { mutableStateOf(0.dp) }
+
+    Box(
+        modifier = Modifier
             .fillMaxSize()
-            .background(color = MillieTheme.colors.bookDetailBackground)
-            .verticalScroll(state = rememberScrollState()),
+            .padding(bottom = paddingValues.calculateBottomPadding()),
     ) {
-        Spacer(modifier = Modifier.height(22.dp))
-
-        BookDetailTopbar(
-            bookDetailTopbarBackgroundColor = MillieTheme.colors.bookDetailBackground,
-            onBackButtonClick = onBackButtonClick,
-        )
-
-        AsyncImage(
-            model = uiState.bookDetailUiModel.bookCoverImageUrl,
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 84.dp, vertical = 46.dp)
-                .clip(shape = RoundedCornerShape(8.dp))
-                .customShadow(
-                    shape = RoundedCornerShape(8.dp),
-                    color = MillieTheme.colors.black.copy(
-                        alpha = 0.1f,
-                    ),
-                    offsetX = 4.dp,
-                    offsetY = 8.dp,
-                    blur = 8.dp,
-                )
-                .customShadow(
-                    shape = RoundedCornerShape(8.dp),
-                    color = MillieTheme.colors.black.copy(
-                        alpha = 0.2f,
-                    ),
-                    offsetX = 12.dp,
-                    offsetY = 8.dp,
-                    blur = 24.dp,
-                ),
-            contentScale = ContentScale.Crop,
-        )
-
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxSize()
-                .clip(RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp))
-                .customShadow(
-                    shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp),
-                    color = MillieTheme.colors.black.copy(
-                        alpha = 0.1f,
-                    ),
-                    offsetY = (-5).dp,
-                )
-                .background(color = MillieTheme.colors.background)
-                .padding(top = 40.dp),
+                .background(color = MillieTheme.colors.bookDetailBackground)
+                .verticalScroll(state = rememberScrollState())
+                .padding(bottom = readNowBarHeight),
         ) {
-            with(uiState.bookDetailUiModel) {
-                BookInfoSection(
-                    bookTitle = bookTitle,
-                    bookAuthor = bookAuthor,
-                    bookType = bookType,
-                    publishDate = publishedDate,
-                    totalReviewCount = totalReviewCount,
-                    bookRate = bookRate,
-                    completionRate = completionRate,
+            Spacer(modifier = Modifier.height(22.dp))
+
+            BookDetailTopbar(
+                bookDetailTopbarBackgroundColor = MillieTheme.colors.bookDetailBackground,
+                onBackButtonClick = onBackButtonClick,
+            )
+
+            AsyncImage(
+                model = uiState.bookDetailUiModel.bookCoverImageUrl,
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 84.dp, vertical = 46.dp)
+                    .clip(shape = RoundedCornerShape(8.dp))
+                    .customShadow(
+                        shape = RoundedCornerShape(8.dp),
+                        color = MillieTheme.colors.black.copy(
+                            alpha = 0.1f,
+                        ),
+                        offsetX = 4.dp,
+                        offsetY = 8.dp,
+                        blur = 8.dp,
+                    )
+                    .customShadow(
+                        shape = RoundedCornerShape(8.dp),
+                        color = MillieTheme.colors.black.copy(
+                            alpha = 0.2f,
+                        ),
+                        offsetX = 12.dp,
+                        offsetY = 8.dp,
+                        blur = 24.dp,
+                    ),
+                contentScale = ContentScale.Crop,
+            )
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp))
+                    .customShadow(
+                        shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp),
+                        color = MillieTheme.colors.black.copy(
+                            alpha = 0.1f,
+                        ),
+                        offsetY = (-5).dp,
+                    )
+                    .background(color = MillieTheme.colors.background)
+                    .padding(top = 40.dp),
+            ) {
+                with(uiState.bookDetailUiModel) {
+                    BookInfoSection(
+                        bookTitle = bookTitle,
+                        bookAuthor = bookAuthor,
+                        bookType = bookType,
+                        publishDate = publishedDate,
+                        totalReviewCount = totalReviewCount,
+                        bookRate = bookRate,
+                        completionRate = completionRate,
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Line()
+
+                BookInfoSubtitle()
+
+                Line()
+
+                BookIntroduceSection(
+                    bookDescription = uiState.bookDetailUiModel.bookDescription,
+                    modifier = Modifier.padding(top = 50.dp, bottom = 30.dp),
+                )
+
+                Line()
+
+                BookReviewSection(
+                    totalReviewCount = uiState.bookDetailUiModel.totalReviewCount,
+                    bookReviews = uiState.bookDetailUiModel.reviews,
+                    onReviewLikeClick = onReviewLikeClick,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 30.dp),
+                )
+
+                Line()
+
+                BookDataSection(
+                    onCompletedRateClick = onCompletedRateClick,
+                    onAgeGenderClick = onAgeGenderClick,
+                    isCompletedGraphChanged = uiState.isCompletedGraphChanged,
+                    selectedType = uiState.selectedType,
+                    onImageClick = onImageClick,
+                    modifier = Modifier.padding(vertical = 30.dp),
+                )
+
+                Line()
+
+                BookSimilarSection(
+                    books = uiState.similarBooks,
+                    modifier = Modifier
+                        .padding(top = 30.dp, bottom = 20.dp),
                 )
             }
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            Line()
-
-            BookInfoSubtitle()
-
-            Line()
-
-            BookIntroduceSection(
-                bookDescription = uiState.bookDetailUiModel.bookDescription,
-                modifier = Modifier.padding(top = 50.dp, bottom = 30.dp),
-            )
-
-            Line()
-
-            BookReviewSection(
-                totalReviewCount = uiState.bookDetailUiModel.totalReviewCount,
-                bookReviews = uiState.bookDetailUiModel.reviews,
-                onReviewLikeClick = onReviewLikeClick,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 30.dp),
-            )
-
-            Line()
-
-            BookDataSection(
-                onCompletedRateClick = onCompletedRateClick,
-                onAgeGenderClick = onAgeGenderClick,
-                isCompletedGraphChanged = uiState.isCompletedGraphChanged,
-                selectedType = uiState.selectedType,
-                onImageClick = onImageClick,
-                modifier = Modifier.padding(vertical = 30.dp),
-            )
-
-            Line()
-
-            BookSimilarSection(
-                books = uiState.similarBooks,
-                modifier = Modifier.padding(top = 30.dp, bottom = 20.dp),
-            )
         }
+
+        ReadNowBar(
+            onButtonClick = {},
+            modifier = Modifier
+                .align(alignment = BottomCenter)
+                .onGloballyPositioned {
+                    readNowBarHeight = with(density) {
+                        it.size.height.toDp()
+                    }
+                },
+        )
     }
 }
 
@@ -221,6 +239,7 @@ private fun Line(
 private fun Preview() {
     MillieTheme {
         BookDetailScreen(
+            paddingValues = PaddingValues(),
             uiState = BookDetailUiState(),
             onBackButtonClick = {},
             onCompletedRateClick = {},

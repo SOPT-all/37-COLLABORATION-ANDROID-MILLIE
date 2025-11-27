@@ -47,6 +47,7 @@ fun SearchRoute(
     when (val searchResultState = searchUiState.searchResult) {
         is UiState.Success -> {
             SearchScreen(
+                paddingValues = paddingValues,
                 state = searchUiState,
                 searchBookList = searchResultState.data.bookList,
                 searchLibraryList = searchUiState.searchLibraryList,
@@ -68,6 +69,7 @@ fun SearchRoute(
 
 @Composable
 private fun SearchScreen(
+    paddingValues: PaddingValues,
     state: SearchUiState,
     searchBookList: List<SearchBookModel>,
     searchLibraryList: List<SearchLibraryModel>,
@@ -83,7 +85,8 @@ private fun SearchScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(MillieTheme.colors.white),
+            .background(MillieTheme.colors.white)
+            .padding(paddingValues),
     ) {
         MillieTopappbar(
             title = "검색결과",
@@ -158,6 +161,7 @@ private fun SearchScreenPreview() {
         var selectedTab by remember { mutableStateOf(SearchResultConstants.SELECTED_TAB) }
 
         SearchScreen(
+            paddingValues = PaddingValues(),
             state = SearchUiState(
                 searchInput = "",
                 searchTabs = SearchResultConstants.SEARCH_TABS,
