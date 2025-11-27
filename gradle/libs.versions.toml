@@ -19,6 +19,7 @@ androidxComposeNavigation = "2.8.9"
 kotlinxSerializationJson = "1.8.1"
 timber = "5.0.1"
 kotlinxCollectionsImmutable = "0.4.0"
+animation = "1.9.5"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -58,6 +59,7 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+androidx-compose-animation = { group = "androidx.compose.animation", name = "animation", version.ref = "animation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
