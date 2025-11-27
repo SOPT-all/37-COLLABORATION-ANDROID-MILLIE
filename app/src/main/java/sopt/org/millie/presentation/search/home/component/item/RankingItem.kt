@@ -60,7 +60,7 @@ fun RankingItem(
                 slideInVertically(initialOffsetY = { it }) togetherWith
                     slideOutVertically(targetOffsetY = { -it })
             },
-            label = "ranking_animation"
+            label = "ranking_animation",
         ) { ranking ->
             RankingInfo(
                 rank = ranking.rank,
@@ -117,20 +117,19 @@ private fun RankingItemPreview() {
                 RankingModel(
                     rank = 1,
                     bookTitle = "동화",
-                    rankingIcon = R.drawable.ic_home_ranking_up
+                    rankingIcon = R.drawable.ic_home_ranking_up,
                 ),
                 RankingModel(
                     rank = 2,
                     bookTitle = "소설",
-                    rankingIcon = R.drawable.ic_home_ranking_down
+                    rankingIcon = R.drawable.ic_home_ranking_down,
                 ),
                 RankingModel(
                     rank = 3,
                     bookTitle = "시집",
-                    rankingIcon = R.drawable.ic_home_ranking_up
-
-                )
-            )
+                    rankingIcon = R.drawable.ic_home_ranking_up,
+                ),
+            ),
         )
     }
 }

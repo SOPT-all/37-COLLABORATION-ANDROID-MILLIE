@@ -99,7 +99,7 @@ private fun HomeScreen(
         )
 
         RankingItem(
-            rankingList = uiState.rankingList
+            rankingList = uiState.rankingList,
         )
 
         QuickLinks()
