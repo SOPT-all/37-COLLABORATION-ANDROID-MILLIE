@@ -1,7 +1,6 @@
 package sopt.org.millie.presentation.search.bookdetail.component.tag
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -20,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
+import sopt.org.millie.core.util.noRippleClickable
 
 @Composable
 fun BookDetailLikedTag(
@@ -48,7 +48,7 @@ fun BookDetailLikedTag(
             tint = Color.Unspecified,
             modifier = Modifier
                 .size(24.dp)
-                .clickable(onClick = onClick),
+                .noRippleClickable(onClick = onClick),
         )
 
         Text(

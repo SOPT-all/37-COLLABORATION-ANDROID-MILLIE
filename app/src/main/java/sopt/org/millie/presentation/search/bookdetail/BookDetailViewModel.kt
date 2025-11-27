@@ -3,6 +3,7 @@ package sopt.org.millie.presentation.search.bookdetail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
@@ -15,6 +16,7 @@ import sopt.org.millie.R
 import sopt.org.millie.data.repository.SearchRepository
 import sopt.org.millie.presentation.search.bookdetail.model.BookDataType
 import sopt.org.millie.presentation.search.bookdetail.model.BookSimilarModel
+import sopt.org.millie.presentation.search.navigation.SearchBookDetailRoute
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,8 +27,8 @@ constructor(
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(BookDetailUiState())
-    private val bookId: Long = checkNotNull(savedStateHandle["bookId"])
     val uiState: StateFlow<BookDetailUiState> = _uiState.asStateFlow()
+    private val bookId: Long = savedStateHandle.toRoute<SearchBookDetailRoute>().bookId
 
     init {
         loadData(bookId)

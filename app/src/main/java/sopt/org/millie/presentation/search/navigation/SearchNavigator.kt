@@ -71,7 +71,7 @@ fun NavGraphBuilder.searchNavGraph(
             SearchRoute(
                 paddingValues = paddingValues,
                 navigateUp = navController::navigateUp,
-                onBookItemClick = navController::navigateToBookDetail,
+                navigateToBookDetail = navController::navigateToBookDetail,
             )
         }
 
