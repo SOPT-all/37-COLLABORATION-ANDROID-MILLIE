@@ -59,7 +59,7 @@ private fun BookReviewSectionTopbar(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
-            text = "리뷰",
+            text = "리뷰 ",
             color = MillieTheme.colors.black,
             style = MillieTheme.typography.title.subHead4,
         )

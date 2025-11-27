@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -104,19 +105,18 @@ private fun HomeScreen(
 
         QuickLinks()
 
+        MillieTabbar(
+            tabs = uiState.tabs,
+            selectedTab = uiState.selectedTab,
+            onTabSelected = onTabSelected,
+            horizontalPadding = 23.dp,
+            modifier = Modifier.padding(top = 33.dp),
+        )
+
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(top = 8.dp),
         ) {
-            item {
-                MillieTabbar(
-                    tabs = uiState.tabs,
-                    selectedTab = uiState.selectedTab,
-                    onTabSelected = onTabSelected,
-                    horizontalPadding = 23.dp,
-                    modifier = Modifier.padding(top = 33.dp, bottom = 8.dp),
-                )
-            }
-
             when (uiState.selectedTab) {
                 "카테고리" -> categoryTabContent(categoryList)
                 else -> emptyTabContent(uiState.selectedTab)
@@ -135,14 +135,15 @@ private fun LazyListScope.categoryTabContent(categoryList: ImmutableList<BookCat
         )
     }
 
-    items(
+    itemsIndexed(
         items = categoryList,
-        key = { it.categoryId },
-    ) { category ->
+        key = { _, category -> category.categoryId },
+    ) { index, category ->
         BookCategoryItem(
             bookImageUrl = category.imageUrl,
             title = category.title,
             description = category.description,
+            showRecentBadge = index == 0,
             modifier = Modifier
                 .padding(horizontal = 25.dp)
                 .padding(bottom = 13.dp),
