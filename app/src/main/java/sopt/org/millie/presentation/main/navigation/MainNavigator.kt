@@ -7,7 +7,6 @@ import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -15,11 +14,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import sopt.org.millie.core.navigation.MainTabRoute
 import sopt.org.millie.presentation.main.component.MainTab
-import sopt.org.millie.presentation.search.navigation.navigateToSearch
-import sopt.org.millie.presentation.setting.navigation.navigateToSetting
-import sopt.org.millie.presentation.shelf.navigation.navigateToShelf
-import sopt.org.millie.presentation.today.navigation.navigateToToday
-import sopt.org.millie.presentation.wandok.navigation.navigateToWandok
 
 class MainNavigator(
     val navController: NavHostController,
@@ -62,27 +56,13 @@ class MainNavigator(
         )
 
     fun navigate(tab: MainTab) {
-        val navOptions = navOptions {
+        navController.navigate(tab.route) {
             popUpTo(navController.graph.findStartDestination().id) {
-                saveState = true
+                saveState = false
             }
             launchSingleTop = true
-            restoreState = true
+            restoreState = false
         }
-
-        when (tab) {
-            MainTab.TODAY -> navController.navigateToToday(navOptions)
-            MainTab.WANDOK -> navController.navigateToWandok(navOptions)
-            MainTab.SEARCH -> navController.navigateToSearch(navOptions)
-            MainTab.SHELF -> navController.navigateToShelf(navOptions)
-            MainTab.SETTING -> navController.navigateToSetting(navOptions)
-        }
-    }
-
-    fun navigateToSearchField() {}
-
-    fun navigateUp() {
-        navController.navigateUp()
     }
 }
 

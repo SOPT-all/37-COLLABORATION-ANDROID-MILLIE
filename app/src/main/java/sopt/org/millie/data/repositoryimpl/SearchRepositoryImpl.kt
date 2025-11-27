@@ -1,6 +1,5 @@
 package sopt.org.millie.data.repositoryimpl
 
-import kotlinx.collections.immutable.persistentListOf
 import sopt.org.millie.core.util.suspendRunCatching
 import sopt.org.millie.data.datasource.SearchDataSource
 import sopt.org.millie.data.model.BookDetailModel
@@ -17,8 +16,8 @@ class SearchRepositoryImpl
         private val searchDataSource: SearchDataSource,
 ) : SearchRepository {
     override suspend fun getCategories(): Result<List<CategoryResponseModel>> =
-        runCatching {
-            searchDataSource.getCategories().data?.map { it.toModel() } ?: persistentListOf()
+        suspendRunCatching {
+            searchDataSource.getCategories().data!!.map { it.toModel() }
         }
 
     override suspend fun getBooks(keyword: String): Result<BookSearchResponseModel> =
