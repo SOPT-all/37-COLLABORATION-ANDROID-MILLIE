@@ -107,7 +107,7 @@ private fun BookDetailContent(
                 .verticalScroll(state = rememberScrollState())
                 .padding(bottom = readNowBarHeight),
         ) {
-            Spacer(modifier = Modifier.height(22.dp))
+            Spacer(modifier = Modifier.height(22.dp + paddingValues.calculateTopPadding()))
 
             BookDetailTopbar(
                 bookDetailTopbarBackgroundColor = MillieTheme.colors.bookDetailBackground,
@@ -123,7 +123,7 @@ private fun BookDetailContent(
                     .clip(shape = RoundedCornerShape(8.dp))
                     .customShadow(
                         shape = RoundedCornerShape(8.dp),
-                        color = MillieTheme.colors.black.copy(
+                        color = MillieTheme.colors.subPurple.copy(
                             alpha = 0.1f,
                         ),
                         offsetX = 4.dp,
@@ -132,9 +132,7 @@ private fun BookDetailContent(
                     )
                     .customShadow(
                         shape = RoundedCornerShape(8.dp),
-                        color = MillieTheme.colors.black.copy(
-                            alpha = 0.2f,
-                        ),
+                        color = MillieTheme.colors.subPurple,
                         offsetX = 12.dp,
                         offsetY = 8.dp,
                         blur = 24.dp,
