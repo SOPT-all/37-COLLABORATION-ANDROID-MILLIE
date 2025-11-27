@@ -2,14 +2,16 @@ package sopt.org.millie.data.datasourceimpl
 
 import sopt.org.millie.core.network.BaseResponse
 import sopt.org.millie.data.datasource.SearchDataSource
+import sopt.org.millie.data.dto.response.BookDetailInformationResponseDto
+import sopt.org.millie.data.dto.response.BookReviewResponseDto
 import sopt.org.millie.data.dto.response.BookSearchResponseDto
 import sopt.org.millie.data.dto.response.CategoryResponseDto
 import sopt.org.millie.data.service.SearchService
 import javax.inject.Inject
 
 class SearchDataSourceImpl
-    @Inject
-    constructor(
+@Inject
+constructor(
     private val searchService: SearchService,
 ) : SearchDataSource {
     override suspend fun getCategories(): BaseResponse<List<CategoryResponseDto>> =
@@ -20,9 +22,13 @@ class SearchDataSourceImpl
     ): BaseResponse<BookSearchResponseDto> =
         searchService.getBooks(keyword)
 
-    override suspend fun getBookDetailInformation(bookId: Long) =
+    override suspend fun getBookDetailInformation(
+        bookId: Long,
+    ): BaseResponse<BookDetailInformationResponseDto> =
         searchService.getBookDetailInformation(bookId)
 
-    override suspend fun postReviewLike(reviewId: Long) =
+    override suspend fun postReviewLike(
+        reviewId: Long,
+    ): BaseResponse<BookReviewResponseDto> =
         searchService.postReviewLike(reviewId)
 }
