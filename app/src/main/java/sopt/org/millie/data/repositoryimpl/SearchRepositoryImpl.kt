@@ -4,6 +4,7 @@ import kotlinx.collections.immutable.persistentListOf
 import sopt.org.millie.core.util.suspendRunCatching
 import sopt.org.millie.data.datasource.SearchDataSource
 import sopt.org.millie.data.model.BookDetailModel
+import sopt.org.millie.data.model.BookReviewModel
 import sopt.org.millie.data.model.BookSearchResponseModel
 import sopt.org.millie.data.model.CategoryResponseModel
 import sopt.org.millie.data.model.toModel
@@ -29,6 +30,13 @@ class SearchRepositoryImpl
         return suspendRunCatching {
             val response = searchDataSource.getBookDetailInformation(bookId)
             response.data?.toModel() ?: throw IllegalArgumentException("response data is null")
+        }
+    }
+
+    override suspend fun postReviewLike(reviewId: Long): Result<BookReviewModel> {
+        return suspendRunCatching {
+            val response = searchDataSource.postReviewLike(reviewId)
+            response.data?.toModel() ?: throw IllegalArgumentException("response data null")
         }
     }
 }

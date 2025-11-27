@@ -50,6 +50,7 @@ fun BookDetailReview(
 
         BookDetailLikedTag(
             onClick = { onLikeClick(bookReview.reviewId) },
+            isLiked = bookReview.isLiked,
             likedNum = bookReview.likedNum,
         )
     }
