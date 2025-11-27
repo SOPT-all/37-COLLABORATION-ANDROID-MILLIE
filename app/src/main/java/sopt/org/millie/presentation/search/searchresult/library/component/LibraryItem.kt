@@ -23,6 +23,7 @@ fun LibraryItem(
     @DrawableRes imgRes: Int,
     bookTitle: String,
     modifier: Modifier = Modifier,
+    isEvan: Boolean = false,
 ) {
     Column(
         modifier = modifier,
@@ -43,6 +44,14 @@ fun LibraryItem(
             color = MillieTheme.colors.gray4,
             style = MillieTheme.typography.body.subBody2,
         )
+
+        if (isEvan) {
+            Text(
+                text = "에반하다",
+                color = MillieTheme.colors.gray4,
+                style = MillieTheme.typography.body.subBody2,
+            )
+        }
 
         Text(
             text = "서재",
