@@ -19,7 +19,7 @@ import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import sopt.org.millie.R
 import sopt.org.millie.core.designsystem.theme.MillieTheme
-import sopt.org.millie.presentation.search.bookdetail.model.BookReviewModel
+import sopt.org.millie.data.model.BookReviewModel
 
 @Composable
 fun BookReviewSection(

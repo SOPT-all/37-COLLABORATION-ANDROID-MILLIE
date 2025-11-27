@@ -26,7 +26,7 @@ fun SearchPostScreen(
         modifier = modifier
             .fillMaxWidth()
             .background(MillieTheme.colors.background),
-        contentPadding = PaddingValues(horizontal = 21.dp),
+        contentPadding = PaddingValues(start = 21.dp, end = 21.dp, bottom = 60.dp),
         verticalArrangement = Arrangement.spacedBy(15.dp),
     ) {
         item { SearchPostTitle(count = posts.size) }

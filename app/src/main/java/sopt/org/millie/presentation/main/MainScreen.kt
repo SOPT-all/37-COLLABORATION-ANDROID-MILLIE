@@ -1,10 +1,8 @@
 package sopt.org.millie.presentation.main
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import kotlinx.collections.immutable.toImmutableList
@@ -37,11 +35,10 @@ fun MainScreen(
         NavHost(
             navController = navigator.navController,
             startDestination = navigator.startDestination,
-            modifier = Modifier.padding(paddingValues),
         ) {
             todayNavGraph(paddingValues)
             wandokNavGraph(paddingValues)
-            searchNavGraph(paddingValues)
+            searchNavGraph(navigator.navController, paddingValues)
             shelfNavGraph(paddingValues)
             settingNavGraph(paddingValues)
         }

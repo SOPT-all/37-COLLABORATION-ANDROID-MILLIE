@@ -1,31 +1,50 @@
 package sopt.org.millie.presentation.search.bookdetail
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import sopt.org.millie.R
+import sopt.org.millie.data.repository.SearchRepository
 import sopt.org.millie.presentation.search.bookdetail.model.BookDataType
 import sopt.org.millie.presentation.search.bookdetail.model.BookSimilarModel
+import sopt.org.millie.presentation.search.navigation.SearchBookDetailRoute
 import javax.inject.Inject
 
 @HiltViewModel
 class BookDetailViewModel
-    @Inject
-    constructor() : ViewModel() {
+@Inject
+constructor(
+    private val searchRepository: SearchRepository,
+    savedStateHandle: SavedStateHandle,
+) : ViewModel() {
     private val _uiState = MutableStateFlow(BookDetailUiState())
     val uiState: StateFlow<BookDetailUiState> = _uiState.asStateFlow()
+    private val bookId: Long = savedStateHandle.toRoute<SearchBookDetailRoute>().bookId
 
     init {
-        loadData()
+        loadData(bookId)
     }
 
-    private fun loadData() {
+    private fun loadData(bookId: Long) {
         loadDummyData()
-        // TODO: 서버 연결
+
+        viewModelScope.launch {
+            searchRepository.getBookDetailInformation(bookId)
+                .onSuccess { bookDetailModel ->
+                    _uiState.update {
+                        it.copy(bookDetailUiModel = bookDetailModel)
+                    }
+                }
+        }
     }
 
     private fun loadDummyData() {
@@ -50,15 +69,11 @@ class BookDetailViewModel
                 bookTitle = "홍학의 자리",
                 bookAuthor = "정해연",
             ),
-            )
+        )
 
         _uiState.update {
             it.copy(similarBooks = dummySimilarBooks)
         }
-    }
-
-    fun onBackButtonClicked() {
-        // TODO: 네비 연결
     }
 
     fun onCompletedRateClicked() {
@@ -86,6 +101,26 @@ class BookDetailViewModel
     }
 
     fun onReviewLikeClicked(reviewId: Long) {
-        // TODO: 서버 연결
+        viewModelScope.launch {
+            searchRepository.postReviewLike(reviewId)
+                .onSuccess { bookReviewModel ->
+                    _uiState.update { state ->
+                        state.copy(
+                            bookDetailUiModel = state.bookDetailUiModel.copy(
+                                reviews = state.bookDetailUiModel.reviews.map { review ->
+                                    if (review.reviewId == bookReviewModel.reviewId) {
+                                        review.copy(
+                                            likedNum = bookReviewModel.likedNum,
+                                            isLiked = bookReviewModel.isLiked,
+                                        )
+                                    } else {
+                                        review
+                                    }
+                                }.toImmutableList(),
+                            ),
+                        )
+                    }
+                }
+        }
     }
 }

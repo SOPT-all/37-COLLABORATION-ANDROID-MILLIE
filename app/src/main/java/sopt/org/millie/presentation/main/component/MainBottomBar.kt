@@ -54,7 +54,7 @@ internal fun MainBottomBar(
                     .align(Alignment.TopCenter)
                     .fillMaxWidth(),
                 thickness = 1.dp,
-                color = MillieTheme.colors.gray2,
+                color = MillieTheme.colors.lightGray2,
             )
 
             Row(
